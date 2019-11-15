@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  h1 Hello Readers!
+  h2 #{members.length} personal libraries are available for you
+  h3 Check libraries 
+  each member in members 
+    li #{member.userName}'s Lib
+  h3 Follow
+  each member in members 
+    li #{member.userName}

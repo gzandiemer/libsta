@@ -1,0 +1,22 @@
+{
+  "name": "book-circle",
+  "version": "1.0.0",
+  "description": "myLib Project description: An online library for book circulation among Berlin residents through personal meetups",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "gzan",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "flatted": "^2.0.1",
+    "mongoose": "^5.7.10",
+    "mongoose-autopopulate": "^0.9.1",
+    "pug": "^2.0.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.4"
+  }
+}
