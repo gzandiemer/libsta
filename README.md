@@ -11,4 +11,4 @@ Members will be able to search a book by typing its title or author name in the 
 Members will be able to follow one another
 Members will be able to request and borrow books from other members through arranging a meeting in the physical world via direct messaging
 Members will be able to like and comment on books in other libraries
-For the comment section, there will be a spoiler button to create an automatic warning to be able to include spoilers in the comments
+For the comment section, there will be a spoiler button to create an automatic warning to be able to include spoilers in the comments# book-circle
