@@ -4,7 +4,7 @@ module.exports = class Service {
   }
 
   async add(item) {
-    return this.model.create()
+    return this.model.create(item)
   }
 
   async del(itemId) {

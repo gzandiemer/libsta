@@ -1,0 +1,8 @@
+extends layout
+
+block content
+  h1 #{member.userName}'s Library 
+  p Amount of books: #{books.length}
+  each book in books
+    p #{book.title} from #{book.authorName} 
+  pre #{JSON.stringify(books, null, 4)}

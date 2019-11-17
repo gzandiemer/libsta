@@ -22,6 +22,10 @@ app.get('/register', async (req, res) => {
     res.render('register')
 })
 
+app.get('/login', async (req, res) => {
+    res.render('login')
+})
+
 app.listen(3000, () => {
     console.log('server started')
 })
