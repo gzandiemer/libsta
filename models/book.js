@@ -12,7 +12,7 @@ const BookSchema = new mongoose.Schema({
         required: true,
         minlength: 4
     },
-    lang: {
+    language: {
         type: String,
         required: true,
         minlength: 5
@@ -22,13 +22,13 @@ const BookSchema = new mongoose.Schema({
         required: false,
         minlength: 4
     },
-    owner: [{
+    owner: {
         type: mongoose.SchemaTypes.ObjectId,
         ref: 'Member',
         autopopulate: {
             maxDepth: 1
         }
-    }],
+    },
     likers: [{
         type: mongoose.SchemaTypes.ObjectId,
         ref: 'Member',
