@@ -1,7 +1,12 @@
-myLib
+Project title: BOOK CIRCLE
+
 Project description: An online library for book circulation among Berlin residents through personal meetups
 
 Objective: To cover the need in Berlin for an alternative library since German libraries do not have enough books in other languages. With this web app, people will be able to connect their own libraries to one another and not only exchange books in a larger community than their friend circle but also meet with people, whom they share a common book taste
+
+Created by: Günışığı Zan Diemer
+
+*This project is created within the frame of Women Techmakers Berlin's JavaScript Crash Course in WayFair
 
 Details:
 
@@ -12,6 +17,41 @@ Members will be able to follow one another
 Members will be able to request and borrow books from other members through arranging a meeting in the physical world via direct messaging
 Members will be able to like and comment on books in other libraries
 For the comment section, there will be a spoiler button to create an automatic warning to be able to include spoilers in the comments# book-circle
+
+Technologies: 
+
+npm
+mongoose
+express.js
+pug
+ava 
+
+
+Classes: 
+
+    Member
+-userName: String
+-fullName: String
+-library: Array
+-likes: Array
+-followers: Array
+-following: Array
+-commentsMade: Array
+
++followMember()
++likeBook()
++addBook()
++commentOnBook()
+
+     Book
+-title: String
+-authorName: String
+-language: String
+-pubDate: Number
+-owner: Object
+-likers: Array
+-commentsReceived: Array
+-booked: Boolean
 
 Axios actions :
 
@@ -44,3 +84,7 @@ axios.get('http://localhost:3000/register'.then(console.log)
 
 View login page:
 axios.get('http://localhost:3000/login'.then(console.log)
+
+
+
+

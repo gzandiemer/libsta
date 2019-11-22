@@ -17,14 +17,15 @@ const BookSchema = new mongoose.Schema({
         required: true,
         minlength: 5
     },
-    pubData: {
+    pubDate: {
         type: Number,
-        required: false,
-        minlength: 4
+        //required: false,
+    
     },
     owner: {
         type: mongoose.SchemaTypes.ObjectId,
         ref: 'Member',
+        //required: false,
         autopopulate: {
             maxDepth: 1
         }
@@ -36,7 +37,7 @@ const BookSchema = new mongoose.Schema({
             maxDepth: 1
         }
     }],
-    commentsReceived: [{
+    comments: [{
         //work on this
         type: mongoose.SchemaTypes.ObjectId,
         ref: 'Member',

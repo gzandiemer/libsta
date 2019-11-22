@@ -39,7 +39,7 @@ const MemberSchema = new mongoose.Schema({
             maxDepth:1
         }
     }],
-    commentsMade: [{
+    comments: [{
         type: mongoose.SchemaTypes.ObjectId,
         ref: 'Book',
         text: '',

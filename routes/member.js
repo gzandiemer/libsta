@@ -10,9 +10,23 @@ router.get('/all', async (req, res) => {
     res.render('list', {items: users})
 })
 
+router.get('/all/json', async (req, res) => {
+    const users = await MemberService.findAll()
+    //change in views book with booklist
+    res.send(users)
+})
+
 router.get('/:id', async (req, res) => {
     const user = await MemberService.find(req.params.id)
+    if (!user) res.status(404)
     res.render('data', {data: user})
+   
+})
+
+router.get('/:id/json', async (req, res) => {
+    const user = await MemberService.find(req.params.id)
+    if (!user) res.status(404)
+    res.send(user)
    
 })
 
@@ -33,24 +47,41 @@ router.delete('/:id', async (req, res) => {
 })
 
 router.post('/:id/followers', async (req, res) => {
-    const user = await MemberService.find(req.params.id)
-    const follower = await MemberService(req.body.follower)
-    await MemberService.followMember(follower, user)
-    res.send({follower, user})
+    const member= await MemberService.find(req.params.id)
+    const follower = await MemberService.find(req.body.follower)
+    await MemberService.followMember(follower, member)
+    res.send({follower, member})
 })
 
-router.post('/:id/followings', async (req, res) => {
-    const user = await MemberService.find(req.params.id)
-    const followed = await MemberService(req.body.follower)
-    await MemberService.followMember(user, followed)
-    res.send({user, followed})
+router.post('/:id/following', async (req, res) => {
+    const follower= await MemberService.find(req.params.id)
+    const member = await MemberService.find(req.body.member)
+    await MemberService.followMember(follower, member)
+    res.send({follower, member})
 })
 
-router.post('/:id/library/:bookid', async (req, res) => {
+router.post('/:id/library', async (req, res) => {
     const member = await MemberService.find(req.params.id)
-    const book = await BookService.find(req.params.bookid)
-    await LibraryService.addBook(member, book) 
-    res.send({member, book})
+    const book = await BookService.find(req.body.book)
+    await MemberService.addBook(member, book) 
+    res.send(member)
+    //res.send({member, library, book})
 })
 
+router.post('/:id/likes', async (req, res) => {
+    const member = await MemberService.find(req.params.id)
+    const book = await BookService.find(req.body.book)
+    await MemberService.likeBook(member, book) 
+    res.send(member)
+    
+})
+
+router.post('/:id/comments', async (req, res) => {
+    const member = await MemberService.find(req.params.id)
+    const book = await BookService.find(req.body.book)
+    const text = 'A must read'
+    await MemberService.commentOnBook(member, book, text) 
+    res.send(member)
+    
+})
 module.exports = router

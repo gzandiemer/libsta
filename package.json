@@ -4,7 +4,8 @@
   "description": "myLib Project description: An online library for book circulation among Berlin residents through personal meetups",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "ava --verbose --watch",
+    "test-coverage": "nyc ava --verbose"
   },
   "author": "gzan",
   "license": "MIT",
@@ -17,6 +18,9 @@
     "pug": "^2.0.4"
   },
   "devDependencies": {
-    "nodemon": "^1.19.4"
+    "ava": "^2.4.0",
+    "nodemon": "^1.19.4",
+    "nyc": "^14.1.1",
+    "supertest": "^4.0.2"
   }
 }
