@@ -36,7 +36,7 @@ Classes:
 -likes: Array
 -followers: Array
 -following: Array
--commentsMade: Array
+-comments: Array
 
 +followMember()
 +likeBook()
@@ -50,7 +50,7 @@ Classes:
 -pubDate: Number
 -owner: Object
 -likers: Array
--commentsReceived: Array
+-comments: Array
 -booked: Boolean
 
 Axios actions :
