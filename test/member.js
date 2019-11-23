@@ -129,6 +129,7 @@ test('Get list of members', async t => {
 })
 
 test('Member can follow a member', async t => {
+  //create a follower
   const samUser = {
     userName: 'sam',
     fullName: 'Samantha Wilson',
@@ -138,11 +139,11 @@ test('Member can follow a member', async t => {
     following: [],
     comments: []
   }
-
   const createdFollower = (await request(app)
     .post('/member')
     .send(samUser)).body
 
+    //create a member
   const jennyUser = {
     userName: 'jenny',
     fullName: 'Jennifer Jackson',
@@ -152,37 +153,56 @@ test('Member can follow a member', async t => {
     following: [],
     comments: []
   }
-
   const createdMember = (await request(app)
     .post('/member')
     .send(jennyUser)).body
 
+
+
   const followMemberRes = await request(app)
     .post(`/member/${createdMember._id}/followers`)
     .send({ follower: createdFollower._id })
-
-  // const memberRes = await request(app)
-  //   .post(`/member/${createdFollower._id}/following`)
-  //   .send({ member: createdMember._id })
+    // .post(`/member/${createdFollower._id}/following`)
+    // .send({ member: createdMember._id })
 
   t.is(followMemberRes.status, 200)
-  // t.is(memberRes.status, 200)
   
-  const followerAltered = followMemberRes.body
-  // const memberAltered = memberRes.body
+  const followerAltered = followMemberRes.body.follower
+  const memberAltered = followMemberRes.body.member
+ 
+  //fetch the follower and the member
+  const fetchRes = await request(app).get(`/member/${memberAltered._id}`)
+  // t.is(fetchRes.status, 200)
+  const fetchResJson = await request(app).get(`/member/${memberAltered._id}/json`)
+  // t.is(fetchResJson.status, 200)
+  const alteredMemberFetched = fetchResJson.body
+  const fetchFollowerRes = await request(app).get(`/member/${followerAltered._id}`)
+  // t.is(fetchFollowerRes.status, 200)
+  const fetchFollowerResJson = await request(app).get(`/member/${followerAltered._id}/json`)
+  // t.is(fetchFollowerResJson.status, 200)
+  const alteredFollowerFetched = fetchFollowerResJson.body
   
-  t.is(followerAltered.following[0]._id, createdMember._id)
-  // t.is(memberAltered.followers[0]._id, createdFollower._id)
+  // t.is(followerAltered.following[0]._id, memberAltered._id)
+  // t.is(memberAltered.followers[0]._id, followerAltered._id)
 
-  t.deepEqual(followerAltered.following[0], createdMember)
-  // t.deepEqual(memberAltered.followers[0], createdFollower)
+  t.is(alteredFollowerFetched.following[0]._id, alteredMemberFetched._id)
+  t.is(alteredMemberFetched.followers[0]._id, alteredFollowerFetched._id)
 
-  t.notDeepEqual(followerAltered, createdFollowed)
-  // t.notDeepEqual(memberAltered, createdMember)
+  t.is(alteredFollowerFetched.following[0].userName, alteredMemberFetched.userName)
+  t.is(alteredMemberFetched.followers[0].userName, alteredFollowerFetched.userName)
+
+  t.is(alteredFollowerFetched.following[0].fullName, alteredMemberFetched.fullName)
+  t.is(alteredMemberFetched.followers[0].fullName, alteredFollowerFetched.fullName)
+  // t.deepEqual(followerAltered.following[0], memberAltered)
+  // t.deepEqual(memberAltered.followers[0], followerAltered)
+
+  // t.deepEqual(alteredFollowerFetched.following[0], alteredMemberFetched)
+  // t.deepEqual(alteredMemberFetched.followers[0], alteredFollowerFetched)
+
+  t.notDeepEqual(followerAltered, createdFollower)
+  t.notDeepEqual(memberAltered, createdMember)
 
 })
-
-
 
 test('Member can add a book', async t => {
   const samUser = {

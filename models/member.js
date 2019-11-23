@@ -46,7 +46,10 @@ const MemberSchema = new mongoose.Schema({
         autopopulate: {
             maxDepth:1
         }
-    }],
+    }], 
+    
+        //versionKey: false
+     
 })
 
 

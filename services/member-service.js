@@ -13,7 +13,6 @@ class MemberService extends BaseService {
         await member.save()
     }
 
-
     async addBook(member, book) {
         member.library.push(book)
         book.owner = member._id
