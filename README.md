@@ -1,6 +1,6 @@
 <br />
 <p align="center">
-  <img src="../master/images/logo.png" alt="Logo">
+  <img src="../master/images/logo.png" width="350" alt="Logo">
 </p>
 <h2 align="center">Libsta</h2>
 <h3 align="center">Ad Libris per Astra</h3>
