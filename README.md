@@ -175,18 +175,16 @@ Compiles and hot-reloads for development:
 
 ### HTTP Request Examples using Axios
 
-> Create a new member: 
-> ```axios.post('http://localhost:3000/member', { userName: 'johnny', fullName: 'John Doe'}).then(console.log)```
+> Create a new member: <br />
+ ```axios.post('http://localhost:3000/member', { userName: 'johnny', fullName: 'John Doe'}).then(console.log)```
 
-> View member profile: 
-> ```axios.get('http://localhost:3000/member/5dcff1784185624d8dfaa4c6').then(console.log)```
+> View member profile: <br />
+ ```axios.get('http://localhost:3000/member/5dcff1784185624d8dfaa4c6').then(console.log)```
 
 > View all member profiles: 
-
 ```axios.get('http://localhost:3000/member/all').then(console.log)```
 
 > Delete a member: 
-
 ```axios.delete('/member/5dcff1784185624d8dfaa4c6').then(console.log)```
 
 > Create a new book: 
