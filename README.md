@@ -1,4 +1,4 @@
-<p align="center">
+<p align="right">
   <img src="../master/images/logo-books.png" width="350" alt="Logo">
 </p>
 
