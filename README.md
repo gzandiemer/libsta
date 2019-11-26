@@ -1,13 +1,17 @@
-<br />
 <p align="center">
-  <img src="../master/images/logo.png" width="350" alt="Logo">
+  <img src="../master/images/logo.png" width="250" alt="Logo">
 </p>
-<h2 align="center">Libsta</h2>
-<h3 align="center">Ad Libris per Astra</h3>
+<br />
 
 ### Table of Contents
 
 - [About the Project](#about-the-project)
+  - [Title](#title)
+  - [Description](#description)
+  - [Objective](#objective)
+  - [Goals](#goals)
+  - [Author](#author)
+  - [Sources](#sources)
   - [Built With](#built-with)
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
@@ -15,33 +19,49 @@
 - [Versioning](#versioning)
 - [Usage](#usage)
 - [Project Structure](#project-structure)
-- [Classes](#project-structure)
-- [Axios Actions](#project-structure)
+  - [Classes](#classes)
+  - [HTTP Request Examples](#axios-examples)
 
 
 <a name="about-the-project"/>
 
 ## About The Project
+<a name="description"/>
+
+### Title
+Libsta
+
+<a name="description"/>
+
 ### Description
 An online book sharing platform through personal meetups
+<a name="objective"/>
+
 ### Objective
 To cover the need in Berlin for an alternative library since German libraries do not have sufficient number of books in other languages. With this web app, people will be able to connect their own libraries to one another and not only exchange books in a large community but also get in touch with people, whom they share a common book taste
+<a name="goals"/>
+
 ### Goals
-People will be asked to register for free as a member to use the app
-Members will create a personal library on their profile where they publish what books they want to share
-Members will be able to search a book by typing its title or author name in the search field and check if it is available and if yes, which members have it in their library
-Members will be able to follow one another
-Members will be able to request and borrow books from other members through arranging a meeting in the physical world via direct messaging
-Members will be able to like and comment on books in other libraries
-For the comment section, there will be a spoiler button to create an automatic warning to be able to include spoilers in the comments# book-circle
+>Membership through registration is required to use the app
+>Every member create a personal library on their profile page where they publish what books they want to share
+>Members can search a book by typing its title or author name in the search field to check its availability
+>Members can follow one another
+>Members can like, comment on and make a request for books in other members' libraries
+>For the comment section, there will be a button to alert readers against spoilers
+>Members can use direct messaging to arrange a meeting in order to exchange books
+<a name="author"/>
+
 ### Author 
 Günışığı Zan Diemer
+
+<a name="sources"/>
+
 ### Sources
 This project is created within the frame of Women Techmakers Berlin's JavaScript Crash Course in WayFair
 
 <a name="built-with"/>
 
-## Built With
+### Built With
 
 Major frameworks used in this project:
 
@@ -144,64 +164,66 @@ Compiles and hot-reloads for development:
         member.pug
         register.pug
 
+<a name="classes"/>
 
+### Classes: 
 
-## Classes: 
+#### Member
+>-**userName**: _String_<br />
+>-**fullName**: _String_<br />
+>-**library**: _Array_<br />
+>-**likes**: _Array_<br />
+>-**followers**: _Array_<br />
+>-**following**: _Array_<br />
+>-**comments**: _Array_<br />
+>
+>+**followMember**()<br />
+>+**likeBook()**<br />
+>+**addBook()**<br />
+>+**commentOnBook()**<br />
 
-### Member
--userName: String
--fullName: String
--library: Array
--likes: Array
--followers: Array
--following: Array
--comments: Array
+#### Book
+>-**title**: _String_
+>-**authorName**: _String_
+>-**language**: _String_
+>-**pubDate**: _Number_
+>-**owner**: _Object_
+>**likers**: _Array_
+>-**comments**: _Array_
+>-**booked**: _Boolean_
 
-+followMember()
-+likeBook()
-+addBook()
-+commentOnBook()
+<a name="axios-examples"/>
 
-### Book
--title: String
--authorName: String
--language: String
--pubDate: Number
--owner: Object
--likers: Array
--comments: Array
--booked: Boolean
+### HTTP Request Examples using Axios
 
-## Axios actions
-
-Create a new member:
+#### Create a new member:
 axios.post('http://localhost:3000/member', { userName: 'gzan', fullName: 'Günisigi Zan}).then(console.log)
 
-View member profile:
+#### View member profile:
 axios.get('http://localhost:3000/member/5dcff1784185624d8dfaa4c6'.then(console.log)
 
-View all member profiles:
+#### View all member profiles:
 axios.get('http://localhost:3000/member/all'.then(console.log)
 
-Delete a member:
+#### Delete a member:
 axios.delete('/member/5dcff1784185624d8dfaa4c6').then(console.log)
 
-Create a new book: 
+#### Create a new book: 
 axios.post('http://localhost:3000/book', { title: 'One Hundred Years of Solitude', authorName: 'Gabriel Garcia Marquez', language: 'english', pubdate: 2000, booked: false}).then(console.log)
 
-View book profile:
+#### View book profile:
 axios.get('http://localhost:3000/book/5dcff970d4f5e04e16bf51e0'.then(console.log)
 
-View all book profiles:
+#### View all book profiles:
 axios.get('http://localhost:3000/book/all'.then(console.log)
 
-Delete a book:
+#### Delete a book:
 axios.delete('/book/5dcff970d4f5e04e16bf51e0').then(console.log)
 
-View register page:
+#### View register page:
 axios.get('http://localhost:3000/register'.then(console.log)
 
-View login page:
+#### View login page:
 axios.get('http://localhost:3000/login'.then(console.log)
 
 
