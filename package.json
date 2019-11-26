@@ -1,7 +1,7 @@
 {
   "name": "book-circle",
   "version": "1.0.0",
-  "description": "myLib Project description: An online library for book circulation among Berlin residents through personal meetups",
+  "description": "Libsta project description: An online book sharing platform",
   "main": "index.js",
   "scripts": {
     "test": "ava --verbose --watch",

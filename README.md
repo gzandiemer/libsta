@@ -127,42 +127,21 @@ Compiles and hot-reloads for development:
 
 ## Project Structure
 
-│   .gitignore       <br />         
-│   app.js           <br />
-│   index.html<br />
-│   index.js             <br />     
-│   mongo-connection.js<br />
-│   package-lock.json<br />
-│   package.json         <br />     
-│   README.md           <br />      
-│
-├───models<br />
-│       book.js<br />
-│       member.js<br />
-│
-├───routes<br />
-│       book.js<br />
-│       member.js<br />
-│
-├───services<br />
-│       base-service.js<br />
-│       book-service.js<br />
-│       member-service.js<br />
-│
-├───test<br />
-│       book.js<br />
-│       member.js<br />
-└───views<br />
-        book.pug<br />
-        data.pug<br />
-        index.pug<br />
-        layout.pug<br />
-        library.pug<br />
-        list.pug<br />
-        login.pug<br />
-        member.pug<br />
-        register.pug<br />
-
+│   .gitignore            # sensible defaults for gitignore
+│   app.js                # app entry point
+│   index.html            # index.html template
+│   index.js              # connect to server
+│   mongo-connection.js   # connect to database 
+│   package-lock.json     # store exact, versioned dependency tree
+│   package.json          # build scripts and dependencies
+│   README.md             # project documentation
+├───images                # image files
+├───models                # database models
+├───routes                # forward http requests and functions to routes
+├───services              # all the logic 
+├───test                  # test files
+└───views                 # templates
+      
 <a name="classes"/>
 
 ### Classes 
