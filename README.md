@@ -127,6 +127,7 @@ Compiles and hot-reloads for development:
 
 ## Project Structure
 
+```
 │   .gitignore            # sensible defaults for gitignore
 │   app.js                # app entry point
 │   index.html            # index.html template
@@ -141,7 +142,7 @@ Compiles and hot-reloads for development:
 ├───services              # all the logic 
 ├───test                  # test files
 └───views                 # templates
-      
+```   
 <a name="classes"/>
 
 ### Classes 
