@@ -41,13 +41,13 @@ To cover the need in Berlin for an alternative library since German libraries do
 <a name="goals"/>
 
 ### Goals
->Membership through registration is required to use the app
->Every member create a personal library on their profile page where they publish what books they want to share
->Members can search a book by typing its title or author name in the search field to check its availability
->Members can follow one another
->Members can like, comment on and make a request for books in other members' libraries
->For the comment section, there will be a button to alert readers against spoilers
->Members can use direct messaging to arrange a meeting in order to exchange books
+Membership through registration is required to use the app<br />
+Every member create a personal library on their profile page where they publish what books they want to share<br />
+Members can search a book by typing its title or author name in the search field to check its availability<br />
+Members can follow one another<br />
+Members can like, comment on and make a request for books in other members' libraries<br />
+For the comment section, there will be a button to alert readers against spoilers<br />
+Members can use direct messaging to arrange a meeting in order to exchange books<br />
 <a name="author"/>
 
 ### Author 
