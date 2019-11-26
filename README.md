@@ -1,8 +1,9 @@
 <br />
 <p align="center">
-  <img src="images/logo.png" alt="Logo">
+  <img src="../master/images/logo.png" alt="Logo">
 </p>
-<h3 align="center">libsta - Ad Libris per Astra</h3>Project title: LIBSTA
+<h2 align="center">Libsta</h2>
+<h3 align="center">Ad Libris per Astra</h3>
 
 ### Table of Contents
 
