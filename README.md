@@ -175,30 +175,34 @@ Compiles and hot-reloads for development:
 
 ### HTTP Request Examples using Axios
 
-#### Create a new member: ```axios.post('http://localhost:3000/member', { userName: 'gzan', fullName: 'Günisigi Zan}).then(console.log)```
+> Create a new member: 
+```axios.post('http://localhost:3000/member', { userName: 'gzan', fullName: 'Günisigi Zan}).then(console.log)```
 
-#### View member profile: ```axios.get('http://localhost:3000/member/5dcff1784185624d8dfaa4c6').then(console.log)```
+> View member profile: 
+```axios.get('http://localhost:3000/member/5dcff1784185624d8dfaa4c6').then(console.log)```
 
-#### View all member profiles: ```axios.get('http://localhost:3000/member/all').then(console.log)```
+> View all member profiles: 
+```axios.get('http://localhost:3000/member/all').then(console.log)```
 
-#### Delete a member: ```axios.delete('/member/5dcff1784185624d8dfaa4c6').then(console.log)```
+> Delete a member: 
+```axios.delete('/member/5dcff1784185624d8dfaa4c6').then(console.log)```
 
-#### Create a new book: ```axios.post('http://localhost:3000/book', { title: 'One Hundred Years of Solitude', authorName: 'Gabriel Garcia Marquez', language: 'english', pubdate: 2000, booked: false}).then(console.log)```
+> Create a new book: 
+```axios.post('http://localhost:3000/book', { title: 'One Hundred Years of Solitude', authorName: 'Gabriel Garcia Marquez', language: 'english', pubdate: 2000, booked: false}).then(console.log)```
+> View book profile:
+```axios.get('http://localhost:3000/book/5dcff970d4f5e04e16bf51e0').then(console.log)```
 
-#### View book profile:
-axios.get('http://localhost:3000/book/5dcff970d4f5e04e16bf51e0').then(console.log)
+> View all book profiles:
+```axios.get('http://localhost:3000/book/all').then(console.log)```
 
-#### View all book profiles:
-axios.get('http://localhost:3000/book/all').then(console.log)
+> Delete a book:
+```axios.delete('/book/5dcff970d4f5e04e16bf51e0').then(console.log)```
 
-#### Delete a book:
-axios.delete('/book/5dcff970d4f5e04e16bf51e0').then(console.log)
+> View register page:
+```axios.get('http://localhost:3000/register').then(console.log)```
 
-#### View register page:
-axios.get('http://localhost:3000/register').then(console.log)
-
-#### View login page:
-axios.get('http://localhost:3000/login').then(console.log)
+> View login page:
+```axios.get('http://localhost:3000/login').then(console.log)```
 
 
 
