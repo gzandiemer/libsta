@@ -1,15 +1,31 @@
-Project title: BOOK CIRCLE
+<br />
+<p align="center">
+  <img src="images/logo.png" alt="Logo">
+</p>
+<h3 align="center">libsta - Ad Libris per Astra</h3>Project title: LIBSTA
 
-Project description: An online library for book circulation among Berlin residents through personal meetups
+### Table of Contents
 
-Objective: To cover the need in Berlin for an alternative library since German libraries do not have enough books in other languages. With this web app, people will be able to connect their own libraries to one another and not only exchange books in a larger community than their friend circle but also meet with people, whom they share a common book taste
+- [About the Project](#about-the-project)
+  - [Built With](#built-with)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+- [Versioning](#versioning)
+- [Usage](#usage)
+- [Project Structure](#project-structure)
+- [Classes](#project-structure)
+- [Axios Actions](#project-structure)
 
-Created by: Günışığı Zan Diemer
 
-*This project is created within the frame of Women Techmakers Berlin's JavaScript Crash Course in WayFair
+<a name="about-the-project"/>
 
-Details:
-
+## About The Project
+### Description
+An online book sharing platform through personal meetups
+### Objective
+To cover the need in Berlin for an alternative library since German libraries do not have sufficient number of books in other languages. With this web app, people will be able to connect their own libraries to one another and not only exchange books in a large community but also get in touch with people, whom they share a common book taste
+### Goals
 People will be asked to register for free as a member to use the app
 Members will create a personal library on their profile where they publish what books they want to share
 Members will be able to search a book by typing its title or author name in the search field and check if it is available and if yes, which members have it in their library
@@ -17,19 +33,121 @@ Members will be able to follow one another
 Members will be able to request and borrow books from other members through arranging a meeting in the physical world via direct messaging
 Members will be able to like and comment on books in other libraries
 For the comment section, there will be a spoiler button to create an automatic warning to be able to include spoilers in the comments# book-circle
+### Author 
+Günışığı Zan Diemer
+### Sources
+This project is created within the frame of Women Techmakers Berlin's JavaScript Crash Course in WayFair
 
-Technologies: 
+<a name="built-with"/>
 
-npm
-mongoose
-express.js
-pug
-ava 
+## Built With
+
+Major frameworks used in this project:
+
+- Javascript Framework - [VueJs ](https://vuejs.org) 
+- Material Design Component Framework - [Vuetify](https://vuetifyjs.com) 
+- Testing Framework - [Avajs/Ava](https://github.com/avajs/ava)
+
+Major libraries used in this project:
+
+- Mongoose Object Data Modeling - [Mongoose](https://mongoosejs.com/)
+- Pug Template Engine - [Pug](https://pugjs.org/api/getting-started.html)
+- CSS Preprocessor - [Scss](https://sass-lang.com)
+- Promise based HTTP client - [Axios](https://github.com/axios/axios)
+- Code Styling - [Eslint](https://eslint.org)
+
+## Getting Started
+
+<a name="prerequisites"/>
+
+#### Prerequisites
+
+- [Node.js](https://nodejs.org/en/) is required 
+  _ latest version or at least >= 8.11 
+  _ check your current node version with: `node -v`
+
+- [NPM](https://www.npmjs.com/) is required
+  _ install package manager npm with: `npm install npm@latest -g`
+  _ check your current npm version with: `npm -v`
 
 
-Classes: 
+- [Docker](https://docs.docker.com):
+  _ latest version or at least >= 19.03.2
+  _ check your current node version with: `docker -v`
+  _ Install according to [Docker documentation](https://docs.docker.com)
 
-    Member
+<a name="installation"/>
+
+#### Installation
+
+The code is hosted on GitHub:
+
+1. Clone the repo:
+   `git clone <github_repository>`
+      
+Build and start either with NPM:
+
+2. Install NPM packages and dependencies:
+   `npm install`
+3. to start the local environment run: `npm run serve`
+
+
+## Usage
+
+Compiles and hot-reloads for development:
+
+- Start you local environment: `npm run serve`
+
+- Compiles and minifies for production: `npm run build`
+
+- Run your tests: `npm run test`
+
+<a name="project-structure"/>
+
+## Project Structure
+
+│   .gitignore                
+│   app.js           
+│   index.html
+│   index.js                  
+│   mongo-connection.js
+│   package-lock.json
+│   package.json              
+│   README.md                 
+│
+├───models
+│       book.js
+│       member.js
+│
+├───routes
+│       book.js
+│       member.js
+│
+├───services
+│       base-service.js
+│       book-service.js
+│       member-service.js
+│
+├───test
+│       book.js
+│       member.js
+│
+└───views
+        book.pug
+        data.pug
+        index.pug
+        layout.pug
+        library.pug
+        list.pug
+        login.pug
+        member.pug
+        register.pug
+
+
+
+## Classes: 
+
+### Member
 -userName: String
 -fullName: String
 -library: Array
@@ -43,7 +161,7 @@ Classes:
 +addBook()
 +commentOnBook()
 
-     Book
+### Book
 -title: String
 -authorName: String
 -language: String
@@ -53,7 +171,7 @@ Classes:
 -comments: Array
 -booked: Boolean
 
-Axios actions :
+## Axios actions
 
 Create a new member:
 axios.post('http://localhost:3000/member', { userName: 'gzan', fullName: 'Günisigi Zan}).then(console.log)
