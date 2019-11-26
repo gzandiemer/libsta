@@ -127,46 +127,45 @@ Compiles and hot-reloads for development:
 
 ## Project Structure
 
-│   .gitignore                
-│   app.js           
-│   index.html
-│   index.js                  
-│   mongo-connection.js
-│   package-lock.json
-│   package.json              
-│   README.md                 
+│   .gitignore       <br />         
+│   app.js           <br />
+│   index.html<br />
+│   index.js             <br />     
+│   mongo-connection.js<br />
+│   package-lock.json<br />
+│   package.json         <br />     
+│   README.md           <br />      
 │
-├───models
-│       book.js
-│       member.js
+├───models<br />
+│       book.js<br />
+│       member.js<br />
 │
-├───routes
-│       book.js
-│       member.js
+├───routes<br />
+│       book.js<br />
+│       member.js<br />
 │
-├───services
-│       base-service.js
-│       book-service.js
-│       member-service.js
+├───services<br />
+│       base-service.js<br />
+│       book-service.js<br />
+│       member-service.js<br />
 │
-├───test
-│       book.js
-│       member.js
-│
-└───views
-        book.pug
-        data.pug
-        index.pug
-        layout.pug
-        library.pug
-        list.pug
-        login.pug
-        member.pug
-        register.pug
+├───test<br />
+│       book.js<br />
+│       member.js<br />
+└───views<br />
+        book.pug<br />
+        data.pug<br />
+        index.pug<br />
+        layout.pug<br />
+        library.pug<br />
+        list.pug<br />
+        login.pug<br />
+        member.pug<br />
+        register.pug<br />
 
 <a name="classes"/>
 
-### Classes: 
+### Classes 
 
 #### Member
 >-**userName**: _String_<br />
@@ -177,20 +176,20 @@ Compiles and hot-reloads for development:
 >-**following**: _Array_<br />
 >-**comments**: _Array_<br />
 >
->+**followMember**()<br />
+>+**followMember()**<br />
 >+**likeBook()**<br />
 >+**addBook()**<br />
 >+**commentOnBook()**<br />
 
 #### Book
->-**title**: _String_
->-**authorName**: _String_
->-**language**: _String_
->-**pubDate**: _Number_
->-**owner**: _Object_
->**likers**: _Array_
->-**comments**: _Array_
->-**booked**: _Boolean_
+>-**title**: _String_<br />
+>-**authorName**: _String_<br />
+>-**language**: _String_<br />
+>-**pubDate**: _Number_<br />
+>-**owner**: _Object_<br />
+>**likers**: _Array_<br />
+>-**comments**: _Array_<br />
+>-**booked**: _Boolean_<br />
 
 <a name="axios-examples"/>
 
@@ -200,10 +199,10 @@ Compiles and hot-reloads for development:
 axios.post('http://localhost:3000/member', { userName: 'gzan', fullName: 'Günisigi Zan}).then(console.log)
 
 #### View member profile:
-axios.get('http://localhost:3000/member/5dcff1784185624d8dfaa4c6'.then(console.log)
+axios.get('http://localhost:3000/member/5dcff1784185624d8dfaa4c6').then(console.log)
 
 #### View all member profiles:
-axios.get('http://localhost:3000/member/all'.then(console.log)
+axios.get('http://localhost:3000/member/all').then(console.log)
 
 #### Delete a member:
 axios.delete('/member/5dcff1784185624d8dfaa4c6').then(console.log)
@@ -212,19 +211,19 @@ axios.delete('/member/5dcff1784185624d8dfaa4c6').then(console.log)
 axios.post('http://localhost:3000/book', { title: 'One Hundred Years of Solitude', authorName: 'Gabriel Garcia Marquez', language: 'english', pubdate: 2000, booked: false}).then(console.log)
 
 #### View book profile:
-axios.get('http://localhost:3000/book/5dcff970d4f5e04e16bf51e0'.then(console.log)
+axios.get('http://localhost:3000/book/5dcff970d4f5e04e16bf51e0').then(console.log)
 
 #### View all book profiles:
-axios.get('http://localhost:3000/book/all'.then(console.log)
+axios.get('http://localhost:3000/book/all').then(console.log)
 
 #### Delete a book:
 axios.delete('/book/5dcff970d4f5e04e16bf51e0').then(console.log)
 
 #### View register page:
-axios.get('http://localhost:3000/register'.then(console.log)
+axios.get('http://localhost:3000/register').then(console.log)
 
 #### View login page:
-axios.get('http://localhost:3000/login'.then(console.log)
+axios.get('http://localhost:3000/login').then(console.log)
 
 
 
