@@ -1,12 +1,13 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-
+const cors = require('cors')
 const memberRouter = require('./routes/member')
 const bookRouter = require('./routes/book')
 
 require('./mongo-connection')
 
 const app = express()
+app.use(cors())
 
 app.set('view engine', 'pug')
 app.use(bodyParser.json())

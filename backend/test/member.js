@@ -8,6 +8,7 @@ test('Create new member', async t => {
   const memberToCreate = {
     userName: 'gzan',
     fullName: 'Gunisigi Zan',
+    city: 'Berlin',
     library: [],
     likes: [],
     followers: [],
@@ -25,6 +26,7 @@ test('Create new member', async t => {
   //comparing the created member's data 
   t.is(res.body.userName, memberToCreate.userName)
   t.is(res.body.fullName, memberToCreate.fullName)
+  t.is(res.body.city, memberToCreate.city)
   t.deepEqual(res.body.library, memberToCreate.library)
   t.deepEqual(res.body.likes, memberToCreate.likes)
   t.deepEqual(res.body.followers, memberToCreate.followers)
@@ -37,6 +39,7 @@ test('Fetch a member', async t => {
   const memberToCreate = {
     userName: 'jenny',
     fullName: 'Jennifer Adams',
+    city: 'Berlin',
     library: [],
     likes: [],
     followers: [],
@@ -72,6 +75,7 @@ test('Delete a member', async t => {
   const memberToCreate = {
     userName: 'sam',
     fullName: 'Samantha Wilson',
+    city: 'Berlin',
     library: [],
     likes: [],
     followers: [],
@@ -106,6 +110,7 @@ test('Get list of members', async t => {
   const memberToCreate = {
     userName: 'sam',
     fullName: 'Samantha Wilson',
+    city: 'Berlin',
     library: [],
     likes: [],
     followers: [],
@@ -133,6 +138,7 @@ test('Member can follow a member', async t => {
   const samUser = {
     userName: 'sam',
     fullName: 'Samantha Wilson',
+    city: 'Berlin',
     library: [],
     likes: [],
     followers: [],
@@ -143,10 +149,11 @@ test('Member can follow a member', async t => {
     .post('/member')
     .send(samUser)).body
 
-    //create a member
+  //create a member
   const jennyUser = {
     userName: 'jenny',
     fullName: 'Jennifer Jackson',
+    city: 'Berlin',
     library: [],
     likes: [],
     followers: [],
@@ -162,14 +169,14 @@ test('Member can follow a member', async t => {
   const followMemberRes = await request(app)
     .post(`/member/${createdMember._id}/followers`)
     .send({ follower: createdFollower._id })
-    // .post(`/member/${createdFollower._id}/following`)
-    // .send({ member: createdMember._id })
+  // .post(`/member/${createdFollower._id}/following`)
+  // .send({ member: createdMember._id })
 
   t.is(followMemberRes.status, 200)
-  
+
   const followerAltered = followMemberRes.body.follower
   const memberAltered = followMemberRes.body.member
- 
+
   //fetch the follower and the member
   const fetchRes = await request(app).get(`/member/${memberAltered._id}`)
   // t.is(fetchRes.status, 200)
@@ -181,7 +188,7 @@ test('Member can follow a member', async t => {
   const fetchFollowerResJson = await request(app).get(`/member/${followerAltered._id}/json`)
   // t.is(fetchFollowerResJson.status, 200)
   const alteredFollowerFetched = fetchFollowerResJson.body
-  
+
   // t.is(followerAltered.following[0]._id, memberAltered._id)
   // t.is(memberAltered.followers[0]._id, followerAltered._id)
 
@@ -193,6 +200,9 @@ test('Member can follow a member', async t => {
 
   t.is(alteredFollowerFetched.following[0].fullName, alteredMemberFetched.fullName)
   t.is(alteredMemberFetched.followers[0].fullName, alteredFollowerFetched.fullName)
+
+  t.is(alteredFollowerFetched.following[0].city, alteredMemberFetched.city)
+  t.is(alteredMemberFetched.followers[0].city, alteredFollowerFetched.city)
   // t.deepEqual(followerAltered.following[0], memberAltered)
   // t.deepEqual(memberAltered.followers[0], followerAltered)
 
@@ -208,6 +218,7 @@ test('Member can add a book', async t => {
   const samUser = {
     userName: 'sam',
     fullName: 'Samantha Wilson',
+    city: 'Berlin',
     library: [],
     likes: [],
     followers: [],
@@ -254,6 +265,7 @@ test('Member can like a book', async t => {
   const samUser = {
     userName: 'sam',
     fullName: 'Samantha Wilson',
+    city: 'Berlin',
     library: [],
     likes: [],
     followers: [],

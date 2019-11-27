@@ -1,5 +1,5 @@
 {
-  "name": "book-circle",
+  "name": "libsta",
   "version": "1.0.0",
   "description": "Libsta project description: An online book sharing platform",
   "main": "index.js",
@@ -11,6 +11,7 @@
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "flatted": "^2.0.1",
     "mongoose": "^5.7.10",
@@ -22,5 +23,8 @@
     "nodemon": "^1.19.4",
     "nyc": "^14.1.1",
     "supertest": "^4.0.2"
+  },
+  "directories": {
+    "test": "test"
   }
 }

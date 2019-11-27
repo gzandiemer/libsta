@@ -8,6 +8,7 @@ test('Create new book', async t => {
   const memberToCreate = {
     userName: 'sam',
     fullName: 'Samantha Wilson',
+    city: 'Berlin',
     library: [],
     likes: [],
     followers: [],
@@ -50,6 +51,7 @@ test('Fetch a book', async t => {
   const memberToCreate = {
     userName: 'sam',
     fullName: 'Samantha Wilson',
+    city: 'Berlin',
     library: [],
     likes: [],
     followers: [],
@@ -93,6 +95,7 @@ test('Delete a book', async t => {
   const memberToCreate = {
     userName: 'sam',
     fullName: 'Samantha Wilson',
+    city: 'Berlin',
     library: [],
     likes: [],
     followers: [],
@@ -134,6 +137,7 @@ test('Get list of books', async t => {
   const memberToCreate = {
     userName: 'sam',
     fullName: 'Samantha Wilson',
+    city: 'Berlin',
     library: [],
     likes: [],
     followers: [],
@@ -156,9 +160,9 @@ test('Get list of books', async t => {
     booked: false,
   }
 
-   const _ = await request(app)
-     .post('/book')
-     .send(bookToCreate)
+  const _ = await request(app)
+    .post('/book')
+    .send(bookToCreate)
 
   const res = await request(app).get('/book/all')
   t.is(res.status, 200)

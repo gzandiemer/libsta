@@ -10,33 +10,38 @@ const MemberSchema = new mongoose.Schema({
         type: String,
         required: true,
         minlength: 6
-     },
+    },
+    city: {
+        type: String,
+        required: true,
+        minlength: 3
+    },
     library: [{
         type: mongoose.SchemaTypes.ObjectId,
         ref: 'Book',
         autopopulate: {
-            maxDepth:1
+            maxDepth: 1
         }
-    }], 
+    }],
     likes: [{
         type: mongoose.SchemaTypes.ObjectId,
         ref: 'Book',
         autopopulate: {
-            maxDepth:1
+            maxDepth: 1
         }
     }],
     followers: [{
         type: mongoose.SchemaTypes.ObjectId,
         ref: 'Member',
         autopopulate: {
-            maxDepth:1
+            maxDepth: 1
         }
     }],
     following: [{
         type: mongoose.SchemaTypes.ObjectId,
         ref: 'Member',
         autopopulate: {
-            maxDepth:1
+            maxDepth: 1
         }
     }],
     comments: [{
@@ -44,12 +49,12 @@ const MemberSchema = new mongoose.Schema({
         ref: 'Book',
         text: '',
         autopopulate: {
-            maxDepth:1
+            maxDepth: 1
         }
-    }], 
-    
-        //versionKey: false
-     
+    }],
+
+    //versionKey: false
+
 })
 
 
