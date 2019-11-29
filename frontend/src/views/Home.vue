@@ -1,39 +1,38 @@
-<template lang="pug">
-  main
-    section
-      img(alt='logo' src='../assets/logo-books.png' width='350')
-    section
-      p Most popular books
-      book-card(v-for="book in books", :book="book", :key="book.id")
-    section
-      p Recent members:
-      book-card(v-for="member in members", :member="member", :key="member.id")
-    
+<template>
+  <main>
+    <section>
+      <h2>Most Popular Books</h2>
+      <book-card v-for="book in books" :book="book" :key="book.id"></book-card>
+    </section>
+    <section>
+      <h2>Most Popular Books</h2>
+      <member-card v-for="member in members" :member="member" :key="member.id"></member-card>
+    </section>
+  </main>
 </template>
 
 <script>
-// @ is an alias to /src
-import BookCard from '@/components/BookCard.vue'
-import MemberCard from '@/components/MemberCard.vue'
-import { mapState, mapActions } from 'vuex'
+import BookCard from "@/components/BookCard.vue";
+import MemberCard from "@/components/MemberCard.vue";
+import { mapState, mapActions } from "vuex";
 
 export default {
-  name: 'home',
+  name: "home",
   components: {
     BookCard,
     MemberCard
   },
   computed: {
-    ...mapState(['books', 'members'])
+    ...mapState(["books", "members"])
   },
   methods: {
-    ...mapActions(['fetchBooks', 'fetchMembers'])
+    ...mapActions(["fetchBooks", "fetchMembers"])
   },
   created() {
-    this.fetchBooks()
-    this.fetchMembers()
+    this.fetchBooks();
+    this.fetchMembers();
   }
-}
+};
 </script>
 
 <style scoped>

@@ -1,6 +1,6 @@
 <template lang="pug">
   main
-    h2 Hello Book
+    h2 Book.vue
     section
       book-card(:book="book")
 </template>
@@ -10,7 +10,7 @@
 import BookCard from '@/components/BookCard.vue'
 import { mapState, mapActions } from 'vuex'
 export default {
-  name: 'Book',
+  name: 'BookSingle',
   components: {
     BookCard
   },

@@ -3,10 +3,9 @@ article.card
   img(:src="`https://picsum.photos/300/200?random=${book._id}`", alt="")
   h2.card-title 
     router-link(:to="bookUrl") {{ book.title }} 
-  p {{ book.authorName }}
-  p {{ book.language }}
-  p {{ book.authorName }}
-  p {{ book.pubDate }}
+  p Author: {{ book.authorName }}
+  p In {{ book.language }}
+  p In {{ book.owner}}'s Lib
 </template>
 
 <script>

@@ -1,8 +1,13 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-import Book from '../views/Book.vue'
-import Member from '../views/Member.vue'
+import BookSingle from '../views/BookSingle.vue'
+import BookAll from '../views/BookAll.vue'
+import MemberSingle from '../views/MemberSingle.vue'
+import MemberAll from '../views/MemberAll.vue'
+import Dashboard from '../views/Dashboard.vue'
+import SignupForm from '../components/forms/signup-form.vue'
+import SigninForm from '../components/forms/signin-form.vue'
 
 Vue.use(VueRouter)
 
@@ -23,14 +28,43 @@ const routes = [
   {
     path: '/book/:id',
     name: 'book',
-    component: Book
+    component: BookSingle
+  },
+  {
+    path: '/book/all',
+    name: 'books',
+    component: BookAll
   },
   {
     path: '/member/:id',
     name: 'member',
-    component: Member
+    component: MemberSingle
+  },
+  {
+    path: '/member/all',
+    name: 'members',
+    component: MemberAll
+  },
+  {
+    path: '/dashboard',
+    name: 'dashboard',
+    component: Dashboard
+  },
+  {
+    path: '/signup',
+    name: 'signup',
+    component: SignupForm
+  },
+  {
+    path: '/signin',
+    name: 'signin',
+    component: SigninForm
   }
+ 
+  
 ]
+
+
 
 const router = new VueRouter({
   mode: 'history',

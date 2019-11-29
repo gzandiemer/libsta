@@ -1,27 +1,27 @@
 <template lang="pug">
   main
-    h2 Hello Member
+    h1 MemberAll.vue
+    h2 {{ member.userName }}
     section
-      member-card(:member="member")
+      member-card(v-for="member in members", :member="member", :key="member.id")
 </template>
 
 <script>
-// @ is an alias to /src
 import MemberCard from '@/components/MemberCard.vue'
 import { mapState, mapActions } from 'vuex'
 export default {
-  name: 'Member',
+  name: 'MemberAll',
   components: {
     MemberCard
   },
   computed: {
-    ...mapState(['member'])
+    ...mapState(['members', 'member'])
   },
   methods: {
-    ...mapActions(['fetchMember'])
+    ...mapActions(['fetchMembers', 'fetchMember'])
   },
   created() {
-    this.fetchMember(this.$route.params.id)
+    this.fetchMembers(this.$route.params.id)
   }
 }
 </script>

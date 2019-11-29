@@ -4,15 +4,15 @@ article.card
   h2.card-title 
     router-link(:to="memberUrl") {{ member.userName }} 
   p City: {{ member.city }}
-  p Books: {{ member.library.length }}
-  p Followers: {{ member.library.length }}
-  p Following: {{ member.library.length }}
+  p Books: {{ member.library }}
+  p Followers: {{ member.followers}}
+  p Following: {{ member.following}}
 </template>
 
 <script>
 export default {
   name: 'MemberCard',
-  props: ['Member'],
+  props: ['member'],
   computed: {
     memberUrl() {
       return `/member/${this.member._id}`

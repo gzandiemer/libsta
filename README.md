@@ -20,6 +20,7 @@
 - [Project Structure](#project-structure)
   - [Classes](#classes)
   - [HTTP Request Examples](#axios-examples)
+- [Style Guide](#style-guide)
 
 
 <a name="about-the-project"/>
@@ -120,9 +121,13 @@ Build and start either with NPM:
 
 Compiles and hot-reloads for development:
 
-- Start you local environment: `npm run serve`
+- Start you local frontend environment: `npm run serve`
 
 - Compiles and minifies for production: `npm run build`
+
+- Connect to database: `brew services start mongodb-community@4.2`
+
+- Start your local backend environment: `nodemon index.js`
 
 - Run your tests: `npm run test`
 
@@ -209,6 +214,22 @@ Compiles and hot-reloads for development:
 
  View login page: <br />
 ```axios.get('http://localhost:3000/login').then(console.log)```
+
+<a name="style-guide"/>
+
+## Style Guide
+
+Font Family: 
+Colors:
+#521751 - purplish
+#BF0B2C - reddish
+#02173D - darkblueish
+#0AA38C - lightpetrolish
+#42b983 - greenish from Vue itself
+#F5900F - mustardish
+#F24E13 - orangisch
+
+Primary Color: #521751 - purplish
 
 
 
