@@ -1,7 +1,7 @@
 <template lang="pug">
   main
     section
-      book-card(v-for="book in {{ member.library }}", :book="book", :key="book.id")
+      book-card(v-for="book in books", :book="book", :key="book.id")
     
 </template>
 

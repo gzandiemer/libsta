@@ -12,14 +12,11 @@
 </template> 
 
 <script>
-import Carousel from '@/components/Carousel'
 import { mapState, mapActions } from "vuex";
 
 export default {
   name: "home",
-  components: {
-    Carousel
-  },
+
   data() {
     return {
       headline:

@@ -1,18 +1,21 @@
-<template lang="pug">
-article.card
-  img(:src="`https://picsum.photos/300/200?random=${member._id}`", alt="")
-  h2.card-title 
-    router-link(:to="memberUrl") {{ member.userName }} 
-  p City: {{ member.city }}
-  p Books: {{ member.library }}
-  p Followers: {{ member.followers}}
-  p Following: {{ member.following}}
+<template>
+<article class="member-card">
+  <h2 class="card-title">
+    <router-link :to="memberUrl"> {{ member.userName }}</router-link> 
+  </h2>
+  <img :src="`https://picsum.photos/300/200?random=${member._id}`" alt=""/>
+
+  <p> City: {{ member.city }}</p>
+  <p> Books: {{ member.library }}</p>
+  <p> Followers: {{ member.followers}}</p>
+  <p> Following: {{ member.following}}</p>
+</article>
 </template>
 
 <script>
 export default {
   name: 'MemberCard',
-  props: ['member'],
+  props: ['member', 'book'],
   computed: {
     memberUrl() {
       return `/member/${this.member._id}`
@@ -22,7 +25,7 @@ export default {
 </script>
 
 <style scoped>
-.card {
+.member-card {
   display: inline-block;
   text-align: left;
   padding: 20px;
@@ -34,5 +37,6 @@ export default {
 
 .card-title {
   font-family: 'Sue Ellen Francisco', cursive;
+  text-align: center;
 }
 </style>

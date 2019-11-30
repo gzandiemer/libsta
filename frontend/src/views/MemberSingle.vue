@@ -1,15 +1,19 @@
-<template lang="pug">
-  main
-    h2 {{ member.userName }}
-    section
-      member-card(:member="member")
-    section
-      member-library(:member="member")
+<template>
+  <main>
+    <section>
+      <member-card :member="member"></member-card>
+    </section>
+    <section>
+      <b-table striped hover bordered class="m-5" :items="library"></b-table>
+      <b-nav-item :href='`/member/${member._id}/addbook`'>Add Book</b-nav-item>
+    </section>
+  </main>
 </template>
 
 <script>
 // @ is an alias to /src
 import MemberCard from '@/components/MemberCard.vue'
+//import AddBook from '@/components/forms/add-book.vue'
 import { mapState, mapActions } from 'vuex'
 export default {
   name: 'MemberSingle',
@@ -17,10 +21,23 @@ export default {
     MemberCard
   },
   computed: {
-    ...mapState(['member'])
+    ...mapState(['member', 'book']),
+    library() {
+      return this.member.library.map(book => {
+        return {
+          title: book.title,
+          author: book.authorName,
+          language: book.language,
+          booked: book.booked ? 'Booked' : 'Available'
+        }
+      })
+    }
   },
   methods: {
-    ...mapActions(['fetchMember'])
+    ...mapActions(['fetchMember']),
+    addBook(){
+          this.$router.push({name: 'addbook'})
+    }
   },
   created() {
     this.fetchMember(this.$route.params.id)

@@ -8,6 +8,7 @@ import MemberAll from '../views/MemberAll.vue'
 import Dashboard from '../views/Dashboard.vue'
 import SignupForm from '../components/forms/signup-form.vue'
 import SigninForm from '../components/forms/signin-form.vue'
+import AddBookForm from '../components/forms/add-book.vue'
 
 Vue.use(VueRouter)
 
@@ -59,6 +60,12 @@ const routes = [
     path: '/signin',
     name: 'signin',
     component: SigninForm
+  },
+  {
+    path: '/member/:id/addbook',
+    name: 'addbook',
+    props: true,
+    component: AddBookForm
   }
  
   

@@ -9,6 +9,9 @@ FRIDAY:
 5- Add imprint component to App.vue
 6- Add the logo and the description to About
 
+SATURDAY:
+1-add book sonrasinda geri dönsün memberpagee 
+2- delete book fonksiyonu
 
 FRONTPAGE
 create slide component

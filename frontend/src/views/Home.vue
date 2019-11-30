@@ -20,7 +20,7 @@ export default {
   name: "home",
   components: {
     BookCard,
-    MemberCard,
+    MemberCard
   },
   computed: {
     ...mapState(['books', 'members'])

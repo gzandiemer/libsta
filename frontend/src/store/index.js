@@ -24,6 +24,9 @@ export default new Vuex.Store({
     SET_MEMBER(state, data) {
       state.member = data
     },
+    LIKE_BOOK(state, data) {
+      console.log( state + data +'increment likers')
+    },
     AUTH_USER(state, data) {
       state.idToken = data.token
     },
@@ -33,7 +36,15 @@ export default new Vuex.Store({
     CLEAR_AUTH_DATA(state){
       state.idToken = null
       state.userId = null
+    },
+    ADD_BOOK(state){
+      state.member.library.push(state.book)
+      state.book.owner = state.member._id
+      state.member.save()
+      state.book.save()
+      console.log('ADD_BOOK')
     }
+
 
   },
   actions: {
@@ -45,6 +56,10 @@ export default new Vuex.Store({
       const result = await axios.get(`http://localhost:3000/book/${id}/json`)
       commit('SET_BOOK', result.data)
     },
+    // async likeBook({ commit }, id) {
+    //   const result = await axios.get(`http://localhost:3000/book/${id}/json`)
+    //   commit('SET_BOOK', result.data)
+    // },
     async fetchMembers({ commit }) {
       const result = await axios.get('http://localhost:3000/member/all/json')
       commit('SET_MEMBERS', result.data)
@@ -61,6 +76,14 @@ export default new Vuex.Store({
     const result = await axios.get(`http://localhost:3000/signin`)
     commit('AUTH_USER', result.data)
     },
+    async addBook({ commit }, data) {
+      console.log('button works', data)
+      const { data: book } = await axios.post(`http://localhost:3000/book`, data.form)
+      console.log(book)
+      const result = await axios.post(`http://localhost:3000/member/${data.id}/library`, { book: book._id })
+      commit('ADD_BOOK', result.data)
+      console.log('button works')
+    }
   },
   modules: {
   }
