@@ -31,4 +31,8 @@ export default {
   margin: 20px;
   min-width: 200px;
 }
+
+.card-title {
+  font-family: 'Sue Ellen Francisco', cursive;
+}
 </style>

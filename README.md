@@ -198,7 +198,7 @@ Compiles and hot-reloads for development:
 ```axios.delete('/member/5dcff1784185624d8dfaa4c6').then(console.log)```
 
  Create a new book: <br />
-```axios.post('http://localhost:3000/book', { title: 'One Hundred Years of Solitude', authorName: 'Gabriel Garcia Marquez', language: 'english', pubdate: 2000, booked: false}).then(console.log```
+```axios.post('http://localhost:3000/book', { title: 'One Hundred Years of Solitude', authorName: 'Gabriel Garcia Marquez', language: 'english', pubdate: 2000, booked: false}).then(console.log)```
 
  View book profile: <br />
 ```axios.get('http://localhost:3000/book/5dcff970d4f5e04e16bf51e0').then(console.log)```

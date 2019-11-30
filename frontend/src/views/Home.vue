@@ -5,11 +5,11 @@
       <book-card v-for="book in books" :book="book" :key="book.id"></book-card>
     </section>
     <section>
-      <h2>Most Popular Books</h2>
+      <h2>Recent Members</h2>
       <member-card v-for="member in members" :member="member" :key="member.id"></member-card>
     </section>
-  </main>
-</template>
+  </main> 
+</template> 
 
 <script>
 import BookCard from "@/components/BookCard.vue";
@@ -20,19 +20,19 @@ export default {
   name: "home",
   components: {
     BookCard,
-    MemberCard
+    MemberCard,
   },
   computed: {
-    ...mapState(["books", "members"])
+    ...mapState(['books', 'members'])
   },
   methods: {
-    ...mapActions(["fetchBooks", "fetchMembers"])
+    ...mapActions(['fetchBooks', 'fetchMembers'])
   },
   created() {
     this.fetchBooks();
     this.fetchMembers();
   }
-};
+}
 </script>
 
 <style scoped>

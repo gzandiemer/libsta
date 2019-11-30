@@ -1,38 +1,60 @@
-<template lang="pug">
-  main
-    p You are in Dashboard
-    section
-      h2 Most Popular Books
-      book-card(v-for="book in books", :book="book", :key="book.id")
-    section
-      h2 Recent Members
-      member-card(v-for="member in members", :member="member", :key="member.id")
-    
-</template>
+<template>
+  <main>
+    <h2>{{ headline }}</h2>
+    <div class="section">
+      <h2>{{this.sections[0].headline}}</h2>
+      <Carousel :cards="cards" />
+    </div>
+    <div class="section">
+      <h2>{{this.sections[1].headline}}</h2>
+    </div>
+  </main>
+</template> 
 
 <script>
-// @ is an alias to /src
-import BookCard from '@/components/BookCard.vue'
-import MemberCard from '@/components/MemberCard.vue'
-import { mapState, mapActions } from 'vuex'
-import VueSlideBar from 'vue-slide-bar'
+import Carousel from '@/components/Carousel'
+import { mapState, mapActions } from "vuex";
 
 export default {
-  name: 'home',
+  name: "home",
   components: {
-    BookCard,
-    MemberCard,
-    VueSlideBar
+    Carousel
+  },
+  data() {
+    return {
+      headline:
+        "HMost Popular Books",
+      sections: [
+        { headline: "Book1" },
+        {
+          headline: "Book2"
+        }
+      ],
+      cards: [
+        {
+          headline: "book1",
+          text:
+            "blabla",
+          imgName: "blabla"
+        },
+        {
+          headline: "Use background sync to defer actions",
+          text:
+            "User inputs entered when offline are sent in the background once they get connectivity.",
+          imgName: "cloud.svg"
+        }
+      ]
+    }
   },
   computed: {
-    ...mapState(['books', 'members'])
+    ...mapState(["books", "members"])
   },
   methods: {
-    ...mapActions(['fetchBooks', 'fetchMembers'])
+    ...mapActions(["fetchBooks", "fetchMembers"])
   },
   created() {
-    this.fetchBooks()
-    this.fetchMembers()
+    this.fetchBooks();
+    this.fetchMembers();
   }
 }
 </script>

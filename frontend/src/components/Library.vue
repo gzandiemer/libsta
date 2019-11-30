@@ -1,11 +1,8 @@
 <template lang="pug">
-article.card
-  img(:src="`https://picsum.photos/300/200?random=${book._id}`", alt="")
-  h2.card-title 
-    router-link(:to="bookUrl") {{ book.title }} 
-  p Author: {{ book.authorName }}
-  p In {{ book.language }}
-  p In {{ book.owner}}'s Lib
+  main
+    section
+      book-card(v-for="book in {{ member.library }}", :book="book", :key="book.id")
+    
 </template>
 
 <script>
@@ -29,9 +26,5 @@ export default {
   border-radius: 3px;
   margin: 20px;
   min-width: 200px;
-}
-
-.card-title {
-  font-family: 'Sue Ellen Francisco', cursive;
 }
 </style>
