@@ -34,7 +34,7 @@ SINGLE PAGES
   right - library / some visual slide 
 
 LIBRARY COMPONENT
-use horozontal cards - vuetify
+use horizontal cards - vuetify
  
 README modifications
   1- Check how to write style guide part 
