@@ -20,7 +20,7 @@ export default {
     MemberCard
   },
   computed: {
-    ...mapState(['member', 'book']),
+    ...mapState(['member', 'book', 'members', 'books']),
     library() {
       return this.member.library.map(book => {
         return {
@@ -33,10 +33,10 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['fetchMember']),
-    addBook(){
-          this.$router.push({name: 'addbook'})
-    }
+    ...mapActions(['fetchMember', 'fetchMembers']),
+    // addBook(){
+    //       this.$router.push({name: 'addbook'})
+    // }
   },
   created() {
     this.fetchMember(this.$route.params.id)

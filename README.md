@@ -21,6 +21,12 @@
   - [Classes](#classes)
   - [HTTP Request Examples](#axios-examples)
 - [Style Guide](#style-guide)
+- [Status](#status)
+  - [Done](#done)
+  - [In Progress](#in-progress)
+  - [To Do](#to-do)
+    - [Problems to fix](#problems-to-fix)
+    - [Features to add](#features-to-add)
 
 
 <a name="about-the-project"/>
@@ -220,16 +226,60 @@ Compiles and hot-reloads for development:
 ## Style Guide
 
 Font Family: 
-Colors:
-#521751 - purplish
-#BF0B2C - reddish
-#02173D - darkblueish
-#0AA38C - lightpetrolish
-#42b983 - greenish from Vue itself
-#F5900F - mustardish
-#F24E13 - orangisch
+Color Palette:
+- purplish: ![#521751](https://placehold.it/15/521751/000000?text=+) `#521751`
+- reddish: ![#bf0B2c](https://placehold.it/15/bf0B2c/000000?text=+) `#bf0B2c`
+- darkblueish: ![#02173d](https://placehold.it/15/02173d/000000?text=+) `#02173d`
+- lightpetrolish: ![#0aa38c](https://placehold.it/15/0aa38c/000000?text=+) `#0aa38c`
+- Vue-green: ![#42b983](https://placehold.it/15/42b983/000000?text=+) `#42b983`
+- mustardish: ![#f5900f](https://placehold.it/15/f5900f/000000?text=+) `#f5900f`
 
-Primary Color: #521751 - purplish
+<a name="status"/>
+
+## Status
+
+<a name="done"/>
+
+### Done
+- Navbar
+- Certain member can add book to his/her library
+
+<a name="in-progress"/>
+
+### In Progress
+
+<a name="to-do"/>
+- add icons instead of like button and add a counter
+- 
+- 
+
+
+### To Do
+
+- Add Carousel to home and dashboard (limit each with 3-4 cards)
+- Add profile card to profile page
+- Style member.card
+
+
+
+<a name="problems-to-fix"/>
+
+#### Problems to fix
+
+1. members/all route renders wrong view
+2. When a book is added through submitting book-form, it is added 2 times
+3. After adding the book it doesn't turn back to the member's page
+
+<a name="features-to-add"/>
+
+#### Features to add
+
+- Authentication and dashboard modification with logout and user profile
+- Functions delete/update book in library, like and request book in book-card, follow in member profile page 
+- Search book title and author
+- Direct messaging
+
+
 
 
 

@@ -17,5 +17,9 @@ export default {
 <style scoped>
 .logo {
   width: 350px;
+  margin: 20px; 
+}
+h1 {
+  margin-top: 20px; 
 }
 </style>

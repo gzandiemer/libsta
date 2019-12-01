@@ -6,7 +6,7 @@
   <img :src="`https://picsum.photos/300/200?random=${member._id}`" alt=""/>
 
   <p> City: {{ member.city }}</p>
-  <p> Books: {{ member.library }}</p>
+  <!-- <p> Books: {{ library }}</p> -->
   <p> Followers: {{ member.followers}}</p>
   <p> Following: {{ member.following}}</p>
 </article>
@@ -19,6 +19,16 @@ export default {
   computed: {
     memberUrl() {
       return `/member/${this.member._id}`
+    },
+    library() {
+      return this.member.library.map(book => {
+        return {
+          title: book.title,
+          author: book.authorName,
+          language: book.language,
+          booked: book.booked ? 'Booked' : 'Available'
+        }
+      })
     }
   }
 }

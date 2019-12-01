@@ -1,15 +1,14 @@
-<template>
-  <main>
-    <section>
-      <h2>All members</h2>
-      <member-card v-for="member in members" :member="member" :key="member.id"></member-card>
-    </section>
-   </main>
+<template lang="pug">
+  main
+    h2 All Members
+    section
+      member-card(v-for="member in members", :member="member", :key="member.id")
 </template>
 
 <script>
 import MemberCard from '@/components/MemberCard.vue'
 import { mapState, mapActions } from 'vuex'
+
 export default {
   name: 'MemberAll',
   components: {
@@ -22,7 +21,7 @@ export default {
     ...mapActions(['fetchMembers'])
   },
   created() {
-    this.fetchMembers()
+     this.fetchMembers();
   }
 }
 </script>
@@ -31,19 +30,7 @@ export default {
 section {
   padding: 40px 0;
 }
-.increment-button {
-  color: darkcyan;
-  padding: 10px 20px;
-  border-radius: 8px;
-  background-color: white;
-  border: 1px solid darkcyan;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  margin-bottom: 20px;
-}
-.increment-button:hover {
-  background-color: darkcyan;
-  color: white;
+h2 {
+  margin-top: 20px;
 }
 </style>

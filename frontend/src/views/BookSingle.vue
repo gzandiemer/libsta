@@ -1,30 +1,36 @@
 <template lang="pug">
   main
-    h2 Book.vue
+    h2 All Books
     section
-      book-card(:book="book")
+      book-card(v-for="book in books", :book="book", :key="book.id")
 </template>
 
 <script>
-// @ is an alias to /src
 import BookCard from '@/components/BookCard.vue'
 import { mapState, mapActions } from 'vuex'
+
 export default {
   name: 'BookSingle',
   components: {
     BookCard
   },
   computed: {
-    ...mapState(['book'])
+    ...mapState(['books'])
   },
   methods: {
-    ...mapActions(['fetchBook'])
+    ...mapActions(['fetchBooks'])
   },
   created() {
-    this.fetchBook(this.$route.params.id)
+     this.fetchBooks();
   }
 }
 </script>
 
 <style scoped>
+section {
+  padding: 40px 0;
+}
+h2 {
+  margin-top: 20px;
+}
 </style>

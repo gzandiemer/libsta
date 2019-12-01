@@ -1,7 +1,6 @@
 <template lang="pug">
   main
-    h2 BookAll.vue
-    h3 {{ book.title }}
+    h2 All Books
     section
       book-card(v-for="book in books", :book="book", :key="book.id")
 </template>
@@ -28,4 +27,7 @@ export default {
 </script>
 
 <style scoped>
+section {
+  padding: 40px 0;
+}
 </style>

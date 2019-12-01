@@ -1,34 +1,21 @@
 <template>
-  <b-card
-    :title="book.title"
-    img-src="https://picsum.photos/600/300/?image=25"
-    img-alt="Image"
-    img-top
-    tag="article"
-    style="max-width: 20rem;"
-    class="m-2 d-inline-block"
-  >
-    <b-card-text>
-      <p>Author: {{ book.authorName }}</p>
-      <p>In {{ book.language }}</p>
-      <!-- <p>In {{ book}}'s Lib</p> -->
-    </b-card-text>
-
-    <b-button @click="onLike" href="#" variant="primary">Like</b-button>
-  </b-card>
-  <!-- //- article.card
-//-   img(:src="`https://picsum.photos/300/200?random=${book._id}`", alt="")
-//-   h2.card-title 
-//-     router-link(:to="bookUrl") {{ book.title }} 
-//-   p Author: {{ book.authorName }}
-//-   p In {{ book.language }}
-  //-   p In {{ book.owner}}'s Lib-->
+<article class="book-card">
+  <h2 class="card-title">
+    <router-link :to="bookUrl"> {{ book.title }}</router-link> 
+  </h2>
+  <img :src="`https://picsum.photos/300/200?random=${book._id}`" alt=""/>
+  <p> By {{ book.authorName }}
+  <p> In {{ book.language }}</p>
+  <p> In {{ book.pubDate }}</p>
+  <button @click="onLike">Like</button>
+  <button @click="onRequest">Request</button>
+</article>
 </template>
 
 <script>
 export default {
-  name: "BookCard",
-  props: ["book"],
+  name: 'BookCard',
+  props: ['book'],
   computed: {
     bookUrl() {
       return `/book/${this.book._id}`;
@@ -43,7 +30,18 @@ export default {
 </script>
 
 <style scoped>
+.book-card {
+  display: inline-block;
+  text-align: left;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  margin: 20px;
+  min-width: 200px;
+}
+
 .card-title {
   font-family: 'Sue Ellen Francisco', cursive;
+  text-align: center;
 }
 </style>
