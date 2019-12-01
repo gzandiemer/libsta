@@ -1,7 +1,5 @@
 <template>
-  <v-btn color="primary" dark depressed text @click="logout"
-    ><v-icon left>mdi-power</v-icon>Logout</v-btn
-  >
+  <button @click="logout"></button>
 </template>
 <script>
 import { mapActions } from 'vuex'
@@ -11,7 +9,7 @@ export default {
     ...mapActions(['logoutUser']),
     logout() {
       return this.logoutUser().then(() => {
-        this.$router.push({ name: 'homepage' })
+        this.$router.push({ name: 'home' })
       })
     }
   }
