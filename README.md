@@ -242,33 +242,31 @@ Color Palette:
 
 ### Done
 - Navbar
-- Certain member can add book to his/her library
+- Members can add a book to their library from their profile page via book-form
+- 
 
 <a name="in-progress"/>
 
 ### In Progress
 
 <a name="to-do"/>
-- add icons instead of like button and add a counter
-- 
-- 
+- add icons instead of like button and add an increment button for likes
+- after adding book navigate back to member's profile page
 
 
 ### To Do
 
 - Add Carousel to home and dashboard (limit each with 3-4 cards)
-- Add profile card to profile page
-- Style member.card
-
+- Add profile card to profile page with follow button
 
 
 <a name="problems-to-fix"/>
 
 #### Problems to fix
 
-1. members/all route renders wrong view
-2. When a book is added through submitting book-form, it is added 2 times
-3. After adding the book it doesn't turn back to the member's page
+- members/all route renders wrong view
+- When a book is added through submitting book-form, it is added 2 times
+- After adding the book it doesn't turn back to the member's page
 
 <a name="features-to-add"/>
 
