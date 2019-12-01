@@ -56,7 +56,8 @@ export default {
     ...mapActions(["addBook"]),
     onSubmit() {
       this.addBook({ form: this.form, id: this.id });
-      this.$route.push({ path: "/member/:id" });
+      this.alert('This book is successfully added.');
+      this.$router.push({ path: `/member/${this.id}` });
     },
     onReset(evt) {
       evt.preventDefault();
