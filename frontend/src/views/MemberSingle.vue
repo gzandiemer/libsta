@@ -13,7 +13,6 @@
 <script>
 // @ is an alias to /src
 import MemberCard from '@/components/MemberCard.vue'
-//import AddBook from '@/components/forms/add-book.vue'
 import { mapState, mapActions } from 'vuex'
 export default {
   name: 'MemberSingle',

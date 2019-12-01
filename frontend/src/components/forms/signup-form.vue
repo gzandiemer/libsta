@@ -61,38 +61,28 @@
   export default {
     data () {
       return {
+        userName: '',
+        fullName: '',
         email: '',
-        age: null,
         password: '',
         confirmPassword: '',
-        country: 'usa',
-        hobbyInputs: [],
+        city: 'Berlin',
         terms: false
       }
     },
     methods: {
-      onAddHobby () {
-        const newHobby = {
-          id: Math.random() * Math.random() * 1000,
-          value: ''
-        }
-        this.hobbyInputs.push(newHobby)
-      },
-      onDeleteHobby (id) {
-        this.hobbyInputs = this.hobbyInputs.filter(hobby => hobby.id !== id)
-      },
       onSubmit () {
         const formData = {
+          userName: this.userName,
+          fullName: this.fullName,
           email: this.email,
-          age: this.age,
           password: this.password,
           confirmPassword: this.confirmPassword,
-          country: this.country,
-          hobbies: this.hobbyInputs.map(hobby => hobby.value),
-          terms: this.terms
+          city: this.country,
+          
         }
         console.log(formData)
-        axios.post('/users.json', formData)
+        axios.post('/members.json', formData)
           .then(res => console.log(res))
           .catch(error => console.log(error))
       }

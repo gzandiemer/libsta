@@ -8,7 +8,7 @@ import MemberAll from '../views/MemberAll.vue'
 import Dashboard from '../views/Dashboard.vue'
 import SignupForm from '../components/forms/signup-form.vue'
 import SigninForm from '../components/forms/signin-form.vue'
-import AddBookForm from '../components/forms/add-book.vue'
+import BookForm from '../components/forms/book-form.vue'
 
 Vue.use(VueRouter)
 
@@ -63,9 +63,9 @@ const routes = [
   },
   {
     path: '/member/:id/addbook',
-    name: 'addbook',
+    name: 'bookform',
     props: true,
-    component: AddBookForm
+    component: BookForm
   }
  
   

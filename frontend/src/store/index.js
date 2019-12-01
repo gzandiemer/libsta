@@ -56,10 +56,6 @@ export default new Vuex.Store({
       const result = await axios.get(`http://localhost:3000/book/${id}/json`)
       commit('SET_BOOK', result.data)
     },
-    // async likeBook({ commit }, id) {
-    //   const result = await axios.get(`http://localhost:3000/book/${id}/json`)
-    //   commit('SET_BOOK', result.data)
-    // },
     async fetchMembers({ commit }) {
       const result = await axios.get('http://localhost:3000/member/all/json')
       commit('SET_MEMBERS', result.data)
@@ -82,8 +78,12 @@ export default new Vuex.Store({
       console.log(book)
       const result = await axios.post(`http://localhost:3000/member/${data.id}/library`, { book: book._id })
       commit('ADD_BOOK', result.data)
-      console.log('button works')
-    }
+     
+    },
+    // async likeBook({ commit }, id) {
+    //   const result = await axios.get(`http://localhost:3000/book/${id}/json`)
+    //   commit('SET_BOOK', result.data)
+    // },
   },
   modules: {
   }
