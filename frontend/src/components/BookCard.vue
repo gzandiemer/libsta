@@ -7,23 +7,30 @@
   <p> By {{ book.authorName }}
   <p> In {{ book.language }}</p>
   <p> In {{ book.pubDate }}</p>
-  <button @click="onLike">Like</button>
-  <button @click="onRequest">Request</button>
+  <p> {{ counter }} 
+    <button v-on:click.self="onLike">Likes</button>
+  </p>
+  <button>Request</button>
 </article>
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex'
+
 export default {
   name: 'BookCard',
   props: ['book'],
   computed: {
+    ...mapState(['counter']),
     bookUrl() {
       return `/book/${this.book._id}`;
     }
   },
   methods: {
+    ...mapActions(['incrementCounter']),
     onLike() {
-      console.log("like button works")
+    this.incrementCounter()
+    console.log('Like button works!')  
     }
   }
 };

@@ -9,7 +9,8 @@ export default new Vuex.Store({
     books: [],
     book: {},
     members: [],
-    member: {}
+    member: {},
+    counter: 0
   },
   mutations: {
     SET_BOOKS(state, data) {
@@ -43,6 +44,9 @@ export default new Vuex.Store({
       state.member.save()
       state.book.save()
       console.log('ADD_BOOK')
+    },
+    SET_COUNTER(state, newCount) {
+      state.counter = newCount
     }
 
 
@@ -78,12 +82,11 @@ export default new Vuex.Store({
       console.log(book)
       const result = await axios.post(`http://localhost:3000/member/${data.id}/library`, { book: book._id })
       commit('ADD_BOOK', result.data)
-     
     },
-    // async likeBook({ commit }, id) {
-    //   const result = await axios.get(`http://localhost:3000/book/${id}/json`)
-    //   commit('SET_BOOK', result.data)
-    // },
+    incrementCounter({ commit, state }) {
+      const newCount = state.counter + 1
+      commit('SET_COUNTER', newCount)
+    }
   },
   modules: {
   }

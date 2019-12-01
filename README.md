@@ -243,7 +243,6 @@ Color Palette:
 ### Done
 - Navbar
 - Members can add a book to their library from their profile page via book-form
-- 
 
 <a name="in-progress"/>
 
@@ -256,8 +255,12 @@ Color Palette:
 
 ### To Do
 
+- save likes to database book.likers
 - Add Carousel to home and dashboard (limit each with 3-4 cards)
+- Order books from the most liked to the least
 - Add profile card to profile page with follow button
+- Add comment upvote section to BookSingle.vue
+
 
 
 <a name="problems-to-fix"/>
@@ -265,17 +268,18 @@ Color Palette:
 #### Problems to fix
 
 - members/all route renders wrong view
-- When a book is added through submitting book-form, it is added 2 times
-- After adding the book it doesn't turn back to the member's page
+- when the book-form is submitted, it should turn back to the member's page but my func doesn_t work
+- like button increases the likes in all cards 
 
 <a name="features-to-add"/>
 
 #### Features to add
 
 - Authentication and dashboard modification with logout and user profile
-- Functions delete/update book in library, like and request book in book-card, follow in member profile page 
+- Functions delete/update book in library, request book in book-card, follow in member profile page 
 - Search book title and author
 - Direct messaging
+- Frontend testing
 
 
 

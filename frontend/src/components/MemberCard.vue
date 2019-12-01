@@ -7,8 +7,8 @@
 
   <p> City: {{ member.city }}</p>
   <!-- <p> Books: {{ library }}</p> -->
-  <p> Followers: {{ member.followers}}</p>
-  <p> Following: {{ member.following}}</p>
+  <p> {{ member.followers.length }} followers </p>
+  <p> {{ member.followers.length }} following </p>
 </article>
 </template>
 

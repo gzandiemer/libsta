@@ -55,8 +55,10 @@ export default {
   methods: {
     ...mapActions(["addBook"]),
     onSubmit() {
-      this.addBook({ form: this.form, id: this.id });
-      this.$router.push({ path: `/member/${this._id}` });
+      this.addBook({ form: this.form, id: this.id })
+      alert('This book is successfully added to your library.')
+      //fix this router function
+      this.$router.push({ path: `/member/${this._id}` })
     },
     onReset(evt) {
       evt.preventDefault();
