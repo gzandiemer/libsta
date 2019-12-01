@@ -43,7 +43,7 @@ export default {
         title: "",
         authorName: "",
         language: "",
-        pubDate: ""
+        pubDate: "",
       },
       show: true
     };
@@ -56,8 +56,7 @@ export default {
     ...mapActions(["addBook"]),
     onSubmit() {
       this.addBook({ form: this.form, id: this.id });
-      this.alert('This book is successfully added.');
-      this.$router.push({ path: `/member/${this.id}` });
+      this.$router.push({ path: `/member/${this._id}` });
     },
     onReset(evt) {
       evt.preventDefault();

@@ -27,6 +27,7 @@ export default {
           title: book.title,
           author: book.authorName,
           language: book.language,
+          pubDate: book.pubDate,
           booked: book.booked ? 'Booked' : 'Available'
         }
       })
