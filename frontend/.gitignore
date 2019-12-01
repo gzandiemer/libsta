@@ -19,3 +19,8 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw?
+
+#my files
+TODO.md 
+DATA.md
+GETHELP.md
