@@ -27,9 +27,9 @@
             <div v-if="!isLoggedIn"><em>Sign</em></div>
             <div v-if="isLoggedIn"><em>User</em></div>
           </template>
-          <b-dropdown-item v-if="!isLoggedIn" href="/signin">In</b-dropdown-item>
-          <b-dropdown-item v-if="!isLoggedIn" href="/signup">Up</b-dropdown-item>
-          <b-dropdown-item v-if="isLoggedIn" href="/profile">Profile</b-dropdown-item>
+          <b-dropdown-item v-if="!isLoggedIn" href="/api/signin">In</b-dropdown-item>
+          <b-dropdown-item v-if="!isLoggedIn" href="/api/signup">Up</b-dropdown-item>
+          <b-dropdown-item v-if="isLoggedIn" href="/api/profile">Profile</b-dropdown-item>
           <b-dropdown-item v-if="isLoggedIn" href="/">Logout</b-dropdown-item>
         </b-nav-item-dropdown>
       </b-navbar-nav>
@@ -47,12 +47,12 @@ export default {
 
     },
     computed: {
-        ...mapGetters(['isLoggedIn'])
+        ...mapGetters(['isLoggedIn']),
         // auth() {
         //     return this.$store.getters.isAuthenticated
         // },
         currentPage() {
-          return this.$route.path;
+          return this.$router.path;
         }
     },
     methods: {

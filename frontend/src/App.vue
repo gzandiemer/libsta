@@ -20,7 +20,11 @@ export default {
 body, html {
     margin: 0;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  }
+}
+
+h2 {
+  font-family: 'Merriweather', serif; 
+}
 #app {
   font-family: 'Lato', sans-serif;
   /* font-family: 'Avenir', Helvetica, Arial, sans-serif; */

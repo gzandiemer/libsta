@@ -11,7 +11,7 @@
           <input type="password" id="password" v-model="password" />
         </div>
         <div class="btns">
-          <button type="submit" class="submit" @click="onSubmit">Submit</button>
+          <button type="submit" class="submit" @click="loginUser">Submit</button>
           <button type="reset" class="reset" @click="onReset">Reset</button>
         </div>
       </form>
@@ -22,10 +22,11 @@
 <script>
 //https://www.youtube.com/watch?v=m73vd9hqZj0
 import { mapActions } from 'vuex'
+
 export default {
   data() {
     return {
-      username: "",
+      email: "",
       password: ""
     };
   },
@@ -34,18 +35,18 @@ export default {
     loginUser() {
       
       const user = {
-        username: this.username,
+        email: this.email,
         password: this.password
       }
       this.login(user)
       .then(res => {
         if(res.data.success) {
-          this.$router.push('/profile')
+          this.$router.push('/api/profile')
         }
       }).catch(err => {
         console.log(err)
       })
-   console.log( 'username: ' + this.username + "pwd: " + this.password)
+   console.log( 'email: ' + this.email + "pwd: " + this.password)
     },
     onReset(evt) {
       evt.preventDefault();

@@ -1,10 +1,10 @@
 <template>
   <main>
-    <h1>I am in MemberSingle.vue</h1>
     <section>
       <member-card :member="member"></member-card>
     </section>
     <section class="container table-responsive">
+      <h2>{{ member.userName }}'s Lib</h2>
       <b-table striped hover bordered class="m-10" :items="library"></b-table>
       <b-nav-item :href='`/member/${member._id}/addbook`'>Add Book</b-nav-item>
     </section>

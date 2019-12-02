@@ -259,32 +259,35 @@ Color Palette:
 ### In Progress
 - add icons instead of like button and add an increment button for likes
 - after adding book navigate back to member's profile page
+- authentication
+- Add comment upvote section to BookSingle.vue
 
 <a name="to-do"/>
 
 ### To Do
 -- delete and update book buttons in library
 - save likes to database book.likers
+- add footer
 - Add Carousel to home and dashboard (limit each with 3-4 cards)
 - Sort books from the most liked to the least
 - Add profile card to profile page with follow button
-- Add comment upvote section to BookSingle.vue
-
-
 
 <a name="problems-to-fix"/>
 
 #### Problems to fix
 
 - when the book-form is submitted, it should turn back to the member's page but my this.$router.push() doesn_t work
+- book added 2 times or book added but not in library 
 - like button increases the likes in all cards 
+- auth doesn't work, backend sends 400 for register
 
 <a name="features-to-add"/>
 
 #### Features to add
 
 - Authentication and dashboard modification with logout and user profile
-- Functions delete/update book in library, request book in book-card, follow in member profile page 
+- request book in book-card
+- follow in member profile page 
 - Search book title and author
 - Direct messaging
 - Frontend testing

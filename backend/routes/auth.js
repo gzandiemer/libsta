@@ -4,12 +4,12 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const passport = require('passport')
 const key = require('../config/keys').secret
-const user = require('../model/user')
+const user = require('../models/member')
 
-const UserService = require('../services/user-service')
+const MemberService = require('../services/member-service')
 
 router.post('/signup', async (req, res) => {
-    const { username, fullname, email, password, confirmPassword } = req.body
+    const { username, fullName, email, password, confirmPassword } = req.body
     if (password !== confirmPassword) {
         return res.status(400).json({
             msg: "Password do not match."
@@ -37,8 +37,8 @@ router.post('/signup', async (req, res) => {
     })
 
     // Data is valid => register the user
-    const newUser = new UserService({
-        username, fullname, email, password
+    const newUser = new MemberService({
+        username, fullName, email, password
     })
 
     // Hash the password
@@ -49,7 +49,7 @@ router.post('/signup', async (req, res) => {
             newUser.save().then(user => {
                 return res.status(201).json({
                     success: true,
-                    msg: "User is now registered"
+                    msg: "User is now registered."
                 })
             })
         })
@@ -60,10 +60,10 @@ router.post('/signup', async (req, res) => {
 
 
 router.get('/signin', async (req, res) => {
-    user.find({ username: req.body.username }).then(user => {
+    user.find({ email: req.body.email }).then(user => {
         if (!user) {
             return res.status(404).json({
-                msg: "Username is not found.",
+                msg: "Email is not found.",
                 success: false
             })
 
@@ -74,7 +74,7 @@ router.get('/signin', async (req, res) => {
                 const payload = {
                     _id: user._id,
                     username: user.username,
-                    fullname: user.fullname,
+                    fullName: user.fullName,
                     email: user.email,
                 }
                 jwt.sign(payload, key, {
@@ -106,6 +106,4 @@ router.get('/profile', passport.authenticate('jwt', {
     })
 
 })
-
-
 module.exports = router

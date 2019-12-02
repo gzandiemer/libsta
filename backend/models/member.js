@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const MemberSchema = new mongoose.Schema({
-    userName: {
+    username: {
         type: String,
         required: true,
         minlength: 3
@@ -10,6 +10,18 @@ const MemberSchema = new mongoose.Schema({
         type: String,
         required: true,
         minlength: 6
+    },
+    email: {
+        type: String,
+        required: true,
+    },
+    password: {
+        type: String,
+        required: true,
+    },
+    date: {
+        type: Date,
+        default: Date.now
     },
     city: {
         type: String,
@@ -52,8 +64,6 @@ const MemberSchema = new mongoose.Schema({
             maxDepth: 1
         }
     }],
-
-    //versionKey: false
 
 })
 

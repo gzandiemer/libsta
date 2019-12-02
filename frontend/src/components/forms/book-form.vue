@@ -56,9 +56,15 @@ export default {
     ...mapActions(["addBook"]),
     onSubmit() {
       this.addBook({ form: this.form, id: this.id })
-      alert('This book is successfully added to your library.')
-      //fix this router function
-      this.$router.push({ path: `/member/${this._id}` })
+         .then(res => {
+        if(res.data.success) {
+          alert('This book is successfully added to your library.')
+          this.$router.push({ path: `/member/${this.member_id}` })
+         
+        } 
+        }).catch(err => {
+        console.log(err)
+      })
     },
     onReset(evt) {
       evt.preventDefault();
@@ -71,10 +77,11 @@ export default {
       this.show = false;
       this.$nextTick(() => {
         this.show = true;
-      });
+      })
     }
+    
   }
-};
+}
 </script>
 <style scoped>
 .book-form {

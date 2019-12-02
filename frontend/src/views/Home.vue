@@ -39,6 +39,7 @@ export default {
 section {
   padding: 40px 0;
 }
+
 .increment-button {
   color: darkcyan;
   padding: 10px 20px;

@@ -4,8 +4,8 @@ import Home from '../views/Home.vue'
 import About from '../views/About.vue'
 import SignupForm from '../components/forms/signup-form.vue'
 import SigninForm from '../components/forms/signin-form.vue'
-import Dashboard from '../views/Dashboard.vue'
 import Profile from '../views/Profile.vue'
+import Dashboard from '../views/Dashboard.vue'
 import BookSingle from '../views/BookSingle.vue'
 import BookAll from '../views/BookAll.vue'
 import MemberSingle from '../views/MemberSingle.vue'
@@ -26,24 +26,24 @@ const routes = [
     component: About
   },
   {
-    path: '/signup',
+    path: '/api/signup',
     name: 'signup',
     component: SignupForm
   },
   {
-    path: '/signin',
+    path: '/api/signin',
     name: 'signin',
     component: SigninForm
+  },
+  {
+    path: '/api/profile',
+    name: 'profile',
+    component: Profile
   },
   {
     path: '/dashboard',
     name: 'dashboard',
     component: Dashboard
-  },
-  {
-    path: '/profile',
-    name: 'profile',
-    component: Profile
   },
   {
     path: '/book/all',

@@ -1,41 +1,26 @@
 <template>
   <div id="signup">
     <div class="signup-form">
-      <form @submit.prevent="onSubmit">
+      <form @submit.prevent="registerUser">
         <div class="input">
           <label for="username">User Name</label>
-          <input
-                  type="string"
-                  id="userName"
-                  v-model="userName">
+          <input type="string" id="username" v-model="username" />
         </div>
         <div class="input">
           <label for="fullName">Full Name</label>
-          <input
-                  type="string"
-                  id="fullName"
-                  v-model="fullName">
+          <input type="string" id="fullName" v-model="fullName" />
         </div>
         <div class="input">
           <label for="email">E-Mail</label>
-          <input
-                  type="email"
-                  id="email"
-                  v-model="email">
+          <input type="email" id="email" v-model="email" />
         </div>
         <div class="input">
           <label for="password">Password</label>
-          <input
-                  type="password"
-                  id="password"
-                  v-model="password">
+          <input type="password" id="password" v-model="password" />
         </div>
         <div class="input">
-          <label for="confirm-password">Confirm Password</label>
-          <input
-                  type="password"
-                  id="confirm-password"
-                  v-model="confirmPassword">
+          <label for="confirmPassword">Confirm Password</label>
+          <input type="password" id="confirmPassword" v-model="confirmPassword" />
         </div>
         <div class="input">
           <label for="city">City</label>
@@ -44,11 +29,11 @@
           </select>
         </div>
         <div class="input inline">
-          <input type="checkbox" id="terms" v-model="terms">
+          <input type="checkbox" id="terms" v-model="terms" />
           <label for="terms">Accept Terms of Use</label>
         </div>
         <div class="btns">
-          <button type="submit" class="submit" @click="onSubmit">Submit</button>
+          <button type="submit" class="submit" @click="registerUser">Submit</button>
           <button type="reset" class="reset" @click="onReset">Reset</button>
         </div>
       </form>
@@ -57,13 +42,13 @@
 </template>
 
 <script>
-  import axios from '../../axios-auth/index.js';
+  import { mapActions } from 'vuex'
 
   export default {
     data () {
       return {
         username: '',
-        fullname: '',
+        fullName: '',
         email: '',
         password: '',
         confirmPassword: '',
@@ -72,25 +57,31 @@
       }
     },
     methods: {
-      onSubmit () {
-        const formData = {
-          userName: this.userName,
+      ...mapActions(['register']),
+      registerUser() {
+        const user = {
+          userName: this.username,
           fullName: this.fullName,
           email: this.email,
           password: this.password,
           confirmPassword: this.confirmPassword,
-          city: this.country,
-          
+          city: this.city, 
         }
-        console.log(formData)
-        axios.post('/members.json', formData)
-          .then(res => console.log(res))
-          .catch(error => console.log(error))
+        console.log(user)
+        this.register(user)
+        .then(res => {
+        if(res.data.success) {
+          this.$router.push('/api/profile')
+        } 
+        }).catch(err => {
+        console.log(err)
+      })
       },
-      onReset(evt) {
+
+   onReset(evt) {
       evt.preventDefault();
       // Reset our form values
-      this.userName = "",
+      this.username = "",
       this.fullName = "",
       this.email = "";
       this.password = "";
@@ -101,20 +92,20 @@
         this.show = true;
       });
     }
-    }
   }
+}
 </script>
 
 <style scoped>
-  .signup-form {
-    width: 400px;
-    margin: 30px auto;
-    border: 1px solid #521751;
-    padding: 20px;
-    box-shadow: 0 2px 3px #ccc;
-  }
+.signup-form {
+  width: 400px;
+  margin: 30px auto;
+  border: 1px solid #521751;
+  padding: 20px;
+  box-shadow: 0 2px 3px #ccc;
+}
 
-  .input {
+.input {
   margin: 10px auto;
 }
 

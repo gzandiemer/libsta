@@ -3,7 +3,7 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const memberRouter = require('./routes/member')
 const bookRouter = require('./routes/book')
-const authRouter = require('./routes/user')
+const authRouter = require('./routes/auth')
 const passport = require('passport')
 require('./mongo-connection')
 
@@ -22,7 +22,7 @@ app.use(bodyParser.urlencoded({
 
 app.use('/member', memberRouter)
 app.use('/book', bookRouter)
-app.use('/api/users', authRouter)
+app.use('/api', authRouter)
 app.use(passport.initialize())
 require('./config/passport')(passport)
 
