@@ -152,7 +152,10 @@ Compiles and hot-reloads for development:
     ├───public
     └───src
         ├───assets
+        ├───axios-auth
         ├───components
+        │   └───forms
+        ├───data
         ├───router
         ├───store
         └───views
@@ -226,6 +229,7 @@ Compiles and hot-reloads for development:
 ## Style Guide
 
 Font Family: 
+
 Color Palette:
 - purplish: ![#521751](https://placehold.it/15/521751/000000?text=+) `#521751`
 - reddish: ![#bf0B2c](https://placehold.it/15/bf0B2c/000000?text=+) `#bf0B2c`
@@ -241,23 +245,25 @@ Color Palette:
 <a name="done"/>
 
 ### Done
+- Documentation
 - Navbar
-- Members can add a book to their library from their profile page via book-form
+- Library table
+- AddBook function for library table via book-form
+- All Routing
 
 <a name="in-progress"/>
 
 ### In Progress
-
-<a name="to-do"/>
 - add icons instead of like button and add an increment button for likes
 - after adding book navigate back to member's profile page
 
+<a name="to-do"/>
 
 ### To Do
-
+-- delete and update book buttons in library
 - save likes to database book.likers
 - Add Carousel to home and dashboard (limit each with 3-4 cards)
-- Order books from the most liked to the least
+- Sort books from the most liked to the least
 - Add profile card to profile page with follow button
 - Add comment upvote section to BookSingle.vue
 
@@ -267,8 +273,7 @@ Color Palette:
 
 #### Problems to fix
 
-- members/all route renders wrong view
-- when the book-form is submitted, it should turn back to the member's page but my func doesn_t work
+- when the book-form is submitted, it should turn back to the member's page but my this.$router.push() doesn_t work
 - like button increases the likes in all cards 
 
 <a name="features-to-add"/>
