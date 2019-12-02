@@ -62,8 +62,8 @@
   export default {
     data () {
       return {
-        userName: '',
-        fullName: '',
+        username: '',
+        fullname: '',
         email: '',
         password: '',
         confirmPassword: '',

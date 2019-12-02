@@ -1,7 +1,7 @@
 <template>
   <div id="signin">
     <div class="signin-form">
-      <form @submit.prevent="onSubmit">
+      <form @submit.prevent="loginUser">
         <div class="input">
           <label for="email">E-Mail</label>
           <input type="email" id="email" v-model="email" />
@@ -20,20 +20,32 @@
 </template>
 
 <script>
+//https://www.youtube.com/watch?v=m73vd9hqZj0
+import { mapActions } from 'vuex'
 export default {
   data() {
     return {
-      email: "",
+      username: "",
       password: ""
     };
   },
   methods: {
-    onSubmit() {
-      const formData = {
-        email: this.email,
+    ...mapActions(['login']),
+    loginUser() {
+      
+      const user = {
+        username: this.username,
         password: this.password
-      };
-      console.log(formData);
+      }
+      this.login(user)
+      .then(res => {
+        if(res.data.success) {
+          this.$router.push('/profile')
+        }
+      }).catch(err => {
+        console.log(err)
+      })
+   console.log( 'username: ' + this.username + "pwd: " + this.password)
     },
     onReset(evt) {
       evt.preventDefault();

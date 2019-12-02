@@ -7,15 +7,11 @@
     Libsta is created to cover the need for an alternative library for the large international community of Berlin. 
     By becoming a member of Libsta you can create an avatar of your home library and let other members check what you lend or give away. 
     You can get also in touch with people whom you share a common reading taste by liking, commenting on and requesting books. 
-    Don't let your books get dusty on shelves. Let them travel and influence several people.
+    Don't let your books get dusty on shelves. Let them travel and influence many readers.
     </article>
   </div>
 </template>
-<script>
-export default {
-  
-}
-</script>
+
 <style scoped>
 .logo {
   width: 350px;

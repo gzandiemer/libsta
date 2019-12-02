@@ -24,10 +24,13 @@
         <b-nav-item-dropdown right>
           <!-- Using 'button-content' slot -->
           <template v-slot:button-content>
-            <em>Sign</em>
+            <div v-if="!isLoggedIn"><em>Sign</em></div>
+            <div v-if="isLoggedIn"><em>User</em></div>
           </template>
-          <b-dropdown-item href="/signin">In</b-dropdown-item>
-          <b-dropdown-item href="/signup">Up</b-dropdown-item>
+          <b-dropdown-item v-if="!isLoggedIn" href="/signin">In</b-dropdown-item>
+          <b-dropdown-item v-if="!isLoggedIn" href="/signup">Up</b-dropdown-item>
+          <b-dropdown-item v-if="isLoggedIn" href="/profile">Profile</b-dropdown-item>
+          <b-dropdown-item v-if="isLoggedIn" href="/">Logout</b-dropdown-item>
         </b-nav-item-dropdown>
       </b-navbar-nav>
     </b-collapse>
@@ -35,6 +38,7 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex"
 export default {
     data() {
       return {
@@ -43,9 +47,10 @@ export default {
 
     },
     computed: {
-        auth() {
-            return this.$store.getters.isAuthenticated
-        },
+        ...mapGetters(['isLoggedIn'])
+        // auth() {
+        //     return this.$store.getters.isAuthenticated
+        // },
         currentPage() {
           return this.$route.path;
         }

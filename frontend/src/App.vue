@@ -2,7 +2,7 @@
 <template>
   <nav id="app">
     <app-header />
-    <router-view/>
+    <router-view />
   </nav>
 </template>
 

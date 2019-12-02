@@ -9,10 +9,11 @@
 import BookCard from '@/components/BookCard.vue'
 import { mapState, mapActions } from 'vuex'
 
+
 export default {
-  name: 'books',
+  name: 'BookAll',
   components: {
-    BookCard
+    BookCard,
   },
   computed: {
     ...mapState(['books'])
