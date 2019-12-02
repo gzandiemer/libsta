@@ -6,13 +6,11 @@ const BookService = require('../services/book-service')
 
 router.get('/all', async (req, res) => {
     const users = await MemberService.findAll()
-    //change in views book with booklist
     res.render('list', {items: users})
 })
 
 router.get('/all/json', async (req, res) => {
     const users = await MemberService.findAll()
-    //change in views book with booklist
     res.send(users)
 })
 

@@ -68,23 +68,7 @@ export default {
  .navbar.navbar-dark.bg-dark{
     background-color: #521751!important;
  }
- 
- 
-/* #header {
-  height: 82px;
-  display: flex;
-  flex-flow:row;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #BF0B2C;
-  /* alternative colors: #521751; */
-  /* padding: 0 20px;
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-} */ 
+
 #nav-links {
   float: left;
   padding-left: 25px;

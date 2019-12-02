@@ -3,7 +3,7 @@
   <h2 class="card-title">
     <router-link :to="memberUrl"> {{ member.userName }}</router-link> 
   </h2>
-  <img :src="`https://picsum.photos/300/200?random=${member._id}`" alt=""/>
+  <img :src="`https://picsum.photos/300/200?random=${member._id}`" alt="" class="img-circle img-responsive"/>
 
   <p> City: {{ member.city }}</p>
   <!-- <p> Books: {{ library }}</p> -->

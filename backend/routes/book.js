@@ -5,13 +5,11 @@ const BookService = require('../services/book-service')
 
 router.get('/all', async (req, res) => {
     const books = await BookService.findAll()
-    //change in views book with booklist
     res.render('list', {items: books})
 })
 
 router.get('/all/json', async (req, res) => {
     const books = await BookService.findAll()
-    //change in views book with booklist
     res.send(books)
 })
 

@@ -27,24 +27,24 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
   {
-    path: '/book/:id',
-    name: 'book',
-    component: BookSingle
-  },
-  {
     path: '/book/all',
     name: 'books',
     component: BookAll
   },
   {
-    path: '/member/:id',
-    name: 'member',
-    component: MemberSingle
+    path: '/book/:id',
+    name: 'book',
+    component: BookSingle
   },
   {
     path: '/member/all',
     name: 'members',
     component: MemberAll
+  },
+  {
+    path: '/member/:id',
+    name: 'member',
+    component: MemberSingle
   },
   {
     path: '/dashboard',

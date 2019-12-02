@@ -1,53 +1,32 @@
 <template>
   <main>
-    <h2>{{ headline }}</h2>
-    <div class="section">
-      <h2>{{this.sections[0].headline}}</h2>
-      <Carousel :cards="cards" />
-    </div>
-    <div class="section">
-      <h2>{{this.sections[1].headline}}</h2>
-    </div>
-  </main>
+    <section>
+      <h2>Most Popular Books</h2>
+      <book-card v-for="book in books" :book="book" :key="book.id"></book-card>
+    </section>
+    <section>
+      <h2>Recent Members</h2>
+      <member-card v-for="member in members" :member="member" :key="member.id"></member-card>
+    </section>
+  </main> 
 </template> 
 
 <script>
+import BookCard from "@/components/BookCard.vue";
+import MemberCard from "@/components/MemberCard.vue";
 import { mapState, mapActions } from "vuex";
 
 export default {
-  name: "home",
-
-  data() {
-    return {
-      headline:
-        "HMost Popular Books",
-      sections: [
-        { headline: "Book1" },
-        {
-          headline: "Book2"
-        }
-      ],
-      cards: [
-        {
-          headline: "book1",
-          text:
-            "blabla",
-          imgName: "blabla"
-        },
-        {
-          headline: "Use background sync to defer actions",
-          text:
-            "User inputs entered when offline are sent in the background once they get connectivity.",
-          imgName: "cloud.svg"
-        }
-      ]
-    }
+  name: "dashboard",
+  components: {
+    BookCard,
+    MemberCard
   },
   computed: {
-    ...mapState(["books", "members"])
+    ...mapState(['books', 'members'])
   },
   methods: {
-    ...mapActions(["fetchBooks", "fetchMembers"])
+    ...mapActions(['fetchBooks', 'fetchMembers'])
   },
   created() {
     this.fetchBooks();

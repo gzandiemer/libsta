@@ -3,14 +3,14 @@
     h2 All Members
     section
       member-card(v-for="member in members", :member="member", :key="member.id")
-</template>
+</template> 
 
 <script>
-import MemberCard from '@/components/MemberCard.vue'
-import { mapState, mapActions } from 'vuex'
+import MemberCard from "@/components/MemberCard.vue";
+import { mapState, mapActions } from "vuex";
 
 export default {
-  name: 'MemberAll',
+  name: "members",
   components: {
     MemberCard
   },
@@ -21,7 +21,7 @@ export default {
     ...mapActions(['fetchMembers'])
   },
   created() {
-     this.fetchMembers();
+    this.fetchMembers();
   }
 }
 </script>

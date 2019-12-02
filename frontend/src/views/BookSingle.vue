@@ -6,11 +6,11 @@
 </template>
 
 <script>
+// @ is an alias to /src
 import BookCard from '@/components/BookCard.vue'
 import { mapState, mapActions } from 'vuex'
-
 export default {
-  name: 'BookSingle',
+  name: 'BookAll',
   components: {
     BookCard
   },
@@ -21,7 +21,7 @@ export default {
     ...mapActions(['fetchBooks'])
   },
   created() {
-     this.fetchBooks();
+    this.fetchBook(this.$route.params.id)
   }
 }
 </script>
@@ -29,8 +29,5 @@ export default {
 <style scoped>
 section {
   padding: 40px 0;
-}
-h2 {
-  margin-top: 20px;
 }
 </style>
