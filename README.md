@@ -229,6 +229,9 @@ Compiles and hot-reloads for development:
 ## Style Guide
 
 Font Family: 
+- <p font-family="Merryweather"> Merryweather (light), serif: </p> (https://fonts.googleapis.com/css?family=Merriweather:300&display=swap)
+- <p font-family="Lato">Lato (regular), sans-serif: </p> (https://fonts.googleapis.com/css?family=Lato:300&display=swap)
+- <p font-family="Sue Ellen Francisco">Sue Ellen Francisco (regular), cursive: </p> (https://fonts.googleapis.com/css?family=Sue+Ellen+Francisco&display=swap)
 
 Color Palette:
 - purplish: ![#521751](https://placehold.it/15/521751/000000?text=+) `#521751`
