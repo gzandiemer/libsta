@@ -2,15 +2,16 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import About from '../views/About.vue'
-import SignupForm from '../components/forms/signup-form.vue'
-import SigninForm from '../components/forms/signin-form.vue'
-import Profile from '../views/Profile.vue'
-import Dashboard from '../views/Dashboard.vue'
-import BookSingle from '../views/BookSingle.vue'
-import BookAll from '../views/BookAll.vue'
-import MemberSingle from '../views/MemberSingle.vue'
-import MemberAll from '../views/MemberAll.vue'
-import BookForm from '../components/forms/book-form.vue'
+import RegisterForm from '../components/forms/RegisterForm'
+import LoginForm from '../components/forms/LoginForm'
+import Profile from '../views/Profile'
+import Dashboard from '../views/Dashboard'
+import BookSingle from '../views/BookSingle'
+import BookAll from '../views/BookAll'
+import MemberSingle from '../views/MemberSingle'
+import MemberAll from '../views/MemberAll'
+import BookForm from '../components/forms/BookForm'
+import store from '../store/index'
 
 Vue.use(VueRouter)
 
@@ -27,23 +28,27 @@ const routes = [
   },
   {
     path: '/api/signup',
-    name: 'signup',
-    component: SignupForm
+    name: 'register',
+    component: RegisterForm,
+    meta: { requiresGuest: true }
   },
   {
     path: '/api/signin',
-    name: 'signin',
-    component: SigninForm
+    name: 'login',
+    component: LoginForm,
+    meta: { requiresGuest: true }
   },
   {
     path: '/api/profile',
     name: 'profile',
-    component: Profile
+    component: Profile,
+    meta: { requiresAuth: true }
   },
   {
     path: '/dashboard',
     name: 'dashboard',
-    component: Dashboard
+    component: Dashboard,
+    meta: { requiresAuth: true }
   },
   {
     path: '/book/all',
@@ -70,18 +75,43 @@ const routes = [
     path: '/member/:id/addbook',
     name: 'bookform',
     props: true,
-    component: BookForm
+    component: BookForm,
+    meta: { requiresAuth: true }
   }
 
 
 ]
 
-
-
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  // const isLoggedIn = localStorage.getItem('isLoggedIn')
+  const isLoggedIn = store.getters.isLoggedIn
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    if (!isLoggedIn) {
+      //redirect to the login page
+      // next({
+      //   path: '/',
+      //   query: { redirect: to.fullPath }
+      // })
+      next('/login')
+    } else {
+      next()
+    }
+  } else if (to.matched.some(record => record.meta.requiresGuest)) {
+    if (isLoggedIn) {
+      next('/profile')
+    } else {
+      next()
+    }
+
+  } else {
+    next()
+  }
 })
 
 export default router

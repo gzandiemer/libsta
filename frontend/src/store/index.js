@@ -1,39 +1,22 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
-// import { seedData } from '@/seed/index.js'
+import auth from './modules/auth'
+import user from './modules/user'
+import errors from './modules/errors'
+import { seedData } from '../seed/index'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    token: localStorage.getItem('token') || '',
-    user: {},
-    status: '',
     books: [],
     book: {},
     members: [],
     member: {},
     counter: 0,
-    seedData: []
-  },
-  getters: {
-    isLoggedIn: state => !!state.token,
-    authState: state => state.status,
-    user: state => state.user
   },
   mutations: {
-    AUTH_REQUEST(state) {
-      state.status = 'loading'
-    },
-    AUTH_SUCCESS(state, token, user) {
-      state.token = token,
-        state.user = user
-    },
-    CLEAR_AUTH_DATA(state) {
-      state.token = null
-      state.user = null
-    },
     SET_BOOKS(state, data) {
       state.books = data
     },
@@ -66,8 +49,6 @@ export default new Vuex.Store({
     SET_COUNTER(state, newCount) {
       state.counter = newCount
     }
-
-
   },
   actions: {
     async fetchBooks({ commit }) {
@@ -98,34 +79,6 @@ export default new Vuex.Store({
       const result = await axios.delete(`http://localhost:3000/book/${data.id}`)
       commit('DELETE_BOOK', result)
     },
-    async login({
-      commit
-    }, user) {
-      commit('AUTH_REQUEST')
-      const res = await axios.post('http://localhost:3000/api/signin', user)
-      if (res.data.success) {
-        const token = res.data.token
-        const user = res.data.user
-        localStorage.setItem('token', token)
-        axios.defaults.headers.common['Authorization'] = token
-        commit('AUTH_SUCCESS', token, user)
-      }
-      return res
-    },
-    async register({
-      commit
-    }, user) {
-      commit('AUTH_REQUEST')
-      const res = await axios.post('http://localhost:3000/api/signup', user)
-      if (res.data.success) {
-        const token = res.data.token
-        const user = res.data.user
-        localStorage.setItem('token', token)
-        axios.defaults.headers.common['Authorization'] = token
-        commit('AUTH_SUCCESS', token, user)
-      }
-      return res
-    },
     incrementCounter({ commit, state }) {
       const newCount = state.counter + 1
       commit('SET_COUNTER', newCount)
@@ -138,5 +91,9 @@ export default new Vuex.Store({
     }
   },
   modules: {
+    auth,
+    user,
+    errors,
+    seedData
   }
 })

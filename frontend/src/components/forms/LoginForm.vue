@@ -1,18 +1,21 @@
 <template>
-  <div id="signin">
-    <div class="signin-form">
+  <div id="login">
+    <div class="login-form">
       <form @submit.prevent="loginUser">
         <div class="input">
           <label for="email">E-Mail</label>
-          <input type="email" id="email" v-model="email" />
+          <input type="email" id="email" v-model="email"  @input="$v.email.$touch()"/>
         </div>
         <div class="input">
           <label for="password">Password</label>
-          <input type="password" id="password" v-model="password" />
+          <input type="password" id="password" v-model="password" @input="$v.password.$touch()"/>
         </div>
         <div class="btns">
           <button type="submit" class="submit" @click="loginUser">Submit</button>
           <button type="reset" class="reset" @click="onReset">Reset</button>
+        </div>
+         <div class="nav">
+          <b-nav-item class="nav-item" href="/api/signup">Haven't registered yet?</b-nav-item>
         </div>
       </form>
     </div>
@@ -20,7 +23,8 @@
 </template>
 
 <script>
-//https://www.youtube.com/watch?v=m73vd9hqZj0
+//https://www.youtube.com/watch?v=m73vd9hqZj0 - check part 3
+//above @input bla bla has no reference!!!
 import { mapActions } from 'vuex'
 
 export default {
@@ -30,15 +34,31 @@ export default {
       password: ""
     };
   },
+  // computed: {
+  //     emailErrors() {
+  //     const errors = []
+  //     if (!this.$v.email.$dirty) return errors
+  //     !this.$v.email.email && errors.push(this.getError('email_invalid'))
+  //     !this.$v.email.required && errors.push(this.getError('email_necessary'))
+  //     return errors
+  //   },
+  //   passwordErrors() {
+  //     const errors = []
+  //     if (!this.$v.password.$dirty) return errors
+  //     !this.$v.password.required && errors.push(this.getError('password_necessary'))
+  //     !this.$v.password.minLength &&
+  //       errors.push(this.getError('password_min_length'))
+  //     return errors
+  //   }
+  // },
   methods: {
-    ...mapActions(['login']),
-    loginUser() {
-      
+    ...mapActions(['loginUser']),
+    onSubmit() { 
       const user = {
         email: this.email,
         password: this.password
       }
-      this.login(user)
+      this.loginUser(user)
       .then(res => {
         if(res.data.success) {
           this.$router.push('/api/profile')
@@ -46,8 +66,14 @@ export default {
       }).catch(err => {
         console.log(err)
       })
-   console.log( 'email: ' + this.email + "pwd: " + this.password)
+   console.log( 'email: ' + this.email + "password: " + this.password)
     },
+    // getError: function(errorKey) {
+    //   return this.$store.getters.error({
+    //     errorKey: errorKey,
+    //     route: this.$route.name
+    //   })
+    // },
     onReset(evt) {
       evt.preventDefault();
       // Reset our form values
@@ -64,7 +90,7 @@ export default {
 </script>
 
 <style scoped>
-.signin-form {
+.login-form {
   width: 400px;
   margin: 30px auto;
   border: 1px solid #521751;
@@ -109,9 +135,9 @@ export default {
 }
 
 .btns button {
-  border: 1px solid #521751;
+  /* border: 1px solid #521751; */
   /*color: #0AA38C;*/
-  padding: 10px 20px;
+  padding: 10px 0px;
   text-align: center;
   font: inherit;
   cursor: pointer;
@@ -120,7 +146,7 @@ export default {
 
 .btns button:hover,
 .btns button:active {
-  color: white;
+  color: #ccc;
 }
 
 .btns button[disabled],
@@ -142,10 +168,33 @@ export default {
 }
 
 .submit {
-  color: #0aa38c;
+  color: #521751;
 }
 .submit:hover,
 .submit:active {
-  background-color: #0aa38c;
+  background-color: #521751;
 }
+
+.nav {
+  text-align:center; 
+  display:contents;
+}
+
+.nav-link  {
+  color: inherit !important;
+  /* font-family: "Lato"; */
+  font-style: italic;
+}
+
+.nav-item {
+ list-style-type: none !important;
+}
+
+.nav-link:hover, .nav-link:active {
+  color: #521751 !important;
+  box-shadow: 0 6px 8px 0 rgba(0,0,0,0.24), 0 10px 10px 0 rgba(0,0,0,0.19);
+} 
+
+
+
 </style>

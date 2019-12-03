@@ -1,9 +1,9 @@
 <template>
-  <div id="signup">
-    <div class="signup-form">
+  <div id="register">
+    <div class="register-form">
       <form @submit.prevent="registerUser">
         <div class="input">
-          <label for="username">User Name</label>
+          <label for="username">Username</label>
           <input type="string" id="username" v-model="username" />
         </div>
         <div class="input">
@@ -36,6 +36,9 @@
           <button type="submit" class="submit" @click="registerUser">Submit</button>
           <button type="reset" class="reset" @click="onReset">Reset</button>
         </div>
+        <div class="nav">
+          <b-nav-item class="nav-item" href="/api/signin">Already registered?</b-nav-item>
+        </div>
       </form>
     </div>
   </div>
@@ -60,7 +63,7 @@
       ...mapActions(['register']),
       registerUser() {
         const user = {
-          userName: this.username,
+          username: this.username,
           fullName: this.fullName,
           email: this.email,
           password: this.password,
@@ -71,7 +74,7 @@
         this.register(user)
         .then(res => {
         if(res.data.success) {
-          this.$router.push('/api/profile')
+          this.$router.push('login')
         } 
         }).catch(err => {
         console.log(err)
@@ -97,7 +100,12 @@
 </script>
 
 <style scoped>
-.signup-form {
+
+body {
+  background-color: #f5900f!important;
+}
+
+.register-form {
   width: 400px;
   margin: 30px auto;
   border: 1px solid #521751;
@@ -143,18 +151,19 @@
 }
 
 .btns button {
-  border: 1px solid #521751;
+  /* border: 1px solid #521751; */
   /*color: #0AA38C;*/
-  padding: 10px 20px;
+  padding: 10px 0px;
   text-align: center;
   font: inherit;
   cursor: pointer;
   width: 80px;
+
 }
 
 .btns button:hover,
 .btns button:active {
-  color: white;
+  color: #ccc;
 }
 
 .btns button[disabled],
@@ -176,10 +185,31 @@
 }
 
 .submit {
-  color: #0aa38c;
+  color: #521751;
 }
 .submit:hover,
 .submit:active {
-  background-color: #0aa38c;
+  background-color: #521751;
 }
+
+.nav {
+  text-align:center; 
+  display:contents;
+}
+
+.nav-link  {
+  color: inherit !important;
+  /* font-family: "Lato"; */
+  font-style: italic;
+}
+
+.nav-item {
+ list-style-type: none !important;
+}
+
+.nav-link:hover, .nav-link:active {
+  color:#521751!important;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+} 
+
 </style>

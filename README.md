@@ -265,7 +265,8 @@ Color Palette:
 <a name="to-do"/>
 
 ### To Do
--- delete and update book buttons in library
+- validations
+- delete and update book buttons in library
 - save likes to database book.likers
 - add footer
 - Add Carousel to home and dashboard (limit each with 3-4 cards)

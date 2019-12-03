@@ -21,51 +21,50 @@
           <b-button size="sm" class="my-2 my-sm-0" type="submit">Search</b-button>
         </b-nav-form>
 
-        <b-nav-item-dropdown right>
-          <!-- Using 'button-content' slot -->
+        <b-nav-item-dropdown right v-if="!isLoggedIn">
           <template v-slot:button-content>
-            <div v-if="!isLoggedIn"><em>Sign</em></div>
-            <div v-if="isLoggedIn"><em>User</em></div>
+            <div><em>Sign</em></div>
           </template>
-          <b-dropdown-item v-if="!isLoggedIn" href="/api/signin">In</b-dropdown-item>
-          <b-dropdown-item v-if="!isLoggedIn" href="/api/signup">Up</b-dropdown-item>
-          <b-dropdown-item v-if="isLoggedIn" href="/api/profile">Profile</b-dropdown-item>
-          <b-dropdown-item v-if="isLoggedIn" href="/">Logout</b-dropdown-item>
+          <b-dropdown-item href="/api/signin">In</b-dropdown-item>
+          <b-dropdown-item href="/api/signup">Up</b-dropdown-item>   
         </b-nav-item-dropdown>
+
+          <b-nav-item-dropdown right v-if="isLoggedIn">
+          <template v-slot:button-content>
+            <div><em>User</em></div>
+          </template>
+          <b-dropdown-item href="/api/profile">Profile</b-dropdown-item>
+          <b-dropdown-item @click.prevent="logoutUser">Logout</b-dropdown-item>
+        </b-nav-item-dropdown>
+        
       </b-navbar-nav>
     </b-collapse>
   </b-navbar>
 </template>
 
 <script>
-import { mapGetters } from "vuex"
+import { mapGetters, mapActions } from "vuex"
 export default {
-    data() {
-      return {
-        activeClass: 'active'
-      };
+    // data() {
+    //   return {
+    //     activeClass: 'active'
+    //   };
 
-    },
+    // },
     computed: {
         ...mapGetters(['isLoggedIn']),
         // auth() {
         //     return this.$store.getters.isAuthenticated
         // },
-        currentPage() {
-          return this.$router.path;
-        }
+        // currentPage() {
+        //   return this.$router.path;
+        // }
     },
     methods: {
-        onSignUp(){
-          this.$router.push({name: 'signup'})
-        },
-        onSignIn(){
-          this.$router.push({ name: 'signin'})
-
-        },
-        onLogout(){
-          this.$router.push({ name: 'home'})
-        }
+      ...mapActions(['logout']),
+      logoutUser(){
+        this.logout()
+      }
     }
 }
 </script>
@@ -93,16 +92,12 @@ export default {
   color: white;
 }
 
-.logo {
+
+ .logo {
   float:left;
-  height: 30px; 
-
+  height: 30px;  
 }
 
-#btns{
-   padding: 5px;
-   list-style-type: none;
-}
 ul {
 list-style-type: none;
 }
@@ -120,6 +115,7 @@ button:hover{
   background-color: white;
   color: #521751;
 }
+
 
 /* .logout {
   float: right;

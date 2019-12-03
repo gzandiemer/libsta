@@ -1,7 +1,7 @@
 <template>
   <div id="book-form">
     <div class="book-form">
-      <form @submit.prevent="onSubmit">
+      <form>
         <div class="input">
           <label for="title">Title</label>
           <input type="string" id="title" v-model="form.title" />
@@ -19,7 +19,7 @@
           <input type="string" id="pubDate" v-model="form.pubDate" />
         </div>
         <div class="btns">
-          <button type="submit" class="submit" @click="onSubmit">Add</button>
+          <button type="submit" class="submit" @submit.prevent="onSubmit">Add</button>
           <button type="reset" class="reset" @click="onReset">Reset</button>
         </div>
       </form>
