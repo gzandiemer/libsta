@@ -1,8 +1,8 @@
 <template lang="pug">
   main
-  span
-    | &copy; 2019 Copyright: 
-    a(href='https://www.libsta.de')  Libsta.de 
+    span
+      | &copy; 2019 Copyright: 
+      a(href='https://www.libsta.de')  Libsta.de 
 </template>
 
 

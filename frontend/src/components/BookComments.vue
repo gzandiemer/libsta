@@ -6,7 +6,7 @@
           strong
             a.has-text-info(:href='comment.url')
               | {{ comment.title }}
-            span.tag.is-small #{{ comment.id }}
+              span.tag.is-small {{ comment.id }}
           br
           |               {{ comment.text}}
           br
