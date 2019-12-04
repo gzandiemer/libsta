@@ -240,6 +240,8 @@ Color Palette:
 - lightpetrolish: ![#0aa38c](https://placehold.it/15/0aa38c/000000?text=+) `#0aa38c`
 - Vue-green: ![#42b983](https://placehold.it/15/42b983/000000?text=+) `#42b983`
 - mustardish: ![#f5900f](https://placehold.it/15/f5900f/000000?text=+) `#f5900f`
+- linenish: ![#858418](https://placehold.it/15/ad9d5a/000000?text=+) `#858418`
+- darkkhaki: ![#ad9d5a](https://placehold.it/15/ad9d5a/000000?text=+) `#ad9d5a` 
 
 <a name="status"/>
 
@@ -248,11 +250,14 @@ Color Palette:
 <a name="done"/>
 
 ### Done
-- Documentation
-- Navbar
+- documentation
+- navbar
+- sign up/in forms
+- routing
 - Library table
-- AddBook function for library table via book-form
-- All Routing
+- book-form
+- addBook function for library table via book-for
+- footer
 
 <a name="in-progress"/>
 
@@ -261,6 +266,7 @@ Color Palette:
 - after adding book navigate back to member's profile page
 - authentication
 - Add comment upvote section to BookSingle.vue
+- error handling
 
 <a name="to-do"/>
 
@@ -268,7 +274,6 @@ Color Palette:
 - validations
 - delete and update book buttons in library
 - save likes to database book.likers
-- add footer
 - Add Carousel to home and dashboard (limit each with 3-4 cards)
 - Sort books from the most liked to the least
 - Add profile card to profile page with follow button

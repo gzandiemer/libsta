@@ -1,4 +1,4 @@
-export const seedData = [
+export const comments = [
     {
         id: 1,
         title: 'A must read!',

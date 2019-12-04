@@ -1,30 +1,21 @@
-<template>
-  <div id="login">
-    <div class="login-form">
-      <form @submit.prevent="loginUser">
-        <div class="input">
-          <label for="email">E-Mail</label>
-          <input type="email" id="email" v-model="email"  @input="$v.email.$touch()"/>
-        </div>
-        <div class="input">
-          <label for="password">Password</label>
-          <input type="password" id="password" v-model="password" @input="$v.password.$touch()"/>
-        </div>
-        <div class="btns">
-          <button type="submit" class="submit" @click="loginUser">Submit</button>
-          <button type="reset" class="reset" @click="onReset">Reset</button>
-        </div>
-         <div class="nav">
-          <b-nav-item class="nav-item" href="/api/signup">Haven't registered yet?</b-nav-item>
-        </div>
-      </form>
-    </div>
-  </div>
+<template lang="pug">
+  #login
+    .login-form
+      form(@submit.prevent='loginUser')
+        .input
+          label(for='email') E-Mail
+          input#email(type='email' v-model='email') 
+        .input
+          label(for='password') Password
+          input#password(type='password' v-model='password') 
+        .btns
+          button.submit(type='submit' @click='loginUser') Submit
+          button.reset(type='reset' @click='onReset') Reset
+        .nav
+          b-nav-item.nav-item(href='/api/signup') Haven't registered yet?
 </template>
 
 <script>
-//https://www.youtube.com/watch?v=m73vd9hqZj0 - check part 3
-//above @input bla bla has no reference!!!
 import { mapActions } from 'vuex'
 
 export default {

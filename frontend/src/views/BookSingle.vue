@@ -1,39 +1,38 @@
 <template lang="pug">
-  main
+   main
     h2 All Books
     section
-      book-card(v-for="book in books", :book="book", :key="book.id")
-    section
-      book-comments(v-for="comment in sharedState.seedData", :comment="comment" :key="comment.id")
+      book-card(v-for='book in books' :book='book' :key='book.id')
+    section.container
+      book-comments(v-for='comment in sharedState.comments' :comment='comment' :key='comment.id')
 </template>
 
 <script>
 // @ is an alias to /src
-import BookCard from '@/components/BookCard.vue'
-import { store } from '@/seed/index.js'
-import BookComments from '@/components/BookComments.vue'
-import { mapState, mapActions } from 'vuex'
+import BookCard from "../components/BookCard.vue";
+import BookComments from "../components/BookComments.vue";
+import { mapState, mapActions, store } from "vuex";
 export default {
-  name: 'BookSingle',
+  name: "BookSingle",
   data() {
     return {
       sharedState: store.state
-    }
+    };
   },
   components: {
     BookCard,
     BookComments
   },
   computed: {
-    ...mapState(['books'])
+    ...mapState(["books"])
   },
   methods: {
-    ...mapActions(['fetchBooks'])
+    ...mapActions(["fetchBooks"])
   },
   created() {
-    this.fetchBook(this.$route.params.id)
+    this.fetchBook(this.$route.params.id);
   }
-}
+};
 </script>
 
 <style scoped>

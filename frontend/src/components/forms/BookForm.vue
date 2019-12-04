@@ -1,30 +1,22 @@
-<template>
-  <div id="book-form">
-    <div class="book-form">
-      <form>
-        <div class="input">
-          <label for="title">Title</label>
-          <input type="string" id="title" v-model="form.title" />
-        </div>
-        <div class="input">
-          <label for="authorName">Author</label>
-          <input type="string" id="authorName" v-model="form.authorName" />
-        </div>
-        <div class="input">
-          <label for="language">Language</label>
-          <input type="string" id="language" v-model="form.language" />
-        </div>
-        <div class="input">
-          <label for="pubDate">Publication Date</label>
-          <input type="string" id="pubDate" v-model="form.pubDate" />
-        </div>
-        <div class="btns">
-          <button type="submit" class="submit" @submit.prevent="onSubmit">Add</button>
-          <button type="reset" class="reset" @click="onReset">Reset</button>
-        </div>
-      </form>
-    </div>
-  </div>
+<template lang="pug">
+  #book-form
+    .book-form
+      form
+        .input
+          label(for='title') Title
+          input#title(type='string' v-model='form.title')
+        .input
+          label(for='authorName') Author
+          input#authorName(type='string' v-model='form.authorName')
+        .input
+          label(for='language') Language
+          input#language(type='string' v-model='form.language')
+        .input
+          label(for='pubDate') Publication Date
+          input#pubDate(type='string' v-model='form.pubDate')
+        .btns
+          button.submit(type='submit' @submit.prevent='onSubmit') Add
+          button.reset(type='reset' @click='onReset') Reset
 </template>
 
 
@@ -43,7 +35,7 @@ export default {
         title: "",
         authorName: "",
         language: "",
-        pubDate: "",
+        pubDate: ""
       },
       show: true
     };
@@ -56,15 +48,18 @@ export default {
     ...mapActions(["addBook"]),
     onSubmit() {
       this.addBook({ form: this.form, id: this.id })
-         .then(res => {
-        if(res.data.success) {
-          alert('This book is successfully added to your library.')
-          this.$router.push({ path: `/member/${this.member_id}` })
-         
-        } 
-        }).catch(err => {
-        console.log(err)
-      })
+        .then(res => {
+          if (res.data.success) {
+            alert("This book is successfully added to your library.").then(
+              () => {
+                this.$router.push({ path: `/member/${this.member_id}` });
+              }
+            );
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
     },
     onReset(evt) {
       evt.preventDefault();
@@ -77,11 +72,10 @@ export default {
       this.show = false;
       this.$nextTick(() => {
         this.show = true;
-      })
+      });
     }
-    
   }
-}
+};
 </script>
 <style scoped>
 .book-form {

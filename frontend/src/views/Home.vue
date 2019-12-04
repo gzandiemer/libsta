@@ -1,14 +1,11 @@
-<template>
-  <main>
-    <section>
-      <h2>Most Popular Books</h2>
-      <book-card v-for="book in books" :book="book" :key="book.id"></book-card>
-    </section>
-    <section>
-      <h2>Recent Members</h2>
-      <member-card v-for="member in members" :member="member" :key="member.id"></member-card>
-    </section>
-  </main> 
+<template lang="pug">
+  main
+    section
+      h2 Most Popular Books
+      book-card(v-for='book in books' :book='book' :key='book.id')
+    section
+      h2 Recent Members
+      member-card(v-for='member in members' :member='member' :key='member.id')
 </template> 
 
 <script>

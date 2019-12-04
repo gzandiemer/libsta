@@ -1,14 +1,11 @@
-<template>
-  <main>
-    <section>
-      <member-card :member="member"></member-card>
-    </section>
-    <section class="container table-responsive">
-      <h2>{{ member.userName }}'s Lib</h2>
-      <b-table striped hover bordered class="m-10" :items="library"></b-table>
-      <b-nav-item :href='`/member/${member._id}/addbook`'>Add Book</b-nav-item>
-    </section>
-  </main>
+<template lang="pug">
+  main
+    section
+      member-card(:member='member')
+    section.container.table-responsive
+      h2 {{ member.userName }}&apos;s Lib
+      b-table.m-10(striped='' hover='' bordered='' :items='library')
+        b-nav-item(:href='`/member/${member._id}/addbook`') Add Book
 </template>
 
 <script>

@@ -1,14 +1,11 @@
-<template>
-  <div>
-    <h2>Profile</h2>
-       <div class="card">
-           <ul class="list-group">
-               <li class="list-group-item">Email: {{ user.email }} </li>
-               <li class="list-group-item">Username: {{ user.username }}</li>
-               <li class="list-group-item">Name: {{ user.fullName }}</li>
-           </ul>
-       </div>
-  </div>
+<template lang="pug">
+  main
+    h2 Profile
+    .card(v-if='user')
+      ul.list-group
+        li.list-group-item Email: {{ user.email }} 
+        li.list-group-item Username: {{ user.username }}
+        li.list-group-item Name: {{ user.fullName }}
 </template>
 
 <script>

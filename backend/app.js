@@ -14,8 +14,6 @@ app.use(cors())
 app.set('view engine', 'pug')
 app.use(bodyParser.json())
 
-// check what for the below urlencoded is 
-//Middlewares
 app.use(bodyParser.urlencoded({
     extended: false
 }))
@@ -26,9 +24,14 @@ app.use('/api', authRouter)
 app.use(passport.initialize())
 require('./config/passport')(passport)
 
+app.get('*', (req, res) => {
+    res.sendFile(path.join(_dirname, 'public/index.html'))
+})
+
 app.get('/', (req, res) => {
     res.render('index')
 })
+
 
 
 module.exports = app

@@ -1,47 +1,34 @@
-<template>
-  <div id="register">
-    <div class="register-form">
-      <form @submit.prevent="registerUser">
-        <div class="input">
-          <label for="username">Username</label>
-          <input type="string" id="username" v-model="username" />
-        </div>
-        <div class="input">
-          <label for="fullName">Full Name</label>
-          <input type="string" id="fullName" v-model="fullName" />
-        </div>
-        <div class="input">
-          <label for="email">E-Mail</label>
-          <input type="email" id="email" v-model="email" />
-        </div>
-        <div class="input">
-          <label for="password">Password</label>
-          <input type="password" id="password" v-model="password" />
-        </div>
-        <div class="input">
-          <label for="confirmPassword">Confirm Password</label>
-          <input type="password" id="confirmPassword" v-model="confirmPassword" />
-        </div>
-        <div class="input">
-          <label for="city">City</label>
-          <select id="city" v-model="city">
-            <option value="berlin">Berlin</option>
-          </select>
-        </div>
-        <div class="input inline">
-          <input type="checkbox" id="terms" v-model="terms" />
-          <label for="terms">Accept Terms of Use</label>
-        </div>
-        <div class="btns">
-          <button type="submit" class="submit" @click="registerUser">Submit</button>
-          <button type="reset" class="reset" @click="onReset">Reset</button>
-        </div>
-        <div class="nav">
-          <b-nav-item class="nav-item" href="/api/signin">Already registered?</b-nav-item>
-        </div>
-      </form>
-    </div>
-  </div>
+<template lang="pug">
+  #register
+    .register-form
+      form(@submit.prevent='registerUser')
+        .input
+          label(for='username') Username
+          input#username(type='string' v-model='username')
+        .input
+          label(for='fullName') Full Name
+          input#fullName(type='string' v-model='fullName')
+        .input
+          label(for='email') E-Mail
+          input#email(type='email' v-model='email')
+        .input
+          label(for='password') Password
+          input#password(type='password' v-model='password')
+        .input
+          label(for='confirmPassword') Confirm Password
+          input#confirmPassword(type='password' v-model='confirmPassword')
+        .input
+          label(for='city') City
+          select#city(v-model='city')
+            option(value='berlin') Berlin
+        .input.inline
+          input#terms(type='checkbox' v-model='terms')
+          label(for='terms') Accept Terms of Use
+        .btns
+          button.submit(type='submit' @click='registerUser') Submit
+          button.reset(type='reset' @click='onReset') Reset
+        .nav
+          b-nav-item.nav-item(href='/api/signin') Already registered?
 </template>
 
 <script>

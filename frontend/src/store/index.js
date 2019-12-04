@@ -2,9 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
 import auth from './modules/auth'
-import user from './modules/user'
-import errors from './modules/errors'
-import { seedData } from '../seed/index'
+import { comments } from './seed.js'
 
 Vue.use(Vuex)
 
@@ -15,6 +13,7 @@ export default new Vuex.Store({
     members: [],
     member: {},
     counter: 0,
+    comments
   },
   mutations: {
     SET_BOOKS(state, data) {
@@ -91,9 +90,7 @@ export default new Vuex.Store({
     }
   },
   modules: {
-    auth,
-    user,
-    errors,
-    seedData
+    auth
+
   }
 })

@@ -1,17 +1,18 @@
-<template>
-<article class="book-card">
-  <h2 class="card-title">
-    <router-link :to="bookUrl"> {{ book.title }}</router-link> 
-  </h2>
-  <img :src="`https://picsum.photos/300/200?random=${book._id}`" alt=""/>
-  <p> By {{ book.authorName }}
-  <p> In {{ book.language }}</p>
-  <p> In {{ book.pubDate }}</p>
-  <p> {{ counter }} 
-    <button v-on:click.self="onLike">Likes</button>
-  </p>
-  <button>Request</button>
-</article>
+<template lang="pug">
+  article.book-card
+    h2.card-title
+      router-link(:to='bookUrl')  {{ book.title }}
+    img(:src='`https://picsum.photos/300/200?random=${book._id}`' alt='')
+    p
+      | By {{ book.authorName }}
+    p 
+      In {{ book.language }}
+    p  
+      In {{ book.pubDate }}
+    p
+      | {{ counter }} 
+      button(v-on:click.self='onLike') Likes
+    button Request
 </template>
 
 <script>

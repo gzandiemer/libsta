@@ -9,7 +9,13 @@ const user = require('../models/member')
 const MemberService = require('../services/member-service')
 
 router.post('/signup', async (req, res) => {
-    const { username, fullName, email, password, confirmPassword } = req.body
+    const {
+        username,
+        fullName,
+        email,
+        password,
+        confirmPassword
+    } = req.body
     if (password !== confirmPassword) {
         return res.status(400).json({
             msg: "Password do not match."
@@ -37,9 +43,10 @@ router.post('/signup', async (req, res) => {
     })
 
     // Data is valid => register the user
-    const newUser = new MemberService({
-        username, fullName, email, password
+    const newUser = new MemberModel({
+        username, fullName, email, password, city
     })
+
 
     // Hash the password
     bcrypt.genSalt(10, (err, salt) => {
@@ -76,6 +83,7 @@ router.get('/signin', async (req, res) => {
                     username: user.username,
                     fullName: user.fullName,
                     email: user.email,
+                    city: user.city
                 }
                 jwt.sign(payload, key, {
                     expiresIn: 604800
