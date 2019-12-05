@@ -26,29 +26,12 @@ const routes = [
     name: 'about',
     component: About
   },
-  {
-    path: '/api/signup',
-    name: 'register',
-    component: RegisterForm,
-    meta: { requiresGuest: true }
-  },
-  {
-    path: '/api/signin',
-    name: 'login',
-    component: LoginForm,
-    meta: { requiresGuest: true }
-  },
-  {
-    path: '/api/profile',
-    name: 'profile',
-    component: Profile,
-    meta: { requiresAuth: true }
-  },
+  
   {
     path: '/dashboard',
     name: 'dashboard',
     component: Dashboard,
-    meta: { requiresAuth: true }
+    meta: { requiresAuth: false }
   },
   {
     path: '/book/all',
@@ -76,8 +59,26 @@ const routes = [
     name: 'bookform',
     props: true,
     component: BookForm,
-    meta: { requiresAuth: true }
-  }
+    meta: { requiresAuth: false }
+  },
+  {
+    path: '/api/signup',
+    name: 'register',
+    component: RegisterForm,
+    meta: { requiresGuest: false }
+  },
+  {
+    path: '/api/signin',
+    name: 'login',
+    component: LoginForm,
+    meta: { requiresGuest: false }
+  },
+  {
+    path: '/api/profile',
+    name: 'profile',
+    component: Profile,
+    meta: { requiresAuth: false }
+  },
 
 
 ]
@@ -98,7 +99,7 @@ router.beforeEach((to, from, next) => {
       //   path: '/',
       //   query: { redirect: to.fullPath }
       // })
-      next('/login')
+      next('/api/signin')
     } else {
       next()
     }

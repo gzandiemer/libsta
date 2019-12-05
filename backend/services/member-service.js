@@ -10,7 +10,7 @@ class MemberService extends BaseService {
         await follower.save()
         await member.save()
     }
-    //below functions stay here or in library service?
+    
     async addBook(member, book) {
         member.library.push(book)
         book.owner = member._id

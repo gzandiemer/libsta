@@ -20,7 +20,7 @@ const mutations = {
     state.token = token
     state.user = user
     state.status = 'success',
-      state.error = null
+    state.error = null
   },
   AUTH_ERROR(state, err) {
     state.error = err.response.data.msg

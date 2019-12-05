@@ -253,16 +253,16 @@ Color Palette:
 - documentation
 - navbar
 - sign up/in forms
-- routing
-- Library table
+- routing(!)
+- library table
 - book-form
-- addBook function for library table via book-for
+- addBook function for library table via book-for(!)
 - footer
 
 <a name="in-progress"/>
 
 ### In Progress
-- add icons instead of like button and add an increment button for likes
+- add an increment button for likes
 - after adding book navigate back to member's profile page
 - authentication
 - Add comment upvote section to BookSingle.vue
@@ -271,20 +271,30 @@ Color Palette:
 <a name="to-do"/>
 
 ### To Do
+#### logic
 - validations
+- errors for failure of requirements adding book
 - delete and update book buttons in library
 - save likes to database book.likers
 - Add Carousel to home and dashboard (limit each with 3-4 cards)
 - Sort books from the most liked to the least
-- Add profile card to profile page with follow button
+
+#### style
+- add icon to the buttons in the card
+- library table 
+- profile page style with follow button 
+
 
 <a name="problems-to-fix"/>
 
 #### Problems to fix
 
 - when the book-form is submitted, it should turn back to the member's page but my this.$router.push() doesn_t work
-- book added 2 times or book added but not in library 
+- routing-> book/:id 
+- book not added to member.library
 - like button increases the likes in all cards 
+- comments style ??
+- 
 - auth doesn't work, backend sends 400 for register
 
 <a name="features-to-add"/>

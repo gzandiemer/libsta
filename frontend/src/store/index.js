@@ -4,6 +4,7 @@ import axios from 'axios'
 import auth from './modules/auth'
 import { comments } from './seed.js'
 
+
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -45,8 +46,8 @@ export default new Vuex.Store({
       state.book.save()
       console.log('DELETE_BOOK')
     },
-    SET_COUNTER(state, newCount) {
-      state.counter = newCount
+    SET_COUNTER(state) {
+      state.counter++
     }
   },
   actions: {
@@ -67,11 +68,14 @@ export default new Vuex.Store({
       commit('SET_MEMBER', result.data)
     },
     async addBook({ commit }, data) {
-      console.log('button works', data)
+      console.log('store/index', data)
       const { data: book } = await axios.post(`http://localhost:3000/book`, data.form)
-      console.log(book)
+      console.log('book created', book)
       const result = await axios.post(`http://localhost:3000/member/${data.id}/library`, { book: book._id })
+      console.log('book added to lib', book)
       commit('ADD_BOOK', result.data)
+      console.log('mutations committed')
+    
     },
     async deleteBook({ commit }, data) {
       console.log('button works', data)
@@ -83,7 +87,7 @@ export default new Vuex.Store({
       commit('SET_COUNTER', newCount)
     },
     upvote(commentId) {
-      const comment = this.state.seedData.find(
+      const comment = this.state.comments.find(
         comment => comment.id === commentId
       );
       comment.votes++;

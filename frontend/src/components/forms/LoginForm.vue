@@ -1,16 +1,16 @@
 <template lang="pug">
   #login
     .login-form
-      form(@submit.prevent='loginUser')
+      form(@submit.prevent="onSubmit", @reset.prevent="onReset", v-if="show")
         .input
           label(for='email') E-Mail
-          input#email(type='email' v-model='email') 
+          input#email(type='email' v-model='form.email') 
         .input
           label(for='password') Password
-          input#password(type='password' v-model='password') 
+          input#password(type='password' v-model='form.password') 
         .btns
-          button.submit(type='submit' @click='loginUser') Submit
-          button.reset(type='reset' @click='onReset') Reset
+          button.submit(type='submit') Submit
+          button.reset(type='reset') Reset
         .nav
           b-nav-item.nav-item(href='/api/signup') Haven't registered yet?
 </template>
@@ -21,35 +21,23 @@ import { mapActions } from 'vuex'
 export default {
   data() {
     return {
-      email: "",
-      password: ""
-    };
+      form: {
+        email: '',
+        password: ''
+      },
+      show: true
+    }
+   
   },
-  // computed: {
-  //     emailErrors() {
-  //     const errors = []
-  //     if (!this.$v.email.$dirty) return errors
-  //     !this.$v.email.email && errors.push(this.getError('email_invalid'))
-  //     !this.$v.email.required && errors.push(this.getError('email_necessary'))
-  //     return errors
-  //   },
-  //   passwordErrors() {
-  //     const errors = []
-  //     if (!this.$v.password.$dirty) return errors
-  //     !this.$v.password.required && errors.push(this.getError('password_necessary'))
-  //     !this.$v.password.minLength &&
-  //       errors.push(this.getError('password_min_length'))
-  //     return errors
-  //   }
-  // },
   methods: {
-    ...mapActions(['loginUser']),
+    ...mapActions(['login']),
     onSubmit() { 
       const user = {
-        email: this.email,
-        password: this.password
+        email: this.form.email,
+        password: this.form.password
       }
-      this.loginUser(user)
+      alert(JSON.stringify(this.form))
+      this.login(user)
       .then(res => {
         if(res.data.success) {
           this.$router.push('/api/profile')
@@ -57,24 +45,16 @@ export default {
       }).catch(err => {
         console.log(err)
       })
-   console.log( 'email: ' + this.email + "password: " + this.password)
+   console.log( 'last line! email: ' + this.email + 'password: ' + this.password)
     },
-    // getError: function(errorKey) {
-    //   return this.$store.getters.error({
-    //     errorKey: errorKey,
-    //     route: this.$route.name
-    //   })
-    // },
-    onReset(evt) {
-      evt.preventDefault();
-      // Reset our form values
-      this.email = "";
-      this.password = "";
-      // Trick to reset/clear native browser form validation state
-      this.show = false;
+
+    onReset() {
+      this.email = ''
+      this.password = ''
+      this.show = false
       this.$nextTick(() => {
-        this.show = true;
-      });
+        this.show = true
+      })
     }
   }
 };

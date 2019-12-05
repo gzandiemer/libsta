@@ -6,7 +6,7 @@ import { cachedDataVersionTag } from 'v8'
 test('Create new member', async t => {
   t.plan(8)
   const memberToCreate = {
-    userName: 'gzan',
+    username: 'gzan',
     fullName: 'Gunisigi Zan',
     city: 'Berlin',
     library: [],
@@ -24,7 +24,7 @@ test('Create new member', async t => {
   t.is(res.status, 200)
 
   //comparing the created member's data 
-  t.is(res.body.userName, memberToCreate.userName)
+  t.is(res.body.username, memberToCreate.username)
   t.is(res.body.fullName, memberToCreate.fullName)
   t.is(res.body.city, memberToCreate.city)
   t.deepEqual(res.body.library, memberToCreate.library)
@@ -37,7 +37,7 @@ test('Create new member', async t => {
 test('Fetch a member', async t => {
   t.plan(3)
   const memberToCreate = {
-    userName: 'jenny',
+    username: 'jenny',
     fullName: 'Jennifer Adams',
     city: 'Berlin',
     library: [],
@@ -73,7 +73,7 @@ test('Delete a member', async t => {
 
   //first create a member
   const memberToCreate = {
-    userName: 'sam',
+    username: 'sam',
     fullName: 'Samantha Wilson',
     city: 'Berlin',
     library: [],
@@ -108,7 +108,7 @@ test('Get list of members', async t => {
   t.plan(4)
 
   const memberToCreate = {
-    userName: 'sam',
+    username: 'sam',
     fullName: 'Samantha Wilson',
     city: 'Berlin',
     library: [],
@@ -136,7 +136,7 @@ test('Get list of members', async t => {
 test('Member can follow a member', async t => {
   //create a follower
   const samUser = {
-    userName: 'sam',
+    username: 'sam',
     fullName: 'Samantha Wilson',
     city: 'Berlin',
     library: [],
@@ -151,7 +151,7 @@ test('Member can follow a member', async t => {
 
   //create a member
   const jennyUser = {
-    userName: 'jenny',
+    username: 'jenny',
     fullName: 'Jennifer Jackson',
     city: 'Berlin',
     library: [],
@@ -195,8 +195,8 @@ test('Member can follow a member', async t => {
   t.is(alteredFollowerFetched.following[0]._id, alteredMemberFetched._id)
   t.is(alteredMemberFetched.followers[0]._id, alteredFollowerFetched._id)
 
-  t.is(alteredFollowerFetched.following[0].userName, alteredMemberFetched.userName)
-  t.is(alteredMemberFetched.followers[0].userName, alteredFollowerFetched.userName)
+  t.is(alteredFollowerFetched.following[0].username, alteredMemberFetched.username)
+  t.is(alteredMemberFetched.followers[0].username, alteredFollowerFetched.username)
 
   t.is(alteredFollowerFetched.following[0].fullName, alteredMemberFetched.fullName)
   t.is(alteredMemberFetched.followers[0].fullName, alteredFollowerFetched.fullName)
@@ -216,7 +216,7 @@ test('Member can follow a member', async t => {
 
 test('Member can add a book', async t => {
   const samUser = {
-    userName: 'sam',
+    username: 'sam',
     fullName: 'Samantha Wilson',
     city: 'Berlin',
     library: [],
@@ -263,7 +263,7 @@ test('Member can add a book', async t => {
 
 test('Member can like a book', async t => {
   const samUser = {
-    userName: 'sam',
+    username: 'sam',
     fullName: 'Samantha Wilson',
     city: 'Berlin',
     library: [],

@@ -4,9 +4,9 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const passport = require('passport')
 const key = require('../config/keys').secret
-const user = require('../models/member')
+const user = require('../models/user')
 
-const MemberService = require('../services/member-service')
+const UserService = require('../services/user-service')
 
 router.post('/signup', async (req, res) => {
     const {
@@ -43,8 +43,8 @@ router.post('/signup', async (req, res) => {
     })
 
     // Data is valid => register the user
-    const newUser = new MemberModel({
-        username, fullName, email, password, city
+    const newUser = new UserModel({
+        username, fullName, email, password
     })
 
 

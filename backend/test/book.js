@@ -6,7 +6,7 @@ test('Create new book', async t => {
   t.plan(7)
 
   const memberToCreate = {
-    userName: 'sam',
+    username: 'sam',
     fullName: 'Samantha Wilson',
     city: 'Berlin',
     library: [],
@@ -49,7 +49,7 @@ test('Fetch a book', async t => {
   t.plan(3)
 
   const memberToCreate = {
-    userName: 'sam',
+    username: 'sam',
     fullName: 'Samantha Wilson',
     city: 'Berlin',
     library: [],
@@ -93,7 +93,7 @@ test('Delete a book', async t => {
   t.plan(4)
 
   const memberToCreate = {
-    userName: 'sam',
+    username: 'sam',
     fullName: 'Samantha Wilson',
     city: 'Berlin',
     library: [],
@@ -135,7 +135,7 @@ test('Get list of books', async t => {
   t.plan(4)
 
   const memberToCreate = {
-    userName: 'sam',
+    username: 'sam',
     fullName: 'Samantha Wilson',
     city: 'Berlin',
     library: [],

@@ -24,9 +24,6 @@ app.use('/api', authRouter)
 app.use(passport.initialize())
 require('./config/passport')(passport)
 
-app.get('*', (req, res) => {
-    res.sendFile(path.join(_dirname, 'public/index.html'))
-})
 
 app.get('/', (req, res) => {
     res.render('index')

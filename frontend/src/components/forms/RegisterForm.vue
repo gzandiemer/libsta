@@ -1,95 +1,95 @@
 <template lang="pug">
   #register
     .register-form
-      form(@submit.prevent='registerUser')
+      form(@submit.prevent="onSubmit", @reset.prevent="onReset", v-if="show")
         .input
           label(for='username') Username
-          input#username(type='string' v-model='username')
+          input#username(type='string' v-model='form.username')
         .input
           label(for='fullName') Full Name
-          input#fullName(type='string' v-model='fullName')
+          input#fullName(type='string' v-model='form.fullName')
         .input
           label(for='email') E-Mail
-          input#email(type='email' v-model='email')
+          input#email(type='email' v-model='form.email')
         .input
           label(for='password') Password
-          input#password(type='password' v-model='password')
+          input#password(type='password' v-model='form.password')
         .input
           label(for='confirmPassword') Confirm Password
-          input#confirmPassword(type='password' v-model='confirmPassword')
+          input#confirmPassword(type='password' v-model='form.confirmPassword')
         .input
           label(for='city') City
-          select#city(v-model='city')
+          select#city(v-model='form.city')
             option(value='berlin') Berlin
         .input.inline
-          input#terms(type='checkbox' v-model='terms')
+          input#terms(type='checkbox' v-model='form.terms')
           label(for='terms') Accept Terms of Use
         .btns
-          button.submit(type='submit' @click='registerUser') Submit
-          button.reset(type='reset' @click='onReset') Reset
+          button.submit(type='submit') Submit
+          button.reset(type='reset') Reset
         .nav
           b-nav-item.nav-item(href='/api/signin') Already registered?
 </template>
 
 <script>
-  import { mapActions } from 'vuex'
+import { mapActions } from "vuex";
 
-  export default {
-    data () {
-      return {
+export default {
+  data() {
+    return {
+      form: {
         username: '',
         fullName: '',
         email: '',
         password: '',
         confirmPassword: '',
-        city: 'Berlin',
+        city: null,
         terms: false
-      }
-    },
-    methods: {
-      ...mapActions(['register']),
-      registerUser() {
-        const user = {
-          username: this.username,
-          fullName: this.fullName,
-          email: this.email,
-          password: this.password,
-          confirmPassword: this.confirmPassword,
-          city: this.city, 
-        }
-        console.log(user)
-        this.register(user)
-        .then(res => {
-        if(res.data.success) {
-          this.$router.push('login')
-        } 
-        }).catch(err => {
-        console.log(err)
-      })
       },
+      show: true
+    }
+  },
+  methods: {
+    ...mapActions(['register']),
+    onSubmit() {
+      const user = {
+        username: this.form.username,
+        fullName: this.form.fullName,
+        email: this.form.email,
+        password: this.form.password,
+        confirmPassword: this.form.confirmPassword,
+        city: this.form.city
+      }
+      console.log(user)
+      this.register(user).then(res => {
+          if (res.data.success) {
+            this.$router.push({ path:'/api/singin'});
+          }
+        }).catch(err => {
+          console.log(err)
+        })
+    },
+    onReset() {
+      this.username = ''
+      this.fullName = ''
+      this.email = ''
+      this.password = ''
+      this.confirmPassword = ''
+      this.city = null
+      this.terms = false
 
-   onReset(evt) {
-      evt.preventDefault();
-      // Reset our form values
-      this.username = "",
-      this.fullName = "",
-      this.email = "";
-      this.password = "";
-      this.confirmPassword = "";
-      // Trick to reset/clear native browser form validation state
-      this.show = false;
+      this.show = false
       this.$nextTick(() => {
-        this.show = true;
-      });
+        this.show = true
+      })
     }
   }
-}
+};
 </script>
 
 <style scoped>
-
 body {
-  background-color: #f5900f!important;
+  background-color: #f5900f !important;
 }
 
 .register-form {
@@ -145,7 +145,6 @@ body {
   font: inherit;
   cursor: pointer;
   width: 80px;
-
 }
 
 .btns button:hover,
@@ -180,23 +179,24 @@ body {
 }
 
 .nav {
-  text-align:center; 
-  display:contents;
+  text-align: center;
+  display: contents;
 }
 
-.nav-link  {
+.nav-link {
   color: inherit !important;
   /* font-family: "Lato"; */
   font-style: italic;
 }
 
 .nav-item {
- list-style-type: none !important;
+  list-style-type: none !important;
 }
 
-.nav-link:hover, .nav-link:active {
-  color:#521751!important;
-  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-} 
-
+.nav-link:hover,
+.nav-link:active {
+  color: #521751 !important;
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
 </style>

@@ -5,7 +5,7 @@
       |       Libsta
     b-navbar-toggle(target='nav-collapse')
     b-collapse#nav-collapse(is-nav='')
-      b-navbar-nav(:class="[currentPage ? activeClass : 'active', 'b-nav-item']")
+      b-navbar-nav
         b-nav-item(href='/about') About
         b-nav-item(href='/member/all') Members
         b-nav-item(href='/book/all') Books
@@ -31,20 +31,8 @@
 <script>
 import { mapGetters, mapActions } from "vuex"
 export default {
-    // data() {
-    //   return {
-    //     activeClass: 'active'
-    //   };
-
-    // },
     computed: {
         ...mapGetters(['isLoggedIn']),
-        // auth() {
-        //     return this.$store.getters.isAuthenticated
-        // },
-        // currentPage() {
-        //   return this.$router.path;
-        // }
     },
     methods: {
       ...mapActions(['logout']),

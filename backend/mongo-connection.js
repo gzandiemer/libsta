@@ -4,7 +4,7 @@ const db = require('./config/keys').mongoUrl || process.env.MONGODB_CONNECTION_S
 
 async function main() {
     await mongoose.connect(db, { useUnifiedTopology: true, useNewUrlParser: true })
-    console.log('Database connected on ${db}')
+    console.log(`Database connected on ${db}`)
 }
 
 main()

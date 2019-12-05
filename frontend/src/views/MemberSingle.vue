@@ -1,11 +1,11 @@
 <template lang="pug">
   main
-    section
+    section.card
       member-card(:member='member')
     section.container.table-responsive
-      h2 {{ member.userName }}&apos;s Lib
+      h2 {{ member.userName }}'s Lib
       b-table.m-10(striped='' hover='' bordered='' :items='library')
-        b-nav-item(:href='`/member/${member._id}/addbook`') Add Book
+      b-nav-item(class="add", :href='`/member/${member._id}/addbook`') Add Book
 </template>
 
 <script>
@@ -44,4 +44,19 @@ export default {
 </script>
 
 <style scoped>
+main {
+  display: inline-block;
+}
+.card {
+  float: left;
+  width: 40%;
+}
+.container {
+  float:right;
+  width: 50%;
+}
+.add {
+    list-style-type: none
+}
+
 </style>

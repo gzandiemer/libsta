@@ -1,5 +1,5 @@
 <template lang="pug"> 
-  div(style='display: flex; width: 100%')
+  div(style='display:flex;')
     .media-content
       .content
         p
@@ -7,9 +7,7 @@
             a.has-text-info(:href='comment.url')
               | {{ comment.title }}
               span.tag.is-small {{ comment.id }}
-          br
           |               {{ comment.text}}
-          br
           small.is-size-7
             | Submitted by:
             img.image.is-24x24(:src='comment.avatar')
