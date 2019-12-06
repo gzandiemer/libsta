@@ -4,10 +4,10 @@ import app from '../app'
 import { cachedDataVersionTag } from 'v8'
 
 test('Create new member', async t => {
-  t.plan(8)
+  t.plan(9)
   const memberToCreate = {
-    username: 'gzan',
-    fullName: 'Gunisigi Zan',
+    username: 'sammy',
+    fullName: 'Samantha Wilson',
     city: 'Berlin',
     library: [],
     likes: [],
@@ -73,7 +73,7 @@ test('Delete a member', async t => {
 
   //first create a member
   const memberToCreate = {
-    username: 'sam',
+    username: 'sammy',
     fullName: 'Samantha Wilson',
     city: 'Berlin',
     library: [],
@@ -108,7 +108,7 @@ test('Get list of members', async t => {
   t.plan(4)
 
   const memberToCreate = {
-    username: 'sam',
+    username: 'sammy',
     fullName: 'Samantha Wilson',
     city: 'Berlin',
     library: [],
@@ -136,7 +136,7 @@ test('Get list of members', async t => {
 test('Member can follow a member', async t => {
   //create a follower
   const samUser = {
-    username: 'sam',
+    username: 'sammy',
     fullName: 'Samantha Wilson',
     city: 'Berlin',
     library: [],
@@ -216,7 +216,7 @@ test('Member can follow a member', async t => {
 
 test('Member can add a book', async t => {
   const samUser = {
-    username: 'sam',
+    username: 'sammy',
     fullName: 'Samantha Wilson',
     city: 'Berlin',
     library: [],
@@ -263,7 +263,7 @@ test('Member can add a book', async t => {
 
 test('Member can like a book', async t => {
   const samUser = {
-    username: 'sam',
+    username: 'sammy',
     fullName: 'Samantha Wilson',
     city: 'Berlin',
     library: [],

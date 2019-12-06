@@ -3,50 +3,63 @@ const router = express.Router()
 
 const MemberService = require('../services/member-service')
 const BookService = require('../services/book-service')
+// const isLoggedIn = require('../middleware/is-logged-in')
+
+// const middleware = (req, res) => {
+//     console.log('I won\'t allow access to this')
+//     res.send('no')
+// }
+
+// router.get('/*/json', isLoggedIn)
+
+router.get('/', async (req, res) => {
+    res.send(await MemberService.findAll())
+})
 
 router.get('/all', async (req, res) => {
-    const users = await MemberService.findAll()
-    res.render('list', {items: users})
+    const members = await MemberService.findAll()
+    res.render('list', {items: members})
 })
 
 router.get('/all/json', async (req, res) => {
-    const users = await MemberService.findAll()
-    res.send(users)
+    const members = await MemberService.findAll()
+    res.send(members)
 })
 
 router.get('/:id', async (req, res) => {
-    const user = await MemberService.find(req.params.id)
-    if (!user) res.status(404)
-    res.render('data', {data: user})
+    const member = await MemberService.find(req.params.id)
+    // if (!user) res.status(404)
+    res.render('data', {data: member})
    
 })
 
 router.get('/:id/json', async (req, res) => {
-    const user = await MemberService.find(req.params.id)
-    if (!user) res.status(404)
-    res.send(user)
+    const member = await MemberService.find(req.params.id)
+    if (!member) res.status(404)
+    res.send(member)
    
 })
 
 router.get('/:id/library', async (req, res) => {
-    const user = await MemberService.find(req.params.id)
-    const library = user.library
-    res.render('library', { member:user, books: library})
+    const member = await MemberService.find(req.params.id)
+    const library = member.library
+    res.render('library', { member:member, books: library})
 })
 
 router.post('/', async (req, res) => {
-    const user = await MemberService.add(req.body)
-    res.send(user)
+    const member = await MemberService.add(req.body)
+    res.send(member)
 })
 
 router.delete('/:id', async (req, res) => {
-    const user = await MemberService.del(req.params.id)
-    res.send(user)
+    await MemberService.del(req.params.id)
+    res.send('ok!')
 })
 
 router.post('/:id/followers', async (req, res) => {
     const member= await MemberService.find(req.params.id)
-    const follower = await MemberService.find(req.body.follower)
+    const follower = await MemberService.find(req.body.followerId)
+
     await MemberService.followMember(follower, member)
     res.send({follower, member})
 })

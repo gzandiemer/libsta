@@ -1,7 +1,7 @@
 <template lang="pug">
   article.member-card
     h2.card-title
-      router-link(:to='memberUrl')  {{ member.userName }}
+      router-link(:to='memberUrl')  {{ member.username }}
     img.img-circle.img-responsive(:src='`https://picsum.photos/300/200?random=${member._id}`' alt='')
     p  City: {{ member.city }}
     p  {{ member.followers.length }} followers 

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const db = require('./config/keys').mongoUrl || process.env.MONGODB_CONNECTION_STRING
+const db = process.env.MONGODB_CONNECTION_STRING || "mongodb://localhost/libsta" 
 
 async function main() {
     await mongoose.connect(db, { useUnifiedTopology: true, useNewUrlParser: true })

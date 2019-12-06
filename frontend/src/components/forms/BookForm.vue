@@ -4,29 +4,28 @@
       <form @submit="onSubmit" @reset="onReset" v-if="show">
         <div class="input">
           <label for="title"> Title</label>
-            <input class="title" type='string' v-model="form.title">
+          <input class="title" type="string" v-model="form.title" />
         </div>
         <div class="input">
           <label for="authorName"> Author</label>
-          <input class="authorName" type='string' v-model="form.authorName">
+          <input class="authorName" type="string" v-model="form.authorName" />
         </div>
         <div class="input">
           <label for="language"> Language</label>
-          <input class="language" type='string' v-model="form.language">
+          <input class="language" type="string" v-model="form.language" />
         </div>
         <div class="input">
           <label for="pubDate">Publication Date</label>
-          <input class="pubDate" type='string' v-model="form.pubDate">
+          <input class="pubDate" type="string" v-model="form.pubDate" />
         </div>
         <div class="btns">
-          <button class="submit" type='submit'>Add</button>
-          <button class="reset" type='reset'>Reset</button>
+          <button class="submit" type="submit">Add</button>
+          <button class="reset" type="reset">Reset</button>
         </div>
       </form>
     </div>
   </div>
 </template>
-
 
 <script>
 import { mapState, mapActions } from "vuex";
@@ -49,47 +48,46 @@ export default {
     };
   },
   computed: {
-    ...mapState(['member', 'book'])
+    ...mapState(["member", "book"])
   },
 
   methods: {
-    ...mapActions(['addBook']),
+    ...mapActions(["addBook"]),
     onSubmit(evt) {
-      evt.preventDefault()
-      alert(JSON.stringify(this.form))
+      evt.preventDefault();
+      // alert(JSON.stringify(this.form));
       this.addBook({ form: this.form, id: this.id })
-        .then(res => {
-          if (res.data.success) {
-            console.log('added')
-            // alert("This book is successfully added to your library.").then(
-            //   () => {
-            //     this.$router.push({ path: `/member/${this.member_id}` })
-            //   }
-            // )
-          }
-        })
-        .catch(err => {
-          console.log(err);
-        });
+      alert("This book is successfully added to your library.")
+      this.$router.push({ path: `/member/${this.id}` })
+        // .then(res => {
+        //   if (res.data.success) {
+        //     alert("This book is successfully added to your library.").then(() => {
+        //       this.$router.push({ path: `/member/${this.member_id}` })
+        //     })
+        //   }
+        // })
+        // .catch(err => {
+        //   console.log(err);
+        // });
     },
     onReset(evt) {
-      console.log('reset btn works')
+      console.log("reset btn works");
       evt.preventDefault();
       // Reset our form values
-      this.form.title = ''
-      this.form.authorName = ''
-      this.form.language = ''
-      this.form.pubDate = ''
-      this.form.checked = []
-      console.log('data null')
+      this.form.title = "";
+      this.form.authorName = "";
+      this.form.language = "";
+      this.form.pubDate = "";
+      this.form.checked = [];
+      console.log("data null");
       // Trick to reset/clear native browser form validation state
-      this.show = false
+      this.show = false;
       this.$nextTick(() => {
-        this.show = true
-      })
+        this.show = true;
+      });
     }
   }
-}
+};
 </script>
 <style scoped>
 .book-form {

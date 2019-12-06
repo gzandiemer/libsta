@@ -37,19 +37,4 @@ section {
   padding: 40px 0;
 }
 
-.increment-button {
-  color: darkcyan;
-  padding: 10px 20px;
-  border-radius: 8px;
-  background-color: white;
-  border: 1px solid darkcyan;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  margin-bottom: 20px;
-}
-.increment-button:hover {
-  background-color: darkcyan;
-  color: white;
-}
 </style>

@@ -6,19 +6,19 @@ block content
       .col-md-6.col-md-offset-3
         h1.display-4.m-b-2 Sign Up
 
-        form(method='POST' action='/signup')
+        form(action='/auth/register' method='POST' )
           div.form-group
             label(for='username') Username:
-            input#username.form-control(type='text', placeholder='username' name='username')
+            input#username.form-control(type='text', placeholder='username', name='username')
           div.form-group
             label(for='name') Name:
-            input#name.form-control(type='text', placeholder='first and last' name='name')
+            input#name.form-control(type='text', placeholder='first and last', name='name')
           div.form-group
             label(for='city') City:
-            input#city.form-control(type='text', placeholder='city' name='city')
+            input#city.form-control(type='text', placeholder='city', name='city')
           div.form-group
             label(for='email') Email:
-            input#email.form-control(type='email', placeholder='name@email.com' name='email')
+            input#email.form-control(type='email', placeholder='name@email.com', name='email')
           div.form-group
             label(for='pw') Password:
             input#pw.form-control(type='password', name='password')

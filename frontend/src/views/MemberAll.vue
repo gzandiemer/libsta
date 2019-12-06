@@ -10,7 +10,7 @@ import MemberCard from "@/components/MemberCard.vue";
 import { mapState, mapActions } from "vuex";
 
 export default {
-  name: "members",
+  name: 'MemberAll',
   components: {
     MemberCard
   },

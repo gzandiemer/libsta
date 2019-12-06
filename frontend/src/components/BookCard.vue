@@ -3,14 +3,14 @@
     h2.card-title
       router-link(:to='bookUrl')  {{ book.title }}
     img(:src='`https://picsum.photos/300/200?random=${book._id}`' alt='')
-    p
-      | By {{ book.authorName }}
-    p In {{ book.language }}
-    p In {{ book.pubDate }}
-    p
-      | {{ counter }} 
-      button(v-on:click.self='onLike') Likes
-    button Request
+    .text
+      p
+        | By {{ book.authorName }}
+      p In {{ book.language }}
+      p In {{ book.pubDate }}
+    .btns
+      button(@click='onLike') Like!
+      p Likes: {{likes}}
 </template>
 
 <script>
@@ -20,18 +20,15 @@ export default {
   name: 'BookCard',
   props: ['book'],
   computed: {
-    ...mapState(['counter']),
+     ...mapState(['likes']),
     bookUrl() {
       return `/book/${this.book._id}`;
-    },
-    count(){
-      return this.$store.state.counter
     }
   },
   methods: {
-    ...mapActions(['incrementCounter']),
+    ...mapActions(['addLikes']),
     onLike() {
-    this.incrementCounter()
+    this.addLikes()
     console.log('Like button works!')  
     }
   }
@@ -46,7 +43,7 @@ export default {
   border: 1px solid #ddd;
   border-radius: 3px;
   margin: 20px;
-  min-width: 200px;
+  min-width: 25%;
 }
 
 .card-title {

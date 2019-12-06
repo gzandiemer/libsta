@@ -7,21 +7,21 @@
       .msg
         err-msg(v-if='error' :msg='error')
       router-view
-    //- app-footer
+    app-footer
 </template>
 
 <script>
 import Header from './components/Header.vue'
 import Errors from './components/Errors'
-// import Footer from './components/Footer.vue'
+import Footer from './components/Footer.vue'
 import { mapGetters } from 'vuex'
 
 export default {
   name: 'app',
   components: {
     'app-header': Header,
-    'err-msg': Errors
-    // 'app-footer': Footer
+    'err-msg': Errors,
+    'app-footer': Footer
   },
   computed: {
     ...mapGetters(['error'])
@@ -47,7 +47,7 @@ body, html {
 }
 
 .content{
-  min-height: calc(100vh - 120px);
+  min-height: calc(100vh - 100px);
 }
 
 h2 {

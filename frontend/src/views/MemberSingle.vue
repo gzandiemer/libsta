@@ -3,8 +3,21 @@
     section.card
       member-card(:member='member')
     section.container.table-responsive
-      h2 {{ member.userName }}'s Lib
-      b-table.m-10(striped='' hover='' bordered='' :items='library')
+      h2 {{ member.username }}'s Lib
+      // tbody
+      //   tr(striped='' hover='' bordered='' v-for="item in items" :items='library')
+      //     td(v-text="book.title")
+      //     td(v-text="item.author")
+      //     td(v-text="item.language")
+      //     td(v-text="item.pubDate")
+      //     td(v-text="item.booked")
+      //     td(v-button @click="deleteRow(item.id)" v-text="X")
+      
+      b-table.m-10(striped='' hover='' bordered='' :items='library' :fields="fields" :key='book.id')
+        template
+          b-btn(@row-clicked="(item, index,event) => rowDblClickHandeler(book.id, item, index, event)") X
+        
+          
       b-nav-item(class="add", :href='`/member/${member._id}/addbook`') Add Book
 </template>
 
@@ -17,6 +30,30 @@ export default {
   components: {
     MemberCard
   },
+  data(){
+    return {
+      fields: [
+        {
+          key: 'title',
+          sortable: true
+        },
+        {
+          key: 'author',
+        },
+        {
+          key: 'pubDate',
+          label: 'Publication Date',
+          sortable: true
+        },
+        {
+          key: 'booked',
+        },
+        {
+          key: '',
+        },
+      ]
+    }
+  },
   computed: {
     ...mapState(['member', 'book', 'members', 'books']),
     library() {
@@ -26,16 +63,14 @@ export default {
           author: book.authorName,
           language: book.language,
           pubDate: book.pubDate,
-          booked: book.booked ? 'Booked' : 'Available'
+          booked: book.booked ? 'Booked' : 'Available',
+          delete: book.delete
         }
       })
     }
   },
   methods: {
     ...mapActions(['fetchMember', 'fetchMembers']),
-    // addBook(){
-    //       this.$router.push({name: 'addbook'})
-    // }
   },
   created() {
     this.fetchMember(this.$route.params.id)
@@ -53,7 +88,7 @@ main {
 }
 .container {
   float:right;
-  width: 50%;
+  width: 100vw;
 }
 .add {
     list-style-type: none

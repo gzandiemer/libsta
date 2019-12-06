@@ -7,7 +7,7 @@ services:
       context: backend
       dockerfile: Dockerfile
     environment:
-      MONGODB_CONNECTION_STRING: "mongodb://mongodb/wtm"
+      MONGODB_CONNECTION_STRING: "mongodb://mongodb/libsta"
       PORT: "3000"
     ports:
       - 3000:3000

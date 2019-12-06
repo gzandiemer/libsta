@@ -18,13 +18,13 @@
           template(v-slot:button-content='')
             div
               em Sign
-          b-dropdown-item(href='/api/signin') In
-          b-dropdown-item(href='/api/signup') Up
+          b-dropdown-item(href='/auth/login') In
+          b-dropdown-item(href='/auth/register') Up
         b-nav-item-dropdown(right='' v-if='isLoggedIn')
           template(v-slot:button-content='')
             div
               em User
-          b-dropdown-item(href='/api/profile') Profile
+          b-dropdown-item(href='/auth/profile') Profile
           b-dropdown-item(@click.prevent='logoutUser') Logout
 </template>
 

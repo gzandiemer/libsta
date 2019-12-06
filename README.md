@@ -195,7 +195,7 @@ Compiles and hot-reloads for development:
 ### HTTP Request Examples using Axios
 
  Create a new member: <br />
- ```axios.post('http://localhost:3000/member', { userName: 'johnny', fullName: 'John Doe', city: 'Berlin'}).then(console.log)```
+ ```axios.post('http://localhost:3000/member', { username: 'myNickname, fullName: 'myFirstName myLastName', city: 'Berlin'}).then(console.log)```
 
  View member profile: <br />
  ```axios.get('http://localhost:3000/member/5dcff1784185624d8dfaa4c6').then(console.log)```
@@ -207,7 +207,7 @@ Compiles and hot-reloads for development:
 ```axios.delete('/member/5dcff1784185624d8dfaa4c6').then(console.log)```
 
  Create a new book: <br />
-```axios.post('http://localhost:3000/book', { title: 'One Hundred Years of Solitude', authorName: 'Gabriel Garcia Marquez', language: 'english', pubdate: 2000, booked: false}).then(console.log)```
+```axios.post('http://localhost:3000/book', { title: 'myBook', authorName: 'myAuthor', language: 'english', pubdate: 2000, booked: false}).then(console.log)```
 
  View book profile: <br />
 ```axios.get('http://localhost:3000/book/5dcff970d4f5e04e16bf51e0').then(console.log)```
@@ -223,6 +223,9 @@ Compiles and hot-reloads for development:
 
  View login page: <br />
 ```axios.get('http://localhost:3000/login').then(console.log)```
+
+ Register user: <br />
+```axios.post('http://localhost:3000/auth/register', {username: 'myUsername', password:'myPassword'}).then(res => console.log(res.data)).catch(res=>console.log(res))```
 
 <a name="style-guide"/>
 
@@ -289,13 +292,11 @@ Color Palette:
 
 #### Problems to fix
 
-- when the book-form is submitted, it should turn back to the member's page but my this.$router.push() doesn_t work
-- routing-> book/:id 
-- book not added to member.library
+- ADD/INSTALL style from upvote - the book to comments 
+- auth from video - jscc and keep in mind catch errors somewhere else!!! and read https://stackoverflow.com/a/53607043
 - like button increases the likes in all cards 
 - comments style ??
-- 
-- auth doesn't work, backend sends 400 for register
+
 
 <a name="features-to-add"/>
 

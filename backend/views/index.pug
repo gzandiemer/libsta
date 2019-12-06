@@ -1,5 +1,9 @@
 extends layout
 
 block content
-    h1 This will be the homepage!
+    if username
+        h1 Hello #{username}
+    else
+        h1 Hello stranger, you are not logged in!
+    
     

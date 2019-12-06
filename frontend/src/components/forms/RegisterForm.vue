@@ -28,7 +28,7 @@
           button.submit(type='submit') Submit
           button.reset(type='reset') Reset
         .nav
-          b-nav-item.nav-item(href='/api/signin') Already registered?
+          b-nav-item.nav-item(href='/auth/local') Already registered?
 </template>
 
 <script>
@@ -38,19 +38,19 @@ export default {
   data() {
     return {
       form: {
-        username: '',
-        fullName: '',
-        email: '',
-        password: '',
-        confirmPassword: '',
+        username: "",
+        fullName: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
         city: null,
         terms: false
       },
       show: true
-    }
+    };
   },
   methods: {
-    ...mapActions(['register']),
+    ...mapActions(["register"]),
     onSubmit() {
       const user = {
         username: this.form.username,
@@ -59,29 +59,26 @@ export default {
         password: this.form.password,
         confirmPassword: this.form.confirmPassword,
         city: this.form.city
-      }
-      console.log(user)
-      this.register(user).then(res => {
-          if (res.data.success) {
-            this.$router.push({ path:'/api/singin'});
-          }
-        }).catch(err => {
-          console.log(err)
-        })
+      };
+      alert(JSON.stringify(this.form));
+      console.log(user);
+      this.register(user)
+        .then()
+        .catch();
     },
     onReset() {
-      this.username = ''
-      this.fullName = ''
-      this.email = ''
-      this.password = ''
-      this.confirmPassword = ''
-      this.city = null
-      this.terms = false
+      this.username = "";
+      this.fullName = "";
+      this.email = "";
+      this.password = "";
+      this.confirmPassword = "";
+      this.city = null;
+      this.terms = false;
 
-      this.show = false
+      this.show = false;
       this.$nextTick(() => {
-        this.show = true
-      })
+        this.show = true;
+      });
     }
   }
 };

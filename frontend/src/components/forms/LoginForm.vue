@@ -12,49 +12,44 @@
           button.submit(type='submit') Submit
           button.reset(type='reset') Reset
         .nav
-          b-nav-item.nav-item(href='/api/signup') Haven't registered yet?
+          b-nav-item.nav-item(href='/auth/register') Haven't registered yet?
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions } from "vuex";
 
 export default {
   data() {
     return {
       form: {
-        email: '',
-        password: ''
+        email: "",
+        password: ""
       },
       show: true
-    }
-   
+    };
   },
   methods: {
-    ...mapActions(['login']),
-    onSubmit() { 
+    ...mapActions(["login"]),
+    onSubmit() {
       const user = {
         email: this.form.email,
         password: this.form.password
-      }
-      alert(JSON.stringify(this.form))
+      };
       this.login(user)
-      .then(res => {
-        if(res.data.success) {
-          this.$router.push('/api/profile')
-        }
-      }).catch(err => {
-        console.log(err)
-      })
-   console.log( 'last line! email: ' + this.email + 'password: ' + this.password)
+        .then()
+        .catch();
+      console.log(
+        "last line! email: " + this.email + "password: " + this.password
+      );
     },
 
     onReset() {
-      this.email = ''
-      this.password = ''
-      this.show = false
+      this.email = "";
+      this.password = "";
+      this.show = false;
       this.$nextTick(() => {
-        this.show = true
-      })
+        this.show = true;
+      });
     }
   }
 };
@@ -147,25 +142,23 @@ export default {
 }
 
 .nav {
-  text-align:center; 
-  display:contents;
+  text-align: center;
+  display: contents;
 }
 
-.nav-link  {
+.nav-link {
   color: inherit !important;
   /* font-family: "Lato"; */
   font-style: italic;
 }
 
 .nav-item {
- list-style-type: none !important;
+  list-style-type: none !important;
 }
 
-.nav-link:hover, .nav-link:active {
+.nav-link:hover,
+.nav-link:active {
   color: #521751 !important;
-  box-shadow: 0 6px 8px 0 rgba(0,0,0,0.24), 0 10px 10px 0 rgba(0,0,0,0.19);
-} 
-
-
-
+  box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.24), 0 10px 10px 0 rgba(0, 0, 0, 0.19);
+}
 </style>
