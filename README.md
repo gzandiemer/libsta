@@ -256,26 +256,23 @@ Color Palette:
 - documentation
 - navbar
 - sign up/in forms
-- routing(!)
+- routing
 - library table
 - book-form
-- addBook function for library table via book-for(!)
+- addBook function for library table via book-form
 - footer
 
 <a name="in-progress"/>
 
 ### In Progress
-- add an increment button for likes
-- after adding book navigate back to member's profile page
-- authentication
 - Add comment upvote section to BookSingle.vue
-- error handling
 
 <a name="to-do"/>
 
 ### To Do
 #### logic
-- validations
+- authentication
+- validations, error handling
 - errors for failure of requirements adding book
 - delete and update book buttons in library
 - save likes to database book.likers

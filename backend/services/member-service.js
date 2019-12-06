@@ -17,6 +17,13 @@ class MemberService extends BaseService {
         await member.save()
         await book.save()
     }
+    
+    async deleteBook(member, book) {
+        member.library.push(book)
+        book = null
+        await member.save()
+        await book.save()
+    }
 
     async likeBook(member, book) {
         member.likes.push(book)

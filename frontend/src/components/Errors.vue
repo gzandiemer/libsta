@@ -4,18 +4,16 @@
 
 <script>
 export default {
-    props: ['msg']
+  props: ["msg"]
 }
 </script>
 
 <style scoped>
 .alert {
-    border-radius: 0px;
+  border-radius: 0px;
 }
 
 .alert-danger {
-    /* background: red;
-    color: #fff; */
-    background: #bf0B2c;
-    color: #ccc; 
+  background: #bf0b2c;
+  color: #ccc;
 }

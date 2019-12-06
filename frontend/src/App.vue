@@ -30,11 +30,10 @@ export default {
 </script>
 
 <style>
-body, html {
-    margin: 0;
-    font-family: 'Lato', Helvetica, sans-serif;
-    /* font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;  */
-   
+body,
+html {
+  margin: 0;
+  font-family: 'Lato', Helvetica, sans-serif;
 }
 
 #app {
@@ -46,11 +45,11 @@ body, html {
   color: #2c3e50;
 }
 
-.content{
-  min-height: calc(100vh - 100px);
+.content {
+  min-height: calc(100vh - 130px);
 }
 
 h2 {
-  font-family: 'Merriweather', serif; 
+  font-family: 'Merriweather', serif;
 }
 </style>

@@ -16,43 +16,40 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions } from 'vuex'
 
 export default {
   data() {
     return {
       form: {
-        email: "",
-        password: ""
+        email: '',
+        password: ''
       },
       show: true
-    };
+    }
   },
   methods: {
-    ...mapActions(["login"]),
+    ...mapActions(['login']),
     onSubmit() {
       const user = {
         email: this.form.email,
         password: this.form.password
-      };
+      }
       this.login(user)
         .then()
-        .catch();
-      console.log(
-        "last line! email: " + this.email + "password: " + this.password
-      );
+        .catch()
     },
 
     onReset() {
-      this.email = "";
-      this.password = "";
-      this.show = false;
+      this.email = ''
+      this.password = ''
+      this.show = false
       this.$nextTick(() => {
-        this.show = true;
-      });
+        this.show = true
+      })
     }
   }
-};
+}
 </script>
 
 <style scoped>

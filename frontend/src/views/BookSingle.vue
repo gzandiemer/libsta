@@ -46,5 +46,4 @@ main {
   float: left;
   width: 50%;
 }
-
 </style>

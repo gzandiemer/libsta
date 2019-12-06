@@ -11,19 +11,19 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 export default {
-    computed: {
-        ...mapGetters(['user']),
-    },
-    methods: {
-        ...mapActions(['getProfile'])
-    },
-    created(){
-        this.getProfile()
-    }
+  computed: {
+    ...mapGetters(['user'])
+  },
+  methods: {
+    ...mapActions(['getProfile'])
+  },
+  created() {
+    this.getProfile()
+  }
 }
 </script>
 <style scoped>
 .card {
-    border-radius: opx;
+  border-radius: opx;
 }
 </style>

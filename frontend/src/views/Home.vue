@@ -6,15 +6,15 @@
     section
       h2 Recent Members
       member-card(v-for='member in members' :member='member' :key='member.id')
-</template> 
+</template>
 
 <script>
-import BookCard from "@/components/BookCard.vue";
-import MemberCard from "@/components/MemberCard.vue";
-import { mapState, mapActions } from "vuex";
+import BookCard from '@/components/BookCard.vue'
+import MemberCard from '@/components/MemberCard.vue'
+import { mapState, mapActions } from 'vuex'
 
 export default {
-  name: "home",
+  name: 'home',
   components: {
     BookCard,
     MemberCard
@@ -26,8 +26,8 @@ export default {
     ...mapActions(['fetchBooks', 'fetchMembers'])
   },
   created() {
-    this.fetchBooks();
-    this.fetchMembers();
+    this.fetchBooks()
+    this.fetchMembers()
   }
 }
 </script>
@@ -36,5 +36,4 @@ export default {
 section {
   padding: 40px 0;
 }
-
 </style>

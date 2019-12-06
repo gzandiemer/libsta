@@ -14,44 +14,43 @@
         b-nav-form
           b-form-input.mr-sm-2(size='sm' placeholder='Title or Author')
           b-button.my-2.my-sm-0(size='sm' type='submit') Search
-        b-nav-item-dropdown(right='' v-if='!isLoggedIn')
+        b-nav-item-dropdown(right='')
           template(v-slot:button-content='')
             div
               em Sign
           b-dropdown-item(href='/auth/login') In
           b-dropdown-item(href='/auth/register') Up
-        b-nav-item-dropdown(right='' v-if='isLoggedIn')
-          template(v-slot:button-content='')
-            div
-              em User
-          b-dropdown-item(href='/auth/profile') Profile
-          b-dropdown-item(@click.prevent='logoutUser') Logout
+        // b-nav-item-dropdown(right='' v-if='isLoggedIn')
+        //   template(v-slot:button-content='')
+        //     div
+        //       em User
+        //   b-dropdown-item(href='/auth/profile') Profile
+        //   b-dropdown-item(@click.prevent='logoutUser') Logout
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex"
+// import { mapGetters, mapActions } from 'vuex'
 export default {
-    computed: {
-        ...mapGetters(['isLoggedIn']),
-    },
-    methods: {
-      ...mapActions(['logout']),
-      logoutUser() {
-        this.logout()
-      } 
-    }
+  // computed: {
+  //   ...mapGetters(['isLoggedIn'])
+  // },
+  // methods: {
+  //   ...mapActions(['logout']),
+  //   logoutUser() {
+  //     this.logout()
+  //   }
+  // }
 }
 </script>
 <style scoped>
- .navbar.navbar-dark.bg-dark{
-    background-color: #521751!important;
- }
+.navbar.navbar-dark.bg-dark {
+  background-color: #521751 !important;
+}
 
 #nav-links {
   float: left;
   padding-left: 25px;
   padding-top: 25px;
-  
 }
 #nav {
   padding: 10px;
@@ -66,14 +65,13 @@ export default {
   color: white;
 }
 
-
 .logo {
-  float:left;
-  height: 30px;  
+  float: left;
+  height: 30px;
 }
 
 ul {
-list-style-type: none;
+  list-style-type: none;
 }
 
 button {
@@ -85,42 +83,13 @@ button {
   cursor: pointer;
   color: white;
 }
-button:hover{
+button:hover {
   background-color: white;
   color: #521751;
 }
 
-
-/* .logout {
-  float: right;
-  color: darkcyan;
-  padding: 10px 20px;
-  border-radius: 8px;
-  background-color: transparent;
-  border: none;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  margin-bottom: 20px;
-  margin-top: 16px;
-} */
-/*button {
-  float: right;
-  color: darkcyan;
-  padding: 10px 20px;
-  border-radius: 8px;
-  background-color: white;
-  border: 1px solid darkcyan;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  margin-bottom: 20px;
-  margin-top: 16px;
-}
-
-button:hover{
+button:hover {
   background-color: darkcyan;
   color: white;
-}*/
-
+}
 </style>

@@ -9,8 +9,8 @@
       p In {{ book.language }}
       p In {{ book.pubDate }}
     .btns
-      button(@click='onLike') Like!
-      p Likes: {{likes}}
+      button(@click='onLike') Like! 
+      p(:likes="likes")
 </template>
 
 <script>
@@ -20,19 +20,19 @@ export default {
   name: 'BookCard',
   props: ['book'],
   computed: {
-     ...mapState(['likes']),
+    ...mapState(['likes']),
     bookUrl() {
-      return `/book/${this.book._id}`;
+      return `/book/${this.book._id}`
     }
   },
   methods: {
     ...mapActions(['addLikes']),
     onLike() {
-    this.addLikes()
-    console.log('Like button works!')  
+      this.addLikes()
+      console.log('Like button works!')
     }
   }
-};
+}
 </script>
 
 <style scoped>

@@ -1,24 +1,43 @@
-<template lang="pug">
-  main
-    section.card
-      member-card(:member='member')
-    section.container.table-responsive
-      h2 {{ member.username }}'s Lib
-      // tbody
-      //   tr(striped='' hover='' bordered='' v-for="item in items" :items='library')
-      //     td(v-text="book.title")
-      //     td(v-text="item.author")
-      //     td(v-text="item.language")
-      //     td(v-text="item.pubDate")
-      //     td(v-text="item.booked")
-      //     td(v-button @click="deleteRow(item.id)" v-text="X")
-      
-      b-table.m-10(striped='' hover='' bordered='' :items='library' :fields="fields" :key='book.id')
-        template
-          b-btn(@row-clicked="(item, index,event) => rowDblClickHandeler(book.id, item, index, event)") X
-        
-          
-      b-nav-item(class="add", :href='`/member/${member._id}/addbook`') Add Book
+<template>
+  <main>
+    <section class="card">
+      <member-card :member="member"></member-card>
+    </section>
+    <section class="container table-responsive">
+      <h2>{{ member.username }}'s Lib</h2>
+      <div>
+        <b-table
+          hover
+          ref="selectableTable"
+          selectable
+          :items="library"
+          :fields="fields"
+          @row-selected="onRowSelected"
+          @row-dblclicked="myRowDblClickHandler"
+          responsive="sm"
+        >
+          <template v-slot:cell(selected)="{ rowSelected }">
+            <template v-if="rowSelected">
+              <span aria-hidden="true">&check;</span>
+              <span class="sr-only">Selected</span>
+            </template>
+            <template v-else>
+              <span aria-hidden="true">&nbsp;</span>
+              <span class="sr-only">Not selected</span>
+            </template>
+          </template>
+        </b-table>
+        <div>
+          <b-button size="sm" @click="selectAllRows">Select all</b-button>
+          <b-button size="sm" @click="clearSelected">Clear selected</b-button>
+          <b-button size="sm" @click="removeSelected">Remove selected</b-button>
+        </div>
+        <b-nav-item class="add" :href="`/member/${member._id}/addbook`"
+          >Add new book</b-nav-item
+        >
+      </div>
+    </section>
+  </main>
 </template>
 
 <script>
@@ -30,7 +49,7 @@ export default {
   components: {
     MemberCard
   },
-  data(){
+  data() {
     return {
       fields: [
         {
@@ -39,6 +58,7 @@ export default {
         },
         {
           key: 'author',
+          sortable: true
         },
         {
           key: 'pubDate',
@@ -47,10 +67,9 @@ export default {
         },
         {
           key: 'booked',
-        },
-        {
-          key: '',
-        },
+          label: 'Availability',
+          sortable: true
+        }
       ]
     }
   },
@@ -70,8 +89,24 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['fetchMember', 'fetchMembers']),
-  },
+    ...mapActions(['fetchMember', 'fetchMembers', 'deleteBook']),
+    onRowSelected(items) {
+      this.selected = items
+    },
+    selectAllRows() {
+      this.$refs.selectableTable.selectAllRows()
+    },
+    clearSelected() {
+      this.$refs.selectableTable.clearSelected()
+    },
+    removeSelected() {
+      this.deleteBook({ book: this.$refs.selectableTable, id: this.id })
+    },
+    myRowDblClickHandler() {
+      this.$router.push({ path: `/book/${this.onRowSelected.id}` })  
+    }
+    },
+  
   created() {
     this.fetchMember(this.$route.params.id)
   }
@@ -87,11 +122,12 @@ main {
   width: 40%;
 }
 .container {
-  float:right;
-  width: 100vw;
+  float: right;
+  width: 60%;
 }
+
 .add {
-    list-style-type: none
+  list-style-type: none;
 }
 
 </style>

@@ -28,29 +28,29 @@
           button.submit(type='submit') Submit
           button.reset(type='reset') Reset
         .nav
-          b-nav-item.nav-item(href='/auth/local') Already registered?
+          b-nav-item.nav-item(href='/auth/login') Already registered?
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions } from 'vuex'
 
 export default {
   data() {
     return {
       form: {
-        username: "",
-        fullName: "",
-        email: "",
-        password: "",
-        confirmPassword: "",
+        username: '',
+        fullName: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
         city: null,
         terms: false
       },
       show: true
-    };
+    }
   },
   methods: {
-    ...mapActions(["register"]),
+    ...mapActions(['register']),
     onSubmit() {
       const user = {
         username: this.form.username,
@@ -59,29 +59,29 @@ export default {
         password: this.form.password,
         confirmPassword: this.form.confirmPassword,
         city: this.form.city
-      };
-      alert(JSON.stringify(this.form));
-      console.log(user);
+      }
+      alert(JSON.stringify(this.form))
+      console.log(user)
       this.register(user)
         .then()
-        .catch();
+        .catch()
     },
     onReset() {
-      this.username = "";
-      this.fullName = "";
-      this.email = "";
-      this.password = "";
-      this.confirmPassword = "";
-      this.city = null;
-      this.terms = false;
+      this.username = ''
+      this.fullName = ''
+      this.email = ''
+      this.password = ''
+      this.confirmPassword = ''
+      this.city = null
+      this.terms = false
 
-      this.show = false;
+      this.show = false
       this.$nextTick(() => {
-        this.show = true;
-      });
+        this.show = true
+      })
     }
   }
-};
+}
 </script>
 
 <style scoped>
@@ -182,7 +182,6 @@ body {
 
 .nav-link {
   color: inherit !important;
-  /* font-family: "Lato"; */
   font-style: italic;
 }
 

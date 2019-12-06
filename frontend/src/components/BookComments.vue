@@ -19,7 +19,7 @@
 
 <script>
 export default {
-    name: 'BookComments',
-    props: ['comment']
+  name: 'BookComments',
+  props: ['comment']
 }
 </script>

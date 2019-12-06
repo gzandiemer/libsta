@@ -4,8 +4,8 @@
       router-link(:to='memberUrl')  {{ member.username }}
     img.img-circle.img-responsive(:src='`https://picsum.photos/300/200?random=${member._id}`' alt='')
     p  City: {{ member.city }}
-    p  {{ member.followers.length }} followers 
-    p  {{ member.followers.length }} following 
+    p  {{ member.followers }} followers 
+    p  {{ member.following }} following 
 </template>
 
 <script>
@@ -15,16 +15,6 @@ export default {
   computed: {
     memberUrl() {
       return `/member/${this.member._id}`
-    },
-    library() {
-      return this.member.library.map(book => {
-        return {
-          title: book.title,
-          author: book.authorName,
-          language: book.language,
-          booked: book.booked ? 'Booked' : 'Available'
-        }
-      })
     }
   }
 }

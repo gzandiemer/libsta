@@ -1,17 +1,17 @@
 <template>
   <div id="book-form">
     <div class="book-form">
-      <form @submit="onSubmit" @reset="onReset" v-if="show">
+      <form @submit.prevent="onSubmit" @reset.prevent="onReset" v-if="show">
         <div class="input">
-          <label for="title"> Title</label>
+          <label for="title">Title</label>
           <input class="title" type="string" v-model="form.title" />
         </div>
         <div class="input">
-          <label for="authorName"> Author</label>
+          <label for="authorName">Author</label>
           <input class="authorName" type="string" v-model="form.authorName" />
         </div>
         <div class="input">
-          <label for="language"> Language</label>
+          <label for="language">Language</label>
           <input class="language" type="string" v-model="form.language" />
         </div>
         <div class="input">
@@ -28,9 +28,9 @@
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
+import { mapState, mapActions } from 'vuex'
 export default {
-  name: "BookForm",
+  name: 'BookForm',
   props: {
     id: {
       type: String
@@ -39,55 +39,41 @@ export default {
   data() {
     return {
       form: {
-        title: "",
-        authorName: "",
-        language: "",
-        pubDate: ""
+        title: '',
+        authorName: '',
+        language: '',
+        pubDate: ''
       },
       show: true
-    };
+    }
   },
   computed: {
-    ...mapState(["member", "book"])
+    ...mapState(['member', 'book', 'books'])
   },
 
   methods: {
-    ...mapActions(["addBook"]),
-    onSubmit(evt) {
-      evt.preventDefault();
-      // alert(JSON.stringify(this.form));
+    ...mapActions(['addBook']),
+    onSubmit() {
       this.addBook({ form: this.form, id: this.id })
-      alert("This book is successfully added to your library.")
-      this.$router.push({ path: `/member/${this.id}` })
-        // .then(res => {
-        //   if (res.data.success) {
-        //     alert("This book is successfully added to your library.").then(() => {
-        //       this.$router.push({ path: `/member/${this.member_id}` })
-        //     })
-        //   }
-        // })
-        // .catch(err => {
-        //   console.log(err);
-        // });
+      alert('This book is successfully added to your library.')
+      setTimeout(() => {
+        this.$router.push({ path: `/member/${this.id}` })
+      }, 2000)
     },
-    onReset(evt) {
-      console.log("reset btn works");
-      evt.preventDefault();
-      // Reset our form values
-      this.form.title = "";
-      this.form.authorName = "";
-      this.form.language = "";
-      this.form.pubDate = "";
-      this.form.checked = [];
-      console.log("data null");
+    onReset() {
+      this.form.title = ''
+      this.form.authorName = ''
+      this.form.language = ''
+      this.form.pubDate = ''
+      this.form.checked = []
       // Trick to reset/clear native browser form validation state
-      this.show = false;
+      this.show = false
       this.$nextTick(() => {
-        this.show = true;
-      });
+        this.show = true
+      })
     }
   }
-};
+}
 </script>
 <style scoped>
 .book-form {
