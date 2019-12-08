@@ -2,28 +2,21 @@
    main
     section.card
       book-card(:book='book')
-    section.container
-      .comments
-        book-comments(v-for='comment in comments', :comment='comment', :key='comment.id')
+    //- section.container
+    //-   .comments
+    //-     book-comments(v-for='comment in comments', :comment='comment', :key='comment.id')
 </template>
 
 <script>
 import BookCard from '../components/BookCard'
-import BookComments from '../components/BookComments'
-import { mapState, mapActions, store } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 export default {
   name: 'BookSingle',
-  data() {
-    return {
-      comments: store.state.comments
-    }
-  },
   components: {
-    BookCard,
-    BookComments
+    BookCard
   },
   computed: {
-    ...mapState(['book', 'comments'])
+    ...mapState(['book'])
   },
   methods: {
     ...mapActions(['fetchBook'])
@@ -38,12 +31,12 @@ export default {
 main {
   float: left;
 }
-.card {
+/* .card {
   float: left;
   width: 40%;
 }
 .container {
   float: left;
   width: 50%;
-}
+} */
 </style>

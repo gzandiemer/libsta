@@ -4,27 +4,19 @@
     br
     br
     section.content
-      .msg
-        err-msg(v-if='error' :msg='error')
       router-view
     app-footer
 </template>
 
 <script>
 import Header from './components/Header.vue'
-import Errors from './components/Errors'
 import Footer from './components/Footer.vue'
-import { mapGetters } from 'vuex'
 
 export default {
   name: 'app',
   components: {
     'app-header': Header,
-    'err-msg': Errors,
     'app-footer': Footer
-  },
-  computed: {
-    ...mapGetters(['error'])
   }
 }
 </script>

@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
-import { comments } from './seed.js'
 
 Vue.use(Vuex)
 
@@ -10,11 +9,10 @@ export default new Vuex.Store({
     books: [],
     book: {},
     members: [],
-    member: {},
-    likes: 0,
-    following: 0,
-    followers: 0,
-    comments
+    member: {}
+    // likes: [],
+    // following: [],
+    // followers: []
   },
   mutations: {
     SET_BOOKS(state, data) {
@@ -29,9 +27,6 @@ export default new Vuex.Store({
     SET_MEMBER(state, data) {
       state.member = data
     },
-    LIKE_BOOK(state, data) {
-      console.log(state + data + 'increment likers')
-    },
     ADD_BOOK(state) {
       state.member.library.push(state.book)
       state.book.owner = state.member._id
@@ -40,17 +35,22 @@ export default new Vuex.Store({
       console.log('ADD_BOOK')
     },
     DELETE_BOOK(state) {
-      state.member.library[state.book] = null
-      state.book.owner = null
+      state.book = null
       state.member.save()
       state.book.save()
       console.log('DELETE_BOOK')
     },
-    ADD_FOLLOWERS(state) {
-      state.followers++
+    FOLLOW_MEMBER(state, object) {
+      state.member.following.push(object)
+      object.followers.push(state.member)
+      state.member.save()
     },
-    ADD_LIKES(state) {
-      state.likes++
+    LIKE_BOOK(state) {
+      state.member.likes.push(state.book)
+      state.book.likers.push(state.member)
+      state.book.likers++
+      state.member.save()
+      state.book.save()
     }
   },
   actions: {
@@ -71,40 +71,32 @@ export default new Vuex.Store({
       commit('SET_MEMBER', result.data)
     },
     async addBook({ commit }, data) {
-      console.log('store/index', data)
       const { data: book } = await axios.post(
         `http://localhost:3000/book`,
         data.form
       )
-      console.log('book created', book)
       const result = await axios.post(
         `http://localhost:3000/member/${data.id}/library`,
         { book: book._id }
       )
-      console.log('book added to lib', book)
       commit('ADD_BOOK', result.data)
-      console.log('mutations committed')
     },
     async deleteBook({ commit }, data) {
       console.log('button works', data)
       const result = await axios.delete(`http://localhost:3000/book/${data.id}`)
       commit('DELETE_BOOK', result)
     },
-    incrementCounter({ commit, state }) {
-      const newCount = state.counter + 1
-      commit('SET_COUNTER', newCount)
+    likeBook({ commit }, data) {
+      commit('LIKE_BOOK', data)
     },
-    addLikes({ commit }) {
-      commit('ADD_FOLLOWERS')
-    },
-    followMember({ commit }) {
-      commit('ADD_FOLLOWERS')
-    },
-    upvote(commentId) {
-      const comment = this.state.comments.find(
-        comment => comment.id === commentId
-      )
-      comment.votes++
+    followMember({ commit }, data) {
+      commit('ADD_FOLLOWERS', data)
     }
+  },
+
+  getters: {
+      followingLength: state=> state.member.following.length,
+      followersLength: state=> state.member.followers.length,
+      likesLength: state => state.book.likers.length,  
   }
 })

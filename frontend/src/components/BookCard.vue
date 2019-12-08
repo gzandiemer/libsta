@@ -10,25 +10,28 @@
       p In {{ book.pubDate }}
     .btns
       button(@click='onLike') Like! 
-      p(:likes="likes")
+      p {{ likers }} people liked this
+      
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'BookCard',
   props: ['book'],
   computed: {
-    ...mapState(['likes']),
     bookUrl() {
       return `/book/${this.book._id}`
+    }, 
+    likers(){
+      return this.book.likers.length
     }
   },
   methods: {
-    ...mapActions(['addLikes']),
+    ...mapActions(['likeBook']),
     onLike() {
-      this.addLikes()
+      this.likeBook()
       console.log('Like button works!')
     }
   }

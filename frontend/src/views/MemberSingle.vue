@@ -83,10 +83,11 @@ export default {
           language: book.language,
           pubDate: book.pubDate,
           booked: book.booked ? 'Booked' : 'Available',
-          delete: book.delete
+          delete: book.delete,
+          id: book._id
         }
       })
-    }
+  }
   },
   methods: {
     ...mapActions(['fetchMember', 'fetchMembers', 'deleteBook']),
@@ -100,10 +101,10 @@ export default {
       this.$refs.selectableTable.clearSelected()
     },
     removeSelected() {
-      this.deleteBook({ book: this.$refs.selectableTable, id: this.id })
+      this.deleteBook({ book: this.$refs.onRowSelected, id: this.id })
     },
     myRowDblClickHandler() {
-      this.$router.push({ path: `/book/${this.onRowSelected.id}` })  
+      this.$router.push({ path: `/book/${this.book._id}`})  
     }
     },
   

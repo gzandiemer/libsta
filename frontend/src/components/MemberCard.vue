@@ -16,6 +16,12 @@ export default {
     memberUrl() {
       return `/member/${this.member._id}`
     }
+    // followers(){
+    //   return this.$store.member.followers.length
+    // },
+    // following() {
+    //   return this.$store.member.following.length
+    // }
   }
 }
 </script>
