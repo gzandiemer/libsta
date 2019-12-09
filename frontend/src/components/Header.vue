@@ -6,9 +6,9 @@
     b-navbar-toggle(target='nav-collapse')
     b-collapse#nav-collapse(is-nav='')
       b-navbar-nav
-        b-nav-item(href='/about') About
-        b-nav-item(href='/member/all') Members
-        b-nav-item(href='/book/all') Books
+        b-nav-item(href='/about' exact) About
+        b-nav-item(href='/member/all' exact) Members
+        b-nav-item(href='/book/all' exact) Books
 
       b-navbar-nav.ml-auto
         b-nav-form
@@ -62,7 +62,8 @@ export default {
 }
 
 #nav a.router-link-exact-active {
-  color: white;
+  color: #ccc;
+  opacity: 1;
 }
 
 .logo {

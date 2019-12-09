@@ -84,7 +84,6 @@ export default {
           pubDate: book.pubDate,
           booked: book.booked ? 'Booked' : 'Available',
           delete: book.delete,
-          id: book._id
         }
       })
   }
@@ -100,13 +99,14 @@ export default {
     clearSelected() {
       this.$refs.selectableTable.clearSelected()
     },
-    removeSelected() {
-      this.deleteBook({ book: this.$refs.onRowSelected, id: this.id })
+    removeSelected(items) {
+      this.$delete(items, this.selected)
+      
     },
     myRowDblClickHandler() {
-      this.$router.push({ path: `/book/${this.book._id}`})  
+      this.$router.push({ name:'MemberSingle', params: {id: this.id}})  
     }
-    },
+  },
   
   created() {
     this.fetchMember(this.$route.params.id)

@@ -9,7 +9,9 @@ export default new Vuex.Store({
     books: [],
     book: {},
     members: [],
-    member: {}
+    member: {},
+    notes: [],
+    timestamps: []
     // likes: [],
     // following: [],
     // followers: []
@@ -34,24 +36,33 @@ export default new Vuex.Store({
       state.book.save()
       console.log('ADD_BOOK')
     },
-    DELETE_BOOK(state) {
-      state.book = null
-      state.member.save()
-      state.book.save()
-      console.log('DELETE_BOOK')
+    ADD_NOTE(state, payload) {
+      let newNote = payload;
+      state.notes.push(newNote);
     },
-    FOLLOW_MEMBER(state, object) {
-      state.member.following.push(object)
-      object.followers.push(state.member)
-      state.member.save()
-    },
-    LIKE_BOOK(state) {
-      state.member.likes.push(state.book)
-      state.book.likers.push(state.member)
-      state.book.likers++
-      state.member.save()
-      state.book.save()
+    ADD_TIMESTAMP(state, payload) {
+      let newTimeStamp = payload;
+      state.timestamps.push(newTimeStamp);
     }
+    // REWRITE BELOW FUNCTIONS
+    // DELETE_BOOK(state) {
+    //   state.book = null
+    //   state.member.save()
+    //   state.book.save()
+    //   console.log('DELETE_BOOK')
+    // },
+    // FOLLOW_MEMBER(state, object) {
+    //   state.member.following.push(object)
+    //   object.followers.push(state.member)
+    //   state.member.save()
+    // },
+    // LIKE_BOOK(state) {
+    //   state.member.likes.push(state.book)
+    //   state.book.likers.push(state.member)
+    //   state.book.likers++
+    //   state.member.save()
+    //   state.book.save()
+    // }
   },
   actions: {
     async fetchBooks({ commit }) {
@@ -81,22 +92,30 @@ export default new Vuex.Store({
       )
       commit('ADD_BOOK', result.data)
     },
-    async deleteBook({ commit }, data) {
-      console.log('button works', data)
-      const result = await axios.delete(`http://localhost:3000/book/${data.id}`)
-      commit('DELETE_BOOK', result)
+    addNote(context, payload) {
+      context.commit('ADD_NOTE', payload);
     },
-    likeBook({ commit }, data) {
-      commit('LIKE_BOOK', data)
-    },
-    followMember({ commit }, data) {
-      commit('ADD_FOLLOWERS', data)
+    addTimestamp(context, payload) {
+      context.commit('ADD_TIMESTAMP', payload);
     }
+    // REWRITE BELOW FUNCTIONS
+    // async deleteBook({ commit }, data) {
+    //   console.log('button works', data)
+    //   const result = await axios.delete(`http://localhost:3000/book/${data.id}`)
+    //   commit('DELETE_BOOK', result)
+    // },
+    // likeBook({ commit }, data) {
+    //   commit('LIKE_BOOK', data)
+    // },
+    // followMember({ commit }, data) {
+    //   commit('ADD_FOLLOWERS', data)
+    // }
   },
 
   getters: {
-      followingLength: state=> state.member.following.length,
-      followersLength: state=> state.member.followers.length,
-      likesLength: state => state.book.likers.length,  
+    getNotes: state => state.notes,
+    getTimestamps: state => state.timestamps,
+    getNoteCount: state => state.notes.length
+
   }
 })
