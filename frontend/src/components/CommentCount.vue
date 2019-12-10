@@ -1,15 +1,20 @@
 <template>
-    <main class="note-count">
-      Note count: <strong>{{ noteCount }}</strong>
+    <main class="comment-count">
+      Comment count: <strong>{{ commentCount }}</strong>
     </main>
 </template>
 
 <script>
 export default {
     computed: {
-    noteCount() {
-      return this.$store.getters.getNoteCount;
+    commentCount() {
+      return this.$store.getters.getCommentCount;
     }
   }
 }
 </script>
+<style scoped>
+.comment-count {
+  margin-top: 48px;
+}
+</style>

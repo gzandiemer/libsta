@@ -1,12 +1,31 @@
-<template lang="pug">
-   main
-    section.card
-      book-card(:book='book')
-    section.container
-      book-comments
-      comment-count
-    //-   .comments
-    //-     book-comments(v-for='comment in comments', :comment='comment', :key='comment.id')
+<template>
+  <main>
+    <section class="card">
+      <book-card :book="book"></book-card>
+    </section>
+    <section class="container">
+      <div class="columns">
+        <div class="column">
+          <strong>Comments</strong>
+          <div v-for="comment in comments" :key="comment.id" class="comments">
+            {{ comment }}
+          </div>
+        </div>
+        <div class="column">
+          <strong>Timestamp</strong>
+          <div
+            v-for="timestamp in timestamps"
+            :key="timestamp.id"
+            class="timestamps"
+          >
+            {{ timestamp }}
+          </div>
+        </div>
+        <book-comments />
+      </div>
+      <comment-count />
+    </section>
+  </main>
 </template>
 
 <script>
@@ -18,15 +37,17 @@ import { mapState, mapActions } from 'vuex'
 export default {
   name: 'BookSingle',
   components: {
-    BookCard, BookComments, CommentCount
+    BookCard,
+    BookComments,
+    CommentCount
   },
   computed: {
     ...mapState(['book']),
-    notes() {
-      return this.$store.getters.getNotes;
+    comments() {
+      return this.$store.getters.getComments
     },
     timestamps() {
-      return this.$store.getters.getTimestamps;
+      return this.$store.getters.getTimestamps
     }
   },
   methods: {
@@ -39,15 +60,14 @@ export default {
 </script>
 
 <style scoped>
-main {
-  float: left;
-}
-/* .card {
-  float: left;
-  width: 40%;
-}
+.card,
 .container {
   float: left;
-  width: 50%;
-} */
+  width: 49%;
+}
+
+.column {
+  float: left;
+  width: 49%;
+}
 </style>

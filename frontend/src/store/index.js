@@ -10,11 +10,8 @@ export default new Vuex.Store({
     book: {},
     members: [],
     member: {},
-    notes: [],
+    comments: [],
     timestamps: []
-    // likes: [],
-    // following: [],
-    // followers: []
   },
   mutations: {
     SET_BOOKS(state, data) {
@@ -36,13 +33,14 @@ export default new Vuex.Store({
       state.book.save()
       console.log('ADD_BOOK')
     },
-    ADD_NOTE(state, payload) {
-      let newNote = payload;
-      state.notes.push(newNote);
+    ADD_COMMENT(state, payload) {
+      let newComment = payload
+      state.comments.push(newComment)
+      state.book.comments.push(newComment)
     },
     ADD_TIMESTAMP(state, payload) {
-      let newTimeStamp = payload;
-      state.timestamps.push(newTimeStamp);
+      let newTimeStamp = payload
+      state.timestamps.push(newTimeStamp)
     }
     // REWRITE BELOW FUNCTIONS
     // DELETE_BOOK(state) {
@@ -92,11 +90,11 @@ export default new Vuex.Store({
       )
       commit('ADD_BOOK', result.data)
     },
-    addNote(context, payload) {
-      context.commit('ADD_NOTE', payload);
+    addComment(context, payload) {
+      context.commit('ADD_COMMENT', payload)
     },
     addTimestamp(context, payload) {
-      context.commit('ADD_TIMESTAMP', payload);
+      context.commit('ADD_TIMESTAMP', payload)
     }
     // REWRITE BELOW FUNCTIONS
     // async deleteBook({ commit }, data) {
@@ -113,9 +111,8 @@ export default new Vuex.Store({
   },
 
   getters: {
-    getNotes: state => state.notes,
+    getComments: state => state.comments,
     getTimestamps: state => state.timestamps,
-    getNoteCount: state => state.notes.length
-
+    getCommentCount: state => state.comments.length
   }
 })

@@ -92,6 +92,7 @@ export default {
     ...mapActions(['fetchMember', 'fetchMembers', 'deleteBook']),
     onRowSelected(items) {
       this.selected = items
+      return items.id
     },
     selectAllRows() {
       this.$refs.selectableTable.selectAllRows()
@@ -104,7 +105,8 @@ export default {
       
     },
     myRowDblClickHandler() {
-      this.$router.push({ name:'MemberSingle', params: {id: this.id}})  
+      const id = this._id
+      this.$router.push({ path:'/book/'+ id })
     }
   },
   

@@ -15,7 +15,7 @@ export default {
   },
   methods: {
     monitorEnterKey () {
-      this.$store.dispatch('addNote', this.input);
+      this.$store.dispatch('addComment', this.input);
       this.$store.dispatch('addTimestamp', new Date().toLocaleString());
       this.input = '';
     }
