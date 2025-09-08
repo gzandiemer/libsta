@@ -1,147 +1,97 @@
 <p align="right">
-  <img src="../master/frontend/src/assets/logo-books.png" width="350" alt="Logo">
+  <img src="../master/frontend/src/assets/logo-books.png" width="250" alt="Libsta Logo">
 </p>
 
-### Table of Contents
+# Libsta | Book Sharing App
 
+A full-stack web application that enables members to create personal libraries, share books, and connect with other readers.  
+
+---
+
+## Table of Contents
 - [About the Project](#about-the-project)
-  - [Title](#title)
-  - [Description](#description)
-  - [Objective](#objective)
+  - [Vision](#vision)
   - [Goals](#goals)
-  - [Author](#author)
-  - [Sources](#sources)
-  - [Built With](#built-with)
+  - [Context](#context)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
-- [Versioning](#versioning)
 - [Usage](#usage)
 - [Project Structure](#project-structure)
-  - [Classes](#classes)
-  - [HTTP Request Examples](#axios-examples)
-- [Style Guide](#style-guide)
 - [Status](#status)
-  - [Done](#done)
-  - [In Progress](#in-progress)
-  - [To Do](#to-do)
-    - [Problems to fix](#problems-to-fix)
-    - [Features to add](#features-to-add)
+- [Future Improvements](#future-improvements)
+- [License](#license)
 
+---
 
-<a name="about-the-project"/>
+## About the Project
 
-## About The Project
-<a name="description"/>
-
-### Title
-Libsta
-
-<a name="description"/>
-
-### Description
-A web application for book sharing  
-<a name="objective"/>
-
-### Objective
-To cover the need in Berlin for an alternative library since German libraries do not have sufficient number of books in other languages. With this web app, people will be able to connect their own libraries to one another and not only exchange books in a large community but also get in touch with people, whom they share a common book taste
-<a name="goals"/>
+### Vision
+Berlin’s libraries often lack books in diverse languages. **Libsta** was created as a community-driven alternative: a digital space where people can connect their personal libraries, exchange books, and meet others with similar tastes.  
 
 ### Goals
-Membership through registration is required to use the app<br />
-Every member create a personal library on their profile page where they publish what books they want to share<br />
-Members can search a book by typing its title or author name in the search field to check its availability<br />
-Members can follow one another<br />
-Members can like, comment on and make a request for books in other members' libraries<br />
-For the comment section, there will be a button to alert readers against spoilers<br />
-Members can use direct messaging to arrange a meeting in order to exchange books<br />
-<a name="author"/>
+- Registration-based membership system  
+- Personal library pages for each member  
+- Book search by title or author  
+- Social features: follow, like, comment (with spoiler alerts)  
+- Direct messaging to arrange exchanges  
 
-### Author 
-Günışığı Zan Diemer
+### Context
+This project was developed within the **Women Techmakers Berlin JavaScript Crash Course 2019 at Wayfair**.  
 
-<a name="sources"/>
+---
 
-### Sources
-This project is created within the frame of Women Techmakers Berlin's JavaScript Crash Course 2019 in WayFair
+## Features
+- Authentication & profile management  
+- Create and manage personal book libraries  
+- Search functionality  
+- Likes, comments, and follows  
+- Spoiler protection in comment sections  
+- Direct messaging between members  
 
-<a name="built-with"/>
+---
 
-### Built With
+## Tech Stack
+- **Frontend**: Vue.js  
+- **Backend**: Node.js, Express  
+- **Database**: MongoDB with Mongoose  
+- **Other**: Axios (HTTP requests), Pug (templates), ESLint (code styling), Ava (testing)  
 
-Major frameworks used in this project:
-
-- Javascript Framework - [VueJs ](https://vuejs.org) 
-- Testing Framework - [Avajs/Ava](https://github.com/avajs/ava)
-
-Major libraries used in this project:
-
-- Mongoose Object Data Modeling - [Mongoose](https://mongoosejs.com/)
-- Pug Template Engine - [Pug](https://pugjs.org/api/getting-started.html)
-- Promise based HTTP client - [Axios](https://github.com/axios/axios)
-- Code Styling - [Eslint](https://eslint.org)
+---
 
 ## Getting Started
 
-<a name="prerequisites"/>
+### Prerequisites
+- Node.js (>= v8.11)  
+- NPM (>= v6)  
+- MongoDB (>= v4.2)  
+- Docker (>= v19.03.2) – optional for containerization  
+- Robo3T – optional for DB GUI  
 
-#### Prerequisites
+### Installation
+```bash
+# Clone repository
+git clone <repo-url>
+cd libsta
 
-- [Node.js](https://nodejs.org/en/) is required 
-  _ latest version or at least >= 8.11 
-  _ check your current node version with: `node -v`
+# Install dependencies
+npm install
 
-- [NPM](https://www.npmjs.com/) is required
-  _ install package manager npm with: `npm install npm@latest -g`
-  _ check your current npm version with: `npm -v`
+# Start backend
+nodemon index.js
 
-- [MongoDB](https://www.mongodb.com/) is required
-  _ check your current mongodb version with: `mongo -v`
-  _ Install according to [MongoDB documentation](https://docs.mongodb.com/manual/installation/)
-
-- [Robo3T](https://www.mongodb.com/) is required
-  _ download here: [Robo3T download](https://robomongo.org/download)
-
-- [Docker](https://docs.docker.com):
-  _ latest version or at least >= 19.03.2
-  _ check your current node version with: `docker -v`
-  _ Install according to [Docker documentation](https://docs.docker.com)
-
-<a name="installation"/>
-
-#### Installation
-
-The code is hosted on GitHub:
-
-1. Clone the repo:
-   `git clone <github_repository>`
-      
-Build and start either with NPM:
-
-2. Install NPM packages and dependencies:
-   `npm install`
-3. to start the local environment run: `npm run serve`
-
+# Start frontend
+npm run serve
 
 ## Usage
+- Run npm run serve for frontend development
+- Run npm run build for production build
+- Connect to MongoDB with brew services start mongodb-community@4.2
+- Run tests with npm run test
 
-Compiles and hot-reloads for development:
-
-- Start you local frontend environment: `npm run serve`
-
-- Compiles and minifies for production: `npm run build`
-
-- Connect to database: `brew services start mongodb-community@4.2`
-
-- Start your local backend environment: `nodemon index.js`
-
-- Run your tests: `npm run test`
-
-<a name="project-structure"/>
-
-## Project Structure 
-
-```
+## Project Structure
 ├───backend
 │   ├───models
 │   ├───routes
@@ -160,152 +110,22 @@ Compiles and hot-reloads for development:
         ├───store
         └───views
 
-```  
-<a name="classes"/>
-
-### Classes 
-
-#### Member
->-**userName**: _String_<br />
->-**fullName**: _String_<br />
->-**city**: _String_<br />
->-**library**: _Array_<br />
->-**likes**: _Array_<br />
->-**followers**: _Array_<br />
->-**following**: _Array_<br />
->-**comments**: _Array_<br />
->
->+**followMember()**<br />
->+**likeBook()**<br />
->+**addBook()**<br />
->+**commentOnBook()**<br />
-
-#### Book
->-**title**: _String_<br />
->-**authorName**: _String_<br />
->-**language**: _String_<br />
->-**pubDate**: _Number_<br />
->-**owner**: _Object_<br />
->**likers**: _Array_<br />
->-**comments**: _Array_<br />
->-**booked**: _Boolean_<br />
-
-<a name="axios-examples"/>
-
-### HTTP Request Examples using Axios
-
- Create a new member: <br />
- ```axios.post('http://localhost:3000/member', { username: 'myNickname, fullName: 'myFirstName myLastName', city: 'Berlin'}).then(console.log)```
-
- View member profile: <br />
- ```axios.get('http://localhost:3000/member/5dcff1784185624d8dfaa4c6').then(console.log)```
-
- View all member profiles: <br />
-```axios.get('http://localhost:3000/member/all').then(console.log)```
-
- Delete a member: <br />
-```axios.delete('/member/5dcff1784185624d8dfaa4c6').then(console.log)```
-
- Create a new book: <br />
-```axios.post('http://localhost:3000/book', { title: 'myBook', authorName: 'myAuthor', language: 'english', pubdate: 2000, booked: false}).then(console.log)```
-
- View book profile: <br />
-```axios.get('http://localhost:3000/book/5dcff970d4f5e04e16bf51e0').then(console.log)```
-
- View all book profiles: <br />
-```axios.get('http://localhost:3000/book/all').then(console.log)```
-
- Delete a book: <br />
-```axios.delete('/book/5dcff970d4f5e04e16bf51e0').then(console.log)```
-
- View register page: <br />
-```axios.get('http://localhost:3000/register').then(console.log)```
-
- View login page: <br />
-```axios.get('http://localhost:3000/login').then(console.log)```
-
- Register user: <br />
-```axios.post('http://localhost:3000/auth/register', {username: 'myUsername', password:'myPassword'}).then(res => console.log(res.data)).catch(res=>console.log(res))```
-
-<a name="style-guide"/>
-
-## Style Guide
-
-Font Family: 
-- <p font-family="Merryweather"> Merryweather (light), serif: </p> (https://fonts.googleapis.com/css?family=Merriweather:300&display=swap)
-- <p font-family="Lato">Lato (regular), sans-serif: </p> (https://fonts.googleapis.com/css?family=Lato:300&display=swap)
-- <p font-family="Sue Ellen Francisco">Sue Ellen Francisco (regular), cursive: </p> (https://fonts.googleapis.com/css?family=Sue+Ellen+Francisco&display=swap)
-
-Color Palette:
-- purplish: ![#521751](https://placehold.it/15/521751/000000?text=+) `#521751`
-- reddish: ![#bf0B2c](https://placehold.it/15/bf0B2c/000000?text=+) `#bf0B2c`
-- darkblueish: ![#02173d](https://placehold.it/15/02173d/000000?text=+) `#02173d`
-- lightpetrolish: ![#0aa38c](https://placehold.it/15/0aa38c/000000?text=+) `#0aa38c`
-- Vue-green: ![#42b983](https://placehold.it/15/42b983/000000?text=+) `#42b983`
-- mustardish: ![#f5900f](https://placehold.it/15/f5900f/000000?text=+) `#f5900f`
-- linenish: ![#858418](https://placehold.it/15/ad9d5a/000000?text=+) `#858418`
-- darkkhaki: ![#ad9d5a](https://placehold.it/15/ad9d5a/000000?text=+) `#ad9d5a` 
-
-<a name="status"/>
-
 ## Status
+- ✅ Authentication basics
+- ✅ Library management (add books, like, comment)
+- ✅ Routing & navigation
+- ✅ Initial tests
 
-<a name="done"/>
+## Future Improvements
+- Enhanced authentication & validation
+- Direct messaging between users
+- Advanced search and filtering
+- Profile customization (follows, favorites, etc.)
+- Carousel views for featured books
+- UI polish (icons, styles, responsive layouts)
 
-### Done
-- documentation
-- navbar
-- sign up/in forms
-- routing
-- library table
-- book-form
-- addBook function for library table via book-form
-- footer
-
-<a name="in-progress"/>
-
-### In Progress
-- Add comment upvote section to BookSingle.vue
-
-<a name="to-do"/>
-
-### To Do
-#### logic
-- authentication
-- validations, error handling
-- errors for failure of requirements adding book
-- delete and update book buttons in library
-- save likes to database book.likers
-- Add Carousel to home and dashboard (limit each with 3-4 cards)
-- Sort books from the most liked to the least
-
-#### style
-- add icon to the buttons in the card
-- library table 
-- profile page style with follow button 
-
-
-<a name="problems-to-fix"/>
-
-#### Problems to fix
-
-- ADD/INSTALL style from upvote - the book to comments 
-- auth from video - jscc and keep in mind catch errors somewhere else!!! and read https://stackoverflow.com/a/53607043
-- like button increases the likes in all cards 
-- comments style ??
-
-
-<a name="features-to-add"/>
-
-#### Features to add
-
-- Authentication and dashboard modification with logout and user profile
-- request book in book-card
-- follow in member profile page 
-- Search book title and author
-- Direct messaging
-- Frontend testing
-
+## Licence
+MIT License
 
 
 
